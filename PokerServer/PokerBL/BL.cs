@@ -8,5 +8,13 @@ namespace PokerBL
 {
     public class BL
     {
+        public class TableStatus
+        {
+
+        }
+        public class Room
+        {
+
+        }
     }
 }

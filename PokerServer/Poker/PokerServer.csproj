@@ -93,5 +93,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PokerBL\PokerBL.csproj">
+      <Project>{e4590ff0-d680-4c70-983a-5e20502ffac8}</Project>
+      <Name>PokerBL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokerDL\PokerDL.csproj">
+      <Project>{361f49ac-af0e-4166-83af-ff7a6a59ecfb}</Project>
+      <Name>PokerDL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PokerService\PokerService.csproj">
+      <Project>{bc702d9e-9198-4671-a65c-25e993c7352e}</Project>
+      <Name>PokerService</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

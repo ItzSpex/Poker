@@ -8,5 +8,13 @@ namespace PokerDL
 {
     public class DL
     {
+        public class Move
+        {
+
+        }
+        public class Login
+        {
+
+        }
     }
 }

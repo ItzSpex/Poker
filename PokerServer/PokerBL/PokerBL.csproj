@@ -43,5 +43,11 @@
     <Compile Include="BL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\PokerDL\PokerDL.csproj">
+      <Project>{361f49ac-af0e-4166-83af-ff7a6a59ecfb}</Project>
+      <Name>PokerDL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
