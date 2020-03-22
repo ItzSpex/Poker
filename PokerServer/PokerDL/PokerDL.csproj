@@ -42,7 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DL.cs" />
+    <Compile Include="Models\Move.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="ORM\PokerDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace PokerDL.ORM
 {
-    class PokerDB
+    public class PokerDB
     {
         private string connectionString = @"Data Source=LENOVO-LR09LUJJ\user; 
                                           Initial Catalog=PokerDB; Integrated Secuirty=True;";

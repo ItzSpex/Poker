@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace PokerDL.Models
 {
     [DataContract]
-    class User
+    public class User
     {
         [DataMember]
         public int UserId { get; set; }
