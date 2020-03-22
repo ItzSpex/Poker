@@ -4,11 +4,11 @@ using PokerDL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PokerServiceNamespace
+namespace PokerService
 {
     public class PokerService : IPokerService
     {
@@ -31,12 +31,12 @@ namespace PokerServiceNamespace
         {
             ServerResponse<int> loginResponse =
                 new ServerResponse<int>();
-            loginResponse.ErrorMsg = null;    
+            loginResponse.ErrorMsg = null;
             try
             {
-                loginResponse.Result = Database.GetUserByCredentials(new User(Username,Password));
+                loginResponse.Result = Database.GetUserByCredentials(new User(Username, Password));
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 loginResponse.ErrorMsg = e.Message;
             }

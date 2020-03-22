@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using PokerClient.PokerServiceRef;
 namespace PokerClient
 {
     /// <summary>
@@ -20,9 +20,18 @@ namespace PokerClient
     /// </summary>
     public partial class MainWindow : Window
     {
+        private PokerServiceClient client = new PokerServiceClient();
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void LoginBtn_Click(object sender, RoutedEventArgs e)
+        {
+            String username = userNameTB.Text;
+            String password = passwordBox.Password;
+            var serverResponse = client.Login(username, password);
+            ExceptionBox.Text = serverResponse.ErrorMsg;
         }
     }
 }

@@ -5,14 +5,14 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{BC702D9E-9198-4671-A65C-25E993C7352E}</ProjectGuid>
+    <ProjectGuid>{CE7FC889-09A3-46DE-B7D2-0EF0A6F44347}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PokerService</RootNamespace>
-    <AssemblyName>PokerService</AssemblyName>
+    <RootNamespace>PokerService2</RootNamespace>
+    <AssemblyName>PokerService2</AssemblyName>
     <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
     <XsdCodeGenEnabled>True</XsdCodeGenEnabled>
   </PropertyGroup>
@@ -45,8 +45,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IPokerService.cs" />
-    <Compile Include="PokerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PokerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PokerBL\PokerBL.csproj">

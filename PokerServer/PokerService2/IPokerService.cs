@@ -6,18 +6,17 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace PokerServiceNamespace
+namespace PokerService
 {
     [ServiceContract]
-    interface IPokerService
+    public interface IPokerService
     {
         [OperationContract]
         ServerResponse<int> Login(String username, String password);
         // If the ErrorMsg == "Player has rejoined table" - the user returns to the table he is in
 
-        [OperationContract]
+        /*[OperationContract]
         ServerResponse<List<Room>> SignUp(User user);
 
         [OperationContract]
@@ -37,7 +36,7 @@ namespace PokerServiceNamespace
 
         [OperationContract]
         ServerResponse<TableStatus> PlayerMove(int roomId, Move move);
-
+        */
 
     }
     [DataContract]

@@ -11,8 +11,7 @@ namespace PokerDL.ORM
 {
     public class PokerDB
     {
-        private string connectionString = @"Data Source=LENOVO-LR09LUJJ\user; 
-                                          Initial Catalog=PokerDB; Integrated Secuirty=True;";
+        private string connectionString = @"Data Source=.;Initial Catalog=PokerDB;Integrated Security=True";
         private SqlConnection connection;
         private SqlCommand command;
         private SqlDataReader reader;
@@ -79,7 +78,7 @@ namespace PokerDL.ORM
         }
         public int SelectUserByCredentials(User requestedUser)
         {
-            command.CommandText = "SELECT * FROM USERINFO WHERE Username = " + requestedUser.Username + "AND Password = " + requestedUser.Password;
+            command.CommandText = "SELECT * FROM USERINFO WHERE Username = '" + requestedUser.Username + "' AND Password = '" + requestedUser.Password + "'";
             List<User> users = new List<User>();
             try
             {
