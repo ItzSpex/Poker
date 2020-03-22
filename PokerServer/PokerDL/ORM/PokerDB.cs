@@ -77,6 +77,40 @@ namespace PokerDL.ORM
                 return users[0];
             return null;
         }
+        public int SelectUserByCredentials(User requestedUser)
+        {
+            command.CommandText = "SELECT * FROM USERINFO WHERE Username = " + requestedUser.Username + "AND Password = " + requestedUser.Password;
+            List<User> users = new List<User>();
+            try
+            {
+                connection.Open();
+                reader = command.ExecuteReader();
+                while (reader.Read())
+                {
+                    User user = new User();
+                    user.UserId = (int)reader["PId"];
+                    user.Username = reader["Username"].ToString();
+                    user.Password = reader["Password"].ToString();
+                    if (user == requestedUser)
+                    {
+                        users.Add(user);
+                    }
+
+                }
+            }
+            catch (Exception e) { throw new Exception(e.Message); }
+            finally
+            {
+                if (reader != null)
+                    reader.Close();
+                if (connection.State == ConnectionState.Open)
+                    connection.Close();
+            }
+            if (users.Count == 1)
+                return users[0].UserId;
+            throw new Exception("Login failed, The user doesn't exist. Please Signup");
+
+        }
     }
 }
 
