@@ -1,5 +1,4 @@
 ﻿using PokerDL.Models;
-using PokerDL.Utils;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -34,7 +33,10 @@ namespace PokerDL.ORM
                 reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    User user = UserUtils.ReadUser(reader);
+                    User user = new User();
+                    user.UserId = (int)reader["PId"];
+                    user.Username = reader["Username"].ToString();
+                    user.Password = reader["Password"].ToString();
                     users.Add(user);
                 }
             }
@@ -56,7 +58,10 @@ namespace PokerDL.ORM
                 reader = command.ExecuteReader();
                 while (reader.Read())
                 {
-                    User user = UserUtils.ReadUser(reader);
+                    User user = new User();
+                    user.UserId = (int)reader["PId"];
+                    user.Username = reader["Username"].ToString();
+                    user.Password = reader["Password"].ToString();
                     users.Add(user);
                 }
             }
