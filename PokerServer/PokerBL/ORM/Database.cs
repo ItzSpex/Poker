@@ -1,4 +1,5 @@
-﻿using PokerDL.Models;
+﻿using PokerBL.Models;
+using PokerDL.Models;
 using PokerDL.ORM;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,16 @@ namespace PokerBL.ORM
             return (users.FirstOrDefault
                 (item => item.UserId == id));
 
+        }
+        public static int GetUserByCredentials(User requstedUser)
+        {
+            if(users == null)
+            {
+                PokerDB pokerDB = new PokerDB();
+                return pokerDB.SelectUserByCredentials(requstedUser);
+            }
+            return (users.FirstOrDefault
+                (item => item == requstedUser).UserId);
         }
     }
 }
