@@ -1,35 +1,46 @@
-﻿using System;
+﻿using PokerBL.Models;
+using PokerBL.ORM;
+using PokerDL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
-using static PokerBL.BL;
-using static PokerDL.DL;
 
 namespace PokerService
 {
     public class PokerService : IPokerService
     {
-        public ServerResponse<int> CreateRoom(string login)
-        {
-            
-            throw new NotImplementedException();
-        }
-
-        public ServerResponse<bool> JoinRoom(int roomId, string login)
+        public ServerResponse<int> CreateRoom(string username)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<List<Room>> Leave(int roomId, string login)
+        public ServerResponse<bool> JoinRoom(int roomId, string username)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<List<Room>> Login(string login, string password)
+        public ServerResponse<List<Room>> Leave(int roomId, string username)
         {
             throw new NotImplementedException();
+        }
+
+        public ServerResponse<int> Login(string Username, string Password)
+        {
+            ServerResponse<int> loginResponse =
+                new ServerResponse<int>();
+            loginResponse.ErrorMsg = null;    
+            try
+            {
+                loginResponse.Result = Database.GetUserByCredentials(new User(Username,Password));
+            }
+            catch(Exception e)
+            {
+                loginResponse.ErrorMsg = e.Message;
+            }
+            return loginResponse;
         }
 
         public ServerResponse<TableStatus> PlayerMove(int roomId, Move move)
@@ -37,17 +48,17 @@ namespace PokerService
             throw new NotImplementedException();
         }
 
-        public ServerResponse<List<Room>> SignIn(Login login)
+        public ServerResponse<List<Room>> SignUp(User user)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<bool> Sit(int roomId, string login)
+        public ServerResponse<bool> Sit(int roomId, string username)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<TableStatus> UpdateTableStatus(int roomId, string login)
+        public ServerResponse<TableStatus> UpdateTableStatus(int roomId, string username)
         {
             throw new NotImplementedException();
         }

@@ -14,11 +14,11 @@ namespace PokerService
     interface IPokerService
     {
         [OperationContract]
-        ServerResponse<List<Room>> Login(String username, String password);
+        ServerResponse<int> Login(String username, String password);
         // If the ErrorMsg == "Player has rejoined table" - the user returns to the table he is in
 
         [OperationContract]
-        ServerResponse<List<Room>> SignIn(User user);
+        ServerResponse<List<Room>> SignUp(User user);
 
         [OperationContract]
         ServerResponse<bool> JoinRoom(int roomId, string username); // fails if room closes by the time the user selects it
