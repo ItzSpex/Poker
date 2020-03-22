@@ -10,6 +10,7 @@ using static PokerDL.DL;
 
 namespace PokerService
 {
+    [ServiceContract]
     interface IPokerService
     {
         [OperationContract]
