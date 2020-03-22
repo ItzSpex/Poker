@@ -10,11 +10,24 @@ namespace PokerDL
     {
         public class Move
         {
-
+            int PId { get; set; }
+            Operation Operation { get; set; }
         }
         public class Login
         {
+            int PId { get; set; }
+            string Username { get; set; }
+            string Password { get; set; }
+
 
         }
+        public enum Operation
+        {
+            Spectate = 0,
+            Call,
+            Raise,
+            Fold,
+            Check
+        };
     }
 }
