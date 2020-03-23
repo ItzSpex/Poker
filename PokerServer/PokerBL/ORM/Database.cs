@@ -1,6 +1,6 @@
 ﻿using PokerBL.Models;
 using PokerDL.Models;
-using PokerDL.ORM;
+using PokerDL.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,37 +11,28 @@ namespace PokerBL.ORM
 {
     public class Database
     {
-        private static List<User> users = null;
-
-        public static List<User> GetAllUsers()
+        private static List<UserInfo> users = null;
+        public static int GetUserByCredentials(UserInfo requstedUser)
         {
+            UserInfo u = null;
             if (users == null)
             {
-                PokerDB pokerDB = new PokerDB();
-                users = pokerDB.SelectAllUsers();
+                UserInfoDB userInfoDB = new UserInfoDB();
+                u = userInfoDB.GetByUsername(requstedUser.Username);
             }
-            return users;
-        }
-        public static User GetUserById(int id)
-        {
-            if(users == null)
+            else
             {
-                PokerDB pokerDB = new PokerDB();
-                return pokerDB.SelectUserByID(id);
+                u = users.FirstOrDefault(item => item == requstedUser);
             }
-            return (users.FirstOrDefault
-                (item => item.UserId == id));
-
-        }
-        public static int GetUserByCredentials(User requstedUser)
-        {
-            if(users == null)
+            if (u == null)
             {
-                PokerDB pokerDB = new PokerDB();
-                return pokerDB.SelectUserByCredentials(requstedUser);
+                throw new Exception("User doesn't exist");
             }
-            return (users.FirstOrDefault
-                (item => item == requstedUser).UserId);
+            if (u.Password != requstedUser.Password)
+            {
+                throw new Exception("Wrong password");
+            }
+            return u.Id;
         }
     }
 }

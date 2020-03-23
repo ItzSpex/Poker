@@ -31,7 +31,10 @@ namespace PokerClient
             String username = userNameTB.Text;
             String password = passwordBox.Password;
             var serverResponse = client.Login(username, password);
-            ExceptionBox.Text = serverResponse.ErrorMsg;
+            if (serverResponse.ErrorMsg == null)
+                ExceptionBox.Text = "User Id: " + serverResponse.Result.ToString();
+            else
+                ExceptionBox.Text = serverResponse.ErrorMsg.ToString();    
         }
     }
 }

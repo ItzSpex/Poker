@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\BaseEntity.cs" />
     <Compile Include="Models\Move.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="ORM\PokerDB.cs" />
+    <Compile Include="Models\UserInfo.cs" />
+    <Compile Include="Mapping\BaseDB.cs" />
+    <Compile Include="Mapping\UserInfoDB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

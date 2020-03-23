@@ -34,7 +34,7 @@ namespace PokerService
             loginResponse.ErrorMsg = null;
             try
             {
-                loginResponse.Result = Database.GetUserByCredentials(new User(Username, Password));
+                loginResponse.Result = Database.GetUserByCredentials(new UserInfo(Username, Password));
             }
             catch (Exception e)
             {
@@ -48,7 +48,7 @@ namespace PokerService
             throw new NotImplementedException();
         }
 
-        public ServerResponse<List<Room>> SignUp(User user)
+        public ServerResponse<List<Room>> SignUp(UserInfo user)
         {
             throw new NotImplementedException();
         }
