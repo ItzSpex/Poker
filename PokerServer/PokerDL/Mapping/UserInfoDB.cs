@@ -44,7 +44,6 @@ namespace PokerDL.Mapping
                    "Where PlayerId = " + model.Id;
 
         }
-
         protected override void SetSQLParameters(UserInfo model)
         {
             this.command.Parameters.Add("@PlayerId",

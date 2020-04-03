@@ -27,14 +27,14 @@ namespace PokerService
             throw new NotImplementedException();
         }
 
-        public ServerResponse<int> Login(string Username, string Password)
+        public ServerResponse<int> Login(string username, string password)
         {
             ServerResponse<int> loginResponse =
                 new ServerResponse<int>();
             loginResponse.ErrorMsg = null;
             try
             {
-                loginResponse.Result = Database.GetUserByCredentials(new UserInfo(Username, Password));
+                loginResponse.Result = Database.GetUserByCredentials(new UserInfo(username, password));
             }
             catch (Exception e)
             {
@@ -48,9 +48,21 @@ namespace PokerService
             throw new NotImplementedException();
         }
 
-        public ServerResponse<List<Room>> SignUp(UserInfo user)
+        public ServerResponse<int> SignUp(string username, string password)
         {
-            throw new NotImplementedException();
+            UserInfo user = new UserInfo(username, password);
+            ServerResponse<int> signupResponse = new ServerResponse<int>();
+            signupResponse.ErrorMsg = null;
+            try
+            {
+                Database.InsertUser(user);
+                signupResponse.Result = user.Id;
+            }
+            catch (Exception e)
+            {
+                signupResponse.ErrorMsg = e.Message;
+            }
+            return signupResponse;
         }
 
         public ServerResponse<bool> Sit(int roomId, string username)

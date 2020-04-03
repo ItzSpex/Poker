@@ -34,5 +34,15 @@ namespace PokerBL.ORM
             }
             return u.Id;
         }
+        public static void InsertUser(UserInfo newUser)
+        {
+            UserInfoDB userInfoDB = new UserInfoDB();
+            UserInfo u = userInfoDB.GetByUsername(newUser.Username);
+            if (u != null)
+            {
+                throw new Exception("User exists");
+            }
+            userInfoDB.IdentityInsert(newUser);
+        }
     }
 }
