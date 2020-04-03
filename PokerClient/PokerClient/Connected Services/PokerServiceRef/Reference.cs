@@ -83,6 +83,12 @@ namespace PokerClient.PokerServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/Login", ReplyAction="http://tempuri.org/IPokerService/LoginResponse")]
         System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfint> LoginAsync(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/SignUp", ReplyAction="http://tempuri.org/IPokerService/SignUpResponse")]
+        PokerClient.PokerServiceRef.ServerResponseOfint SignUp(string username, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/SignUp", ReplyAction="http://tempuri.org/IPokerService/SignUpResponse")]
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfint> SignUpAsync(string username, string password);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -118,6 +124,14 @@ namespace PokerClient.PokerServiceRef {
         
         public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfint> LoginAsync(string username, string password) {
             return base.Channel.LoginAsync(username, password);
+        }
+        
+        public PokerClient.PokerServiceRef.ServerResponseOfint SignUp(string username, string password) {
+            return base.Channel.SignUp(username, password);
+        }
+        
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfint> SignUpAsync(string username, string password) {
+            return base.Channel.SignUpAsync(username, password);
         }
     }
 }

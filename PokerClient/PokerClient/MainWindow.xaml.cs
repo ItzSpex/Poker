@@ -28,13 +28,24 @@ namespace PokerClient
 
         private void LoginBtn_Click(object sender, RoutedEventArgs e)
         {
-            String username = userNameTB.Text;
-            String password = passwordBox.Password;
+            string username = userNameTB.Text;
+            string password = passwordBox.Password;
             var serverResponse = client.Login(username, password);
             if (serverResponse.ErrorMsg == null)
                 ExceptionBox.Text = "User Id: " + serverResponse.Result.ToString();
             else
                 ExceptionBox.Text = serverResponse.ErrorMsg.ToString();    
+        }
+
+        private void SignupBtn_Click(object sender, RoutedEventArgs e)
+        {
+            string username = userNameTB.Text;
+            string password = passwordBox.Password;
+            var serverRespone = client.SignUp(username, password);
+            if (serverRespone.ErrorMsg == null)
+                ExceptionBox.Text = "User Id: " + serverRespone.Result.ToString();
+            else
+                ExceptionBox.Text = serverRespone.ErrorMsg.ToString();
         }
     }
 }

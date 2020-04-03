@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <Button Content="Signup" HorizontalAlignment="Left" Margin="208,179,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button x:Name="SignupBtn" Content="Signup" HorizontalAlignment="Left" Margin="208,179,0,0" VerticalAlignment="Top" Width="75" Click="SignupBtn_Click"/>
         <Button x:Name="LoginBtn" Content="Login" HorizontalAlignment="Left" Margin="88,179,0,0" VerticalAlignment="Top" Width="75" Click="LoginBtn_Click"/>
-        <Label Content="Username:" HorizontalAlignment="Left" Margin="84,91,0,0" VerticalAlignment="Top"/>
-        <Label Content="Password:" HorizontalAlignment="Left" Margin="88,133,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Username_Label" Content="Username:" HorizontalAlignment="Left" Margin="84,91,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Password_Label" Content="Password:" HorizontalAlignment="Left" Margin="88,133,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="userNameTB" HorizontalAlignment="Left" Height="23" Margin="155,94,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="155,133,0,0" Height="23" VerticalAlignment="Top" Width="120"/>
         <TextBox x:Name="ExceptionBox" HorizontalAlignment="Left" Height="82" Margin="73,216,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="387"/>
