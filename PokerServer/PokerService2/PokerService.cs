@@ -22,7 +22,7 @@ namespace PokerService
             throw new NotImplementedException();
         }
 
-        public ServerResponse<List<Room>> Leave(int roomId, string username)
+        public ServerResponse<List<PokerTable>> Leave(int roomId, string username)
         {
             throw new NotImplementedException();
         }

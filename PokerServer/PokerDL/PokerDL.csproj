@@ -43,8 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mapping\PokerTableDB.cs" />
     <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\Card.cs" />
     <Compile Include="Models\Move.cs" />
+    <Compile Include="Models\PokerTable.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Mapping\BaseDB.cs" />
     <Compile Include="Mapping\UserInfoDB.cs" />
