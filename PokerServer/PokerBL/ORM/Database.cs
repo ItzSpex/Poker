@@ -44,5 +44,9 @@ namespace PokerBL.ORM
             }
             userInfoDB.IdentityInsert(newUser);
         }
+        public static void InsertRoom(PokerTable newPokerTable)
+        {
+            PokerTableDB pokerTableDB = new PokerTableDB();
+        }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PokerDL.Mapping
 {
-    class PokerTableDB : BaseDB<PokerTable>
+    public class PokerTableDB : BaseDB<PokerTable>
     {
         protected override void GetModelColumns(PokerTable model)
         {
