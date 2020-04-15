@@ -44,9 +44,30 @@ namespace PokerBL.ORM
             }
             userInfoDB.IdentityInsert(newUser);
         }
-        public static void InsertRoom(PokerTable newPokerTable)
+        public static void InsertTable(PokerTable newPokerTable)
         {
             PokerTableDB pokerTableDB = new PokerTableDB();
+            PokerTable pT = pokerTableDB.GetByTableByName(newPokerTable.PokerTableName);
+            if (pT != null)
+            {
+                throw new Exception("Table already exists");
+            }
+            pokerTableDB.IdentityInsert(newPokerTable);
+        }
+        public static List<PokerTable> GetAllTables()
+        {
+            PokerTableDB pokerTableDB = new PokerTableDB();
+            List<PokerTable> pokerTables = pokerTableDB.GetTables();
+            if (pokerTables == null)
+            {
+                throw new Exception("No tables exist");
+            }
+            return pokerTables;
+        }
+        public static void DeleteTable(PokerTable requestedTable)
+        {
+            PokerTableDB pokerTableDB = new PokerTableDB();
+            pokerTableDB.Delete(requestedTable);
         }
     }
 }
