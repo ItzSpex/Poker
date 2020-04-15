@@ -12,7 +12,7 @@ namespace PokerBL.Models
     public class PokerTable : BaseIdentityEntity
     {
         [DataMember]
-        public string TablePokerName { get; set; }
+        public string PokerTableName { get; set; }
         [DataMember]
         public int NumOfPlayers { get; set; }
         [DataMember]
