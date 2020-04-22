@@ -12,7 +12,22 @@ namespace PokerService
 {
     public class PokerService : IPokerService
     {
+        public ServerResponse<bool> CloseRoom(int roomId, string username)
+        {
+            throw new NotImplementedException();
+        }
+
         public ServerResponse<int> CreateRoom(string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServerResponse<List<PokerTable>> GetExistingPokerTables()
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServerResponse<bool> GetUp(int roomId, string username)
         {
             throw new NotImplementedException();
         }
@@ -22,7 +37,7 @@ namespace PokerService
             throw new NotImplementedException();
         }
 
-        public ServerResponse<List<PokerTable>> Leave(int roomId, string username)
+        public ServerResponse<bool> LeaveRoom(int roomId, string username)
         {
             throw new NotImplementedException();
         }

@@ -18,7 +18,7 @@ namespace PokerService
 
         [OperationContract]
         ServerResponse<int> SignUp(string username, string password);
-        /*
+        
         [OperationContract]
         ServerResponse<bool> JoinRoom(int roomId, string username); // fails if room closes by the time the user selects it
 
@@ -29,14 +29,23 @@ namespace PokerService
         ServerResponse<bool> Sit(int roomId, string username); // fails if room closes or table is full or game started
 
         [OperationContract]
-        ServerResponse<List<Room>> Leave(int roomId, string username);
+        ServerResponse<bool> GetUp(int roomId, string username); //fails if room closes or game started.
+
+        [OperationContract]
+        ServerResponse<bool> LeaveRoom(int roomId, string username); 
+
+        [OperationContract]
+        ServerResponse<bool> CloseRoom(int roomId, string username);
+
+        [OperationContract]
+        ServerResponse<List<PokerTable>> GetExistingPokerTables();
 
         [OperationContract]
         ServerResponse<TableStatus> UpdateTableStatus(int roomId, string username);
 
         [OperationContract]
         ServerResponse<TableStatus> PlayerMove(int roomId, Move move);
-        */
+        
 
     }
     [DataContract]
