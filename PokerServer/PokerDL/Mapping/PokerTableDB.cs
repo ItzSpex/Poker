@@ -7,8 +7,24 @@ using System.Threading.Tasks;
 
 namespace PokerDL.Mapping
 {
-    class PokerTableDB : BaseDB<PokerTable>
+    public class PokerTableDB : BaseDB<PokerTable>
     {
+        public PokerTable GetByTableByName(string TableName)
+        {
+            command.CommandText = "SELECT * FROM POKERTABLE WHERE PokerTableName ='" + TableName + "'";
+            var l = Select();
+            if(l.Count == 1)
+                return l[0];
+            return null;
+        }
+        public List<PokerTable> GetTables()
+        {
+            command.CommandText = "SELECT * FROM POKERTABLE";
+            var l = Select();
+            if (l.Count > 0)
+                return l;
+            return null;
+        }
         protected override void GetModelColumns(PokerTable model)
         {
             model.Id = (int)reader["PokerTableId"];
