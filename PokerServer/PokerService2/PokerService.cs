@@ -12,32 +12,43 @@ namespace PokerService
 {
     public class PokerService : IPokerService
     {
-        public ServerResponse<bool> CloseRoom(int roomId, string username)
+        public ServerResponse<bool> CloseTable(int TableId, string username)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<int> CreateRoom(string username)
+        public ServerResponse<int> CreateTable(string username)
         {
             throw new NotImplementedException();
         }
 
         public ServerResponse<List<PokerTable>> GetExistingPokerTables()
         {
-            throw new NotImplementedException();
+            ServerResponse<List<PokerTable>> serverResponse = 
+                new ServerResponse<List<PokerTable>>();
+            serverResponse.ErrorMsg = null;
+            try 
+            {
+                serverResponse.Result = Database.GetAllTables();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
         }
 
-        public ServerResponse<bool> GetUp(int roomId, string username)
+        public ServerResponse<bool> GetUp(int TableId, string username)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<bool> JoinRoom(int roomId, string username)
+        public ServerResponse<bool> JoinTable(int TableId, string username)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<bool> LeaveRoom(int roomId, string username)
+        public ServerResponse<bool> LeaveTable(int TableId, string username)
         {
             throw new NotImplementedException();
         }
@@ -57,8 +68,8 @@ namespace PokerService
             }
             return loginResponse;
         }
-
-        public ServerResponse<TableStatus> PlayerMove(int roomId, Move move)
+        
+        public ServerResponse<TableStatus> PlayerMove(int TableId, int Operation)
         {
             throw new NotImplementedException();
         }
@@ -80,12 +91,17 @@ namespace PokerService
             return signupResponse;
         }
 
-        public ServerResponse<bool> Sit(int roomId, string username)
+        public ServerResponse<bool> Sit(int TableId, string username)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<TableStatus> UpdateTableStatus(int roomId, string username)
+        public ServerResponse<bool> StartGame(int TableId, string username)
+        {
+            throw new NotImplementedException();
+        }
+
+        public ServerResponse<TableStatus> UpdateTableStatus(int TableId, string username)
         {
             throw new NotImplementedException();
         }

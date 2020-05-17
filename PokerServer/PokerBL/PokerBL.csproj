@@ -41,7 +41,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\Player.cs" />
+    <Compile Include="Models\PokerUtil.cs" />
+    <Compile Include="Models\Room.cs" />
     <Compile Include="Models\TableStatus.cs" />
     <Compile Include="ORM\Database.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

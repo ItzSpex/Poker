@@ -8,29 +8,18 @@ namespace PokerBL.Models
 {
     public class Card
     {
-        public enum Suite : byte { Spades = 10, Hearts = 20, Clubs = 40, Diamonds = 128 };
-        public enum Face : byte { Ace = 1, Two, Three, Four, Five, Six, Seven, Eight, Nine, Ten, Jack, Queen, King }
+        public string Suite { get; set; } //Spades Hearts Clubs Diamonds
+        public int Face { get; set; }
 
-        public Suite suite;
-        public Face face;
-
-        public Card(Suite s, Face f)
+        public Card(string s)
         {
-            this.suite = s;
-            this.face = f;
+            string[] words = s.Split(',');
+            this.Suite = words[0];
+            this.Face = Convert.ToInt32(words[1]);
         }
-
-        public void printCard()
+        public override string ToString()
         {
-            Console.WriteLine("Suite: " + suite + "Face: " + face);
-        }
-        public int getFaceValue()
-        {
-            return (int)face;
-        }
-        public int getCardValue()
-        {
-            return (int)suite + (int)face;
+            return Suite + "," + Face.ToString();
         }
     }
 }

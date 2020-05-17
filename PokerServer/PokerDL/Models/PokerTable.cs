@@ -14,20 +14,24 @@ namespace PokerBL.Models
         [DataMember]
         public string PokerTableName { get; set; }
         [DataMember]
+        public bool HasStarted { get; set; }
+        [DataMember]
         public int NumOfPlayers { get; set; }
         [DataMember]
         public long TablePot { get; set; }
         [DataMember]
         public int CurrTurn { get; set; }
         [DataMember]
-        public Card FirstCard { get; set; }
+        public int MinBet { get; set; }
         [DataMember]
-        public Card SecondCard { get; set; }
+        public string FirstCard { get; set; }
         [DataMember]
-        public Card ThirdCard { get; set; }
+        public string SecondCard { get; set; }
         [DataMember]
-        public Card FourthCard { get; set; }
+        public string ThirdCard { get; set; }
         [DataMember]
-        public Card FifthCard { get; set; }
+        public string FourthCard { get; set; }
+        [DataMember]
+        public string FifthCard { get; set; }
     }
 }

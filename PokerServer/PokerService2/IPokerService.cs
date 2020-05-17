@@ -13,38 +13,31 @@ namespace PokerService
     public interface IPokerService
     {
         [OperationContract]
+        ServerResponse<int> SignUp(string username, string password);
+        [OperationContract]
         ServerResponse<int> Login(string username, string password);
         // If the ErrorMsg == "Player has rejoined table" - the user returns to the table he is in
-
-        [OperationContract]
-        ServerResponse<int> SignUp(string username, string password);
-        
-        [OperationContract]
-        ServerResponse<bool> JoinRoom(int roomId, string username); // fails if room closes by the time the user selects it
-
-        [OperationContract]
-        ServerResponse<int> CreateRoom(string username); // returns roomId
-
-        [OperationContract]
-        ServerResponse<bool> Sit(int roomId, string username); // fails if room closes or table is full or game started
-
-        [OperationContract]
-        ServerResponse<bool> GetUp(int roomId, string username); //fails if room closes or game started.
-
-        [OperationContract]
-        ServerResponse<bool> LeaveRoom(int roomId, string username); 
-
-        [OperationContract]
-        ServerResponse<bool> CloseRoom(int roomId, string username);
-
         [OperationContract]
         ServerResponse<List<PokerTable>> GetExistingPokerTables();
+        [OperationContract]
+        ServerResponse<int> CreateTable(string username); // returns TableId
+        [OperationContract]
+        ServerResponse<bool> LeaveTable(int TableId, string username);
+        [OperationContract]
+        ServerResponse<bool> CloseTable(int TableId, string username);
+        [OperationContract]
+        ServerResponse<bool> JoinTable(int TableId, string username); // fails if Table closes by the time the user selects it
+        [OperationContract]
+        ServerResponse<bool> GetUp(int TableId, string username); //fails if Table closes or game started.
+        [OperationContract]
+        ServerResponse<bool> Sit(int TableId, string username); // fails if Table closes or table is full or game started
+        [OperationContract]
+        ServerResponse<bool> StartGame(int TableId, string username);
+        [OperationContract]
+        ServerResponse<TableStatus> UpdateTableStatus(int TableId, string username);
 
         [OperationContract]
-        ServerResponse<TableStatus> UpdateTableStatus(int roomId, string username);
-
-        [OperationContract]
-        ServerResponse<TableStatus> PlayerMove(int roomId, Move move);
+        ServerResponse<TableStatus> PlayerMove(int TableId, int Operation);
         
 
     }

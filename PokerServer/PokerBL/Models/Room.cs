@@ -1,5 +1,4 @@
-﻿using PokerDL.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PokerBL.Models
 {
-    public class TableStatus
+    class Room 
     {
-        public List<Move> Moves { get; set; }
+        PokerTable PokerTable;
+        List<int> PlayerIds;
     }
 }
