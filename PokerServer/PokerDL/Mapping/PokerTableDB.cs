@@ -29,10 +29,7 @@ namespace PokerDL.Mapping
         {
             model.Id = (int)reader["PokerTableId"];
             model.PokerTableName = reader["PokerTableName"].ToString();
-            model.HasStarted = (bool)reader["HasStarted"];
-            model.NumOfPlayers = (int)reader["NumOfPlayers"];
             model.TablePot = (int)reader["TablePot"];
-            model.CurrTurn = (int)reader["CurrTurn"];
             model.MinBet = (int)reader["MinBet"];
             model.FirstCard = null;
             if (reader["Card1"] != DBNull.Value)
@@ -69,15 +66,15 @@ namespace PokerDL.Mapping
         protected override string GetSQLInsertString()
         {
             return "INSERT INTO POKERTABLE " +
-                "(PokerTableName, HasStarted, NumOfPlayers, TablePot, CurrTurn, MinBet, FirstCard, SecondCard, ThirdCard, FourthCard, FifthCard)" +
-                "Values(@PokerTableName, @HasStarted, @NumOfPlayers, @TablePot, @CurrTurn, @MinBet, @FirstCard, @SecondCard, @ThirdCard, @FourthCard, @FifthCard)";
+                "(PokerTableName, TablePot, MinBet, FirstCard, SecondCard, ThirdCard, FourthCard, FifthCard)" +
+                "Values(@PokerTableName, @TablePot, @MinBet, @FirstCard, @SecondCard, @ThirdCard, @FourthCard, @FifthCard)";
         }
 
         protected override string GetSQLUpdateString(PokerTable model)
         {
             return "UPDATE POKERTABLE Set " +
-                   "PokerTableName=@PokerTableName,HasStarted=@HasStarted,NumOfPlayers=@NumOfPlayers,TablePot=@TablePot, CurrTurn=@CurrTurn, MinBet=@MinBet ,FirstCard=@FirstCard, SecondCard=@SecondCard, " +
-                   "ThirdCard=@ThirdCard, FourthCard=@FourthCard, FifthCard=@FifthCard" +
+                   "PokerTableName=@PokerTableName, TablePot=@TablePot, MinBet=@MinBet ,FirstCard=@FirstCard, SecondCard=@SecondCard,ThirdCard=@ThirdCard," +
+                   "FourthCard=@FourthCard, FifthCard=@FifthCard" +
                    "Where PokerTableId = " + model.Id;
         }
 
@@ -87,13 +84,7 @@ namespace PokerDL.Mapping
                 System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@PokerTableName",
                 System.Data.SqlDbType.NVarChar);
-            this.command.Parameters.Add("@HasStarted",
-                System.Data.SqlDbType.Bit);
-            this.command.Parameters.Add("@NumOfPlayers",
-                System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@TablePot",
-                System.Data.SqlDbType.Int);
-            this.command.Parameters.Add("@CurrTurn",
                 System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@MinBet",
                 System.Data.SqlDbType.Bit);
@@ -108,12 +99,9 @@ namespace PokerDL.Mapping
             this.command.Parameters.Add("@FifthCard",
                 System.Data.SqlDbType.NVarChar);
 
-            this.command.Parameters["@PokerTableId"].Value = model.PokerTableName;
+            this.command.Parameters["@PokerTableId"].Value = model.Id;
             this.command.Parameters["@PokerTableName"].Value = model.PokerTableName;
-            this.command.Parameters["@HasStarted"].Value = model.HasStarted;
-            this.command.Parameters["@NumOfPlayers"].Value = model.NumOfPlayers;
             this.command.Parameters["@TablePot"].Value = model.TablePot;
-            this.command.Parameters["@CurrTurn"].Value = model.CurrTurn;
             this.command.Parameters["@MinBet"].Value = model.MinBet;
             if (model.FirstCard == null)
                 this.command.Parameters["@Card1"].Value = DBNull.Value;

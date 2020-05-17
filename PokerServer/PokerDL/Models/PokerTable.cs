@@ -14,13 +14,7 @@ namespace PokerBL.Models
         [DataMember]
         public string PokerTableName { get; set; }
         [DataMember]
-        public bool HasStarted { get; set; }
-        [DataMember]
-        public int NumOfPlayers { get; set; }
-        [DataMember]
         public long TablePot { get; set; }
-        [DataMember]
-        public int CurrTurn { get; set; }
         [DataMember]
         public int MinBet { get; set; }
         [DataMember]

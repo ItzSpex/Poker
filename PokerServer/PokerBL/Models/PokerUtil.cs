@@ -7,20 +7,27 @@ using System.Threading.Tasks;
 
 namespace PokerBL.Models
 {
-    public class PokerUtil
-    {
-        public static Deck Deck;
-    }
     public class PreDeal
     {
         public int DealerId { get; set; }
         public List<Card> PersonalCards { get; set; }
-        public PreDeal(int NumOfPlayers, List<int> PlayerIds)
+        public PreDeal(PokerTableBL pokerTable)
         {
             Random Rand = new Random();
-            DealerId = PlayerIds[Rand.Next(0, NumOfPlayers)];
-            PokerUtil.Deck = new Deck();
-            PersonalCards = PokerUtil.Deck.GetCards(2); 
+            DealerId = pokerTable.PlayerIds[Rand.Next(0, pokerTable.NumOfPlayers)];
+            if (DealerId == pokerTable.NumOfPlayers)
+            {
+                
+            }
+            else if (DealerId == pokerTable.NumOfPlayers - 1)
+            {
+
+            }
+            else
+            {
+
+            }
+            PersonalCards = pokerTable.TableDeck.GetCards(2); 
         }
     }
     public class Deck
