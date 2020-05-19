@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,14 @@ namespace PokerClient
     /// <summary>
     /// Interaction logic for RoomMenuWindow.xaml
     /// </summary>
-    public partial class RoomMenuWindow : Window
+    public partial class TableMenuPage : Page
     {
-        public RoomMenuWindow()
+        public TableMenuPage()
         {
             InitializeComponent();
+            //ObservableCollection<PokerTableBL> pokerTables = new ObservableCollection<PokerTableBL>(List<PokerTableBL>);
+            //TableList.ItemsSource = pokerTables
+
         }
     }
 }

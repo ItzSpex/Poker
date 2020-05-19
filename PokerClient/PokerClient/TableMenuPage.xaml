@@ -1,0 +1,27 @@
+﻿<Page x:Class="PokerClient.TableMenuPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PokerClient"
+        mc:Ignorable="d"
+        Title="TableMenuWindow" Height="400" Width="550">
+    <Grid>
+        <DataGrid x:Name="TableList" HorizontalAlignment="Left" Height="160" Margin="10,45,0,0" VerticalAlignment="Top" Width="386" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Binding="{PokerTableName}"/>
+                <DataGridTextColumn Header="Players" Binding="{NumOfPlayers}"/>
+                <DataGridTextColumn Header="Minimun Bet" Binding="{MinBet}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="CreateTable_Btn" Content="Create Table" HorizontalAlignment="Left" Margin="418,45,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="PlayersInTable_Btn" Content="Players In Table" HorizontalAlignment="Left" Margin="418,80,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="JoinTable_Btn" Content="Join Table" HorizontalAlignment="Left" Margin="418,115,0,0" VerticalAlignment="Top" Width="100"/>
+        <Button x:Name="RefreshList_Btn" Content="Refresh List" HorizontalAlignment="Left" Margin="418,150,0,0" VerticalAlignment="Top" Width="100" RenderTransformOrigin="0.489,0.55"/>
+        <Button x:Name="Logout_Btn" Content="Logout" HorizontalAlignment="Left" VerticalAlignment="Top" Width="100" Margin="418,185,0,0"/>
+        <Label x:Name="Username_Label" Content="Username:" HorizontalAlignment="Left" Margin="10,14,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="UsernameTB" HorizontalAlignment="Left" Height="23" Margin="76,18,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label x:Name="Table_Info_Label" Content="Table Information:" HorizontalAlignment="Left" Margin="10,215,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TableInfoTB" HorizontalAlignment="Left" Height="118" Margin="10,241,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="508"/>
+    </Grid>
+</Page>

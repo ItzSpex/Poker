@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\user\source\repos\Poker\PokerClient\PokerClient\obj\Debug\
+D:\Ofek's Folder\Cyber Project\Poker\PokerClient\PokerClient\obj\Debug\
 PokerClient
 none
 false
 DEBUG;TRACE
-C:\Users\user\source\repos\Poker\PokerClient\PokerClient\App.xaml
-2237562914
+D:\Ofek's Folder\Cyber Project\Poker\PokerClient\PokerClient\App.xaml
+3-245479769
 
-82145029670
-151842682125
-MainWindow.xaml;RoomMenuWindow.xaml;
+91655856606
+171428859477
+LoginPage.xaml;MainWindow.xaml;TableMenuPage.xaml;
 
-True
+False
 
