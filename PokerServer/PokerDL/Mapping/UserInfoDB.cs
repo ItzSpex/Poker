@@ -23,6 +23,7 @@ namespace PokerDL.Mapping
             model.Id = (int)reader["PlayerId"];
             model.Username = reader["Username"].ToString();
             model.Password = reader["Password"].ToString();
+            model.Wallet = (long)reader["Wallet"];
         }
 
         protected override string GetSQLDeleteString(UserInfo model)
@@ -33,14 +34,14 @@ namespace PokerDL.Mapping
         protected override string GetSQLInsertString()
         {
             return "INSERT INTO USERINFO " +
-                "(Username, Password)" +
-                "Values(@Username, @Password)";
+                "(Username, Password, Wallet)" +
+                "Values(@Username, @Password, @Wallet)";
         }
 
         protected override string GetSQLUpdateString(UserInfo model)
         {
             return "UPDATE USERINFO Set " +
-                   "Username=@Username,Password=@Password" +
+                   "Username=@Username,Password=@Password, Wallet=@Wallet" +
                    "Where PlayerId = " + model.Id;
 
         }
@@ -52,10 +53,13 @@ namespace PokerDL.Mapping
                 System.Data.SqlDbType.NVarChar, 50);
             this.command.Parameters.Add("@Password",
                 System.Data.SqlDbType.NVarChar, 50);
+            this.command.Parameters.Add("@Wallet",
+                System.Data.SqlDbType.BigInt);
 
             this.command.Parameters["@PlayerId"].Value = model.Id;
             this.command.Parameters["@Username"].Value = model.Username;
             this.command.Parameters["@Password"].Value = model.Password;
+            this.command.Parameters["@Wallet"].Value = model.Wallet;
         }
     }
 }

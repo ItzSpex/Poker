@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace PokerBL.Models
 {
-    public class PreDeal
+    public class Deal
     {
         public int DealerId { get; set; }
         public List<Card> PersonalCards { get; set; }
-        public PreDeal(PokerTableBL pokerTable)
+        public Deal(PokerTableBL pokerTable)
         {
             Random Rand = new Random();
-            DealerId = pokerTable.PlayerIds[Rand.Next(0, pokerTable.NumOfPlayers)];
+            DealerId = Rand.Next(0, pokerTable.NumOfPlayers);
             if (DealerId == pokerTable.NumOfPlayers)
             {
                 

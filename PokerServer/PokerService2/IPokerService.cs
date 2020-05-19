@@ -18,23 +18,23 @@ namespace PokerService
         ServerResponse<int> Login(string username, string password);
         // If the ErrorMsg == "Player has rejoined table" - the user returns to the table he is in
         [OperationContract]
-        ServerResponse<List<PokerTable>> GetExistingPokerTables();
+        ServerResponse<List<PokerTableBL>> GetExistingTables();
         [OperationContract]
-        ServerResponse<int> CreateTable(string username); // returns TableId
+        ServerResponse<bool> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount); // returns TableId
         [OperationContract]
-        ServerResponse<bool> LeaveTable(int TableId, string username);
+        ServerResponse<bool> LeaveTable(int TableId, int userId);
         [OperationContract]
-        ServerResponse<bool> CloseTable(int TableId, string username);
+        ServerResponse<bool> CloseTable(int TableId, int userId);
         [OperationContract]
-        ServerResponse<bool> JoinTable(int TableId, string username); // fails if Table closes by the time the user selects it
+        ServerResponse<bool> JoinTable(int TableId, int userId); // fails if Table closes by the time the user selects it
         [OperationContract]
-        ServerResponse<bool> GetUp(int TableId, string username); //fails if Table closes or game started.
+        ServerResponse<bool> GetUp(int TableId, int userId); //fails if Table closes or game started.
         [OperationContract]
-        ServerResponse<bool> Sit(int TableId, string username); // fails if Table closes or table is full or game started
+        ServerResponse<bool> Sit(int TableId, int userId); // fails if Table closes or table is full or game started
         [OperationContract]
-        ServerResponse<bool> StartGame(int TableId, string username);
+        ServerResponse<bool> StartGame(int TableId, int userId);
         [OperationContract]
-        ServerResponse<TableStatus> UpdateTableStatus(int TableId, string username);
+        ServerResponse<TableStatus> UpdateTableStatus(int TableId, int userId);
 
         [OperationContract]
         ServerResponse<TableStatus> PlayerMove(int TableId, int Operation);

@@ -9,7 +9,7 @@ namespace PokerDL.Mapping
 {
     public class PokerTableDB : BaseDB<PokerTable>
     {
-        public PokerTable GetByTableByName(string TableName)
+        public PokerTable GetTableByName(string TableName)
         {
             command.CommandText = "SELECT * FROM POKERTABLE WHERE PokerTableName ='" + TableName + "'";
             var l = Select();

@@ -14,10 +14,11 @@ namespace PokerBL.Models
         public Deck TableDeck { get; set; }
         public List<int> PlayerIds { get; set; }
 
-        public PokerTableBL(string PokerTableName, int NumOfPlayers)
+        public PokerTableBL(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
             this.PokerTableName = PokerTableName;
             this.NumOfPlayers = NumOfPlayers;
+            this.MinBet = MinBetAmount;
             this.TableDeck = new Deck();
             this.PlayerIds = new List<int>();
         }

@@ -47,7 +47,7 @@ namespace PokerBL.ORM
         public static void InsertTable(PokerTable newPokerTable)
         {
             PokerTableDB pokerTableDB = new PokerTableDB();
-            PokerTable pT = pokerTableDB.GetByTableByName(newPokerTable.PokerTableName);
+            PokerTable pT = pokerTableDB.GetTableByName(newPokerTable.PokerTableName);
             if (pT != null)
             {
                 throw new Exception("Table already exists");

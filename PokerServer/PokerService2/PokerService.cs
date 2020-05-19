@@ -12,24 +12,18 @@ namespace PokerService
 {
     public class PokerService : IPokerService
     {
-        public ServerResponse<bool> CloseTable(int TableId, string username)
+        private ServiceHandler serviceHandler = new ServiceHandler();
+        public ServerResponse<bool> CloseTable(int TableId, int userId)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<int> CreateTable(string username)
+        public ServerResponse<bool> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
-            throw new NotImplementedException();
-        }
-
-        public ServerResponse<List<PokerTable>> GetExistingPokerTables()
-        {
-            ServerResponse<List<PokerTable>> serverResponse = 
-                new ServerResponse<List<PokerTable>>();
-            serverResponse.ErrorMsg = null;
-            try 
+            ServerResponse<bool> serverResponse = new ServerResponse<bool>();
+            try
             {
-                serverResponse.Result = Database.GetAllTables();
+                serverResponse.Result = serviceHandler.CreateTable(PokerTableName, NumOfPlayers, MinBetAmount);
             }
             catch (Exception e)
             {
@@ -38,29 +32,42 @@ namespace PokerService
             return serverResponse;
         }
 
-        public ServerResponse<bool> GetUp(int TableId, string username)
+        public ServerResponse<List<PokerTableBL>> GetExistingTables()
+        {
+            ServerResponse<List<PokerTableBL>> serverResponse = new ServerResponse<List<PokerTableBL>>();
+            try 
+            {
+                serverResponse.Result = serviceHandler.GetExistingTables();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
+        public ServerResponse<bool> GetUp(int TableId, int userId)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<bool> JoinTable(int TableId, string username)
+        public ServerResponse<bool> JoinTable(int TableId, int userId)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<bool> LeaveTable(int TableId, string username)
+        public ServerResponse<bool> LeaveTable(int TableId, int userId)
         {
             throw new NotImplementedException();
         }
 
         public ServerResponse<int> Login(string username, string password)
         {
-            ServerResponse<int> loginResponse =
-                new ServerResponse<int>();
-            loginResponse.ErrorMsg = null;
+            
+            ServerResponse<int> loginResponse = new ServerResponse<int>();
             try
             {
-                loginResponse.Result = Database.GetUserByCredentials(new UserInfo(username, password));
+                loginResponse.Result = serviceHandler.Login(username,password);  
             }
             catch (Exception e)
             {
@@ -76,13 +83,10 @@ namespace PokerService
 
         public ServerResponse<int> SignUp(string username, string password)
         {
-            UserInfo user = new UserInfo(username, password);
             ServerResponse<int> signupResponse = new ServerResponse<int>();
-            signupResponse.ErrorMsg = null;
             try
             {
-                Database.InsertUser(user);
-                signupResponse.Result = user.Id;
+                signupResponse.Result = serviceHandler.Signup(username, password); 
             }
             catch (Exception e)
             {
@@ -91,17 +95,17 @@ namespace PokerService
             return signupResponse;
         }
 
-        public ServerResponse<bool> Sit(int TableId, string username)
+        public ServerResponse<bool> Sit(int TableId, int userId)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<bool> StartGame(int TableId, string username)
+        public ServerResponse<bool> StartGame(int TableId, int userId)
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<TableStatus> UpdateTableStatus(int TableId, string username)
+        public ServerResponse<TableStatus> UpdateTableStatus(int TableId, int userId)
         {
             throw new NotImplementedException();
         }

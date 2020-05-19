@@ -43,7 +43,7 @@
   <ItemGroup>
     <Compile Include="Models\PokerTableBL.cs" />
     <Compile Include="Models\PokerUtil.cs" />
-    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\ServiceHandler.cs" />
     <Compile Include="Models\TableStatus.cs" />
     <Compile Include="ORM\Database.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
