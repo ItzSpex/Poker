@@ -20,6 +20,8 @@ namespace PokerBL.Models
         [DataMember]
         public string FirstCard { get; set; }
         [DataMember]
+        public int DealerId { get; set; }
+        [DataMember]
         public string SecondCard { get; set; }
         [DataMember]
         public string ThirdCard { get; set; }

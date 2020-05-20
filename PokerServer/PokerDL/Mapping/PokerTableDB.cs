@@ -31,6 +31,7 @@ namespace PokerDL.Mapping
             model.PokerTableName = reader["PokerTableName"].ToString();
             model.TablePot = (int)reader["TablePot"];
             model.MinBet = (int)reader["MinBet"];
+            model.DealerId = (int)reader["DealerId"];
             model.FirstCard = null;
             if (reader["Card1"] != DBNull.Value)
             {
@@ -66,15 +67,15 @@ namespace PokerDL.Mapping
         protected override string GetSQLInsertString()
         {
             return "INSERT INTO POKERTABLE " +
-                "(PokerTableName, TablePot, MinBet, FirstCard, SecondCard, ThirdCard, FourthCard, FifthCard)" +
-                "Values(@PokerTableName, @TablePot, @MinBet, @FirstCard, @SecondCard, @ThirdCard, @FourthCard, @FifthCard)";
+                "(PokerTableName, TablePot, MinBet, DealerId,FirstCard, SecondCard, ThirdCard, FourthCard, FifthCard)" +
+                "Values(@PokerTableName, @TablePot, @MinBet, @DealerId, @FirstCard, @SecondCard, @ThirdCard, @FourthCard, @FifthCard)";
         }
 
         protected override string GetSQLUpdateString(PokerTable model)
         {
             return "UPDATE POKERTABLE Set " +
-                   "PokerTableName=@PokerTableName, TablePot=@TablePot, MinBet=@MinBet ,FirstCard=@FirstCard, SecondCard=@SecondCard,ThirdCard=@ThirdCard," +
-                   "FourthCard=@FourthCard, FifthCard=@FifthCard" +
+                   "PokerTableName=@PokerTableName, TablePot=@TablePot, MinBet=@MinBet, DealerId=@DealerId ,FirstCard=@FirstCard, SecondCard=@SecondCard," +
+                   "ThirdCard=@ThirdCard,FourthCard=@FourthCard, FifthCard=@FifthCard" +
                    "Where PokerTableId = " + model.Id;
         }
 
@@ -88,6 +89,8 @@ namespace PokerDL.Mapping
                 System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@MinBet",
                 System.Data.SqlDbType.Bit);
+            this.command.Parameters.Add("@DealerId",
+                System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@FirstCard",
                 System.Data.SqlDbType.NVarChar);
             this.command.Parameters.Add("@SecondCard",
@@ -103,6 +106,7 @@ namespace PokerDL.Mapping
             this.command.Parameters["@PokerTableName"].Value = model.PokerTableName;
             this.command.Parameters["@TablePot"].Value = model.TablePot;
             this.command.Parameters["@MinBet"].Value = model.MinBet;
+            this.command.Parameters["@DealerId"].Value = model.DealerId;
             if (model.FirstCard == null)
                 this.command.Parameters["@Card1"].Value = DBNull.Value;
             else

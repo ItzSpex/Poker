@@ -13,8 +13,6 @@ namespace PokerDL.Mapping
         {
             model.Id = (int)reader["PlayerId"];
             model.PokerTableId = (int)reader["PokerTableId"];
-            model.IsAdmin = (bool)reader["IsAdmin"];
-            model.IsSpectator = (bool)reader["IsSpectator"];
             model.ChipsOnTable = (long)reader["ChipsOnTable"];
             model.FirstCard = null;
             if(reader["Card1"] != DBNull.Value)
@@ -36,15 +34,14 @@ namespace PokerDL.Mapping
         protected override string GetSQLInsertString()
         {
             return "INSERT INTO PLAYER " +
-                "(PlayerId, PokerTableId, IsAdmin, IsSpectator, ChipsOnTable, Card1, Card2)" +
-                "Values(@PlayerId, @PokerTableId, @IsAdmin, @IsSpectator, @ChipsOnTable, @Card1, @Card2)";
+                "(PlayerId, PokerTableId,ChipsOnTable, Card1, Card2)" +
+                "Values(@PlayerId, @PokerTableId,@ChipsOnTable, @Card1, @Card2)";
         }
 
         protected override string GetSQLUpdateString(Player model)
         {
             return "UPDATE PLAYER Set " +
-                "PokerTableId=@PokerTableId, IsAdmin=@IsAdmin, IsSpectator=@IsSpectator, ChipsOnTable=@ChipsOnTable," +
-                "Card1=@Card1, Card2=@Card" +
+                "PokerTableId=@PokerTableId, ChipsOnTable=@ChipsOnTable,Card1=@Card1, Card2=@Card"+
                 "Where PlayerId = " + model.Id;
         }
 
@@ -54,10 +51,6 @@ namespace PokerDL.Mapping
                 System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@PokerTableId",
                 System.Data.SqlDbType.Int);
-            this.command.Parameters.Add("@IsAdmin",
-                System.Data.SqlDbType.Bit);
-            this.command.Parameters.Add("@IsSpectator",
-                System.Data.SqlDbType.Bit);
             this.command.Parameters.Add("@ChipsOnTable",
                 System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@Card1",
@@ -67,8 +60,6 @@ namespace PokerDL.Mapping
 
             this.command.Parameters["@PlayerId"].Value = model.Id;
             this.command.Parameters["@PokerTableId"].Value = model.PokerTableId;
-            this.command.Parameters["@IsAdmin"].Value = model.IsAdmin;
-            this.command.Parameters["@IsSpectator"].Value = model.IsSpectator;
             this.command.Parameters["@ChipsOnTable"].Value = model.ChipsOnTable;
             if (model.FirstCard == null)
                 this.command.Parameters["@Card1"].Value = DBNull.Value;

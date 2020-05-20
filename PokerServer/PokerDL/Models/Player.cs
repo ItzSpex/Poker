@@ -13,12 +13,6 @@ namespace PokerBL.Models
         [DataMember]
         public int PokerTableId { get; set; }
         [DataMember]
-        public bool IsAdmin { get; set; }
-        [DataMember]
-        public bool IsSpectator { get; set; }
-        [DataMember]
-        public bool IsDealer { get; set; }
-        [DataMember]
         public long ChipsOnTable { get; set; }
         [DataMember]
         public string FirstCard { get; set; }
