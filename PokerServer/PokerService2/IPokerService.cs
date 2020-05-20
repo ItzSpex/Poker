@@ -9,7 +9,7 @@ using System.Text;
 
 namespace PokerService
 {
-    [ServiceContract(SessionMode=SessionMode.Required)]
+    [ServiceContract(SessionMode = SessionMode.Required)]
     public interface IPokerService
     {
         [OperationContract]
@@ -38,7 +38,7 @@ namespace PokerService
 
         [OperationContract]
         ServerResponse<TableStatus> PlayerMove(int TableId, int Operation);
-        
+
 
     }
     [DataContract]
