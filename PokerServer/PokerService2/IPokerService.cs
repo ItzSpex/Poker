@@ -9,7 +9,7 @@ using System.Text;
 
 namespace PokerService
 {
-    [ServiceContract]
+    [ServiceContract(SessionMode=SessionMode.Required)]
     public interface IPokerService
     {
         [OperationContract]
