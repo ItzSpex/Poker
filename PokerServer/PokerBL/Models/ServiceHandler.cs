@@ -12,10 +12,15 @@ namespace PokerBL.Models
     {
         public static List<PokerTableBL> Tables;
         int userId;
-        
+        PokerTableBL currTable;
+        bool IsAdmin;
+
         public ServiceHandler()
         {
-            Tables = new List<PokerTableBL>();
+            if (Tables == null)
+            {
+                Tables = new List<PokerTableBL>();
+            }
         }
         public int Login(string username, string password)
         {
@@ -39,14 +44,39 @@ namespace PokerBL.Models
 
         public bool CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
-            PokerTableBL pokerTableBL = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount);
-            Tables.Add(pokerTableBL);
+            UserCheck();
+            currTable = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount);
+            Tables.Add(currTable);
+            IsAdmin = true;
+            return true;
+
+
+        }
+        public bool JoinTable()
+        {
+            UserCheck();
             return true;
         }
-        
-        public List<PokerTableBL> GetExistingTables ()
+        public bool LeaveTable()
         {
+            UserCheck();
+            return true;
+        }
+        public bool CloseTable()
+        {
+            UserCheck();
+            return true;
+        }
+        public List<PokerTableBL> GetExistingTables()
+        {
+            UserCheck();
             return Tables;
+        }
+
+        private void UserCheck()
+        {
+            if (userId == -1)
+                throw new Exception("User not logged in");
         }
     }
 }
