@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ccaf060d-9053-4239-89f4-a94ecc621be4" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c91d750e-dad2-4bad-8598-175f96d1602a" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,13 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="7f2e11e8-4598-400b-90d8-bcfbcd33f9f3" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?disco" />
-    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="04e45dcb-8a3f-49b1-be4b-a23b4a882122" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd0" />
-    <MetadataFile FileName="PokerService.wsdl" MetadataType="Wsdl" ID="72771cca-dd89-4f2e-a3a6-683bd225e6fd" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?wsdl" />
-    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="6aa978ef-d578-4ee8-a0e7-0cdb76b0c097" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd1" />
-    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="aa0fca3b-f9f1-4070-95d0-feb461b15a38" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd2" />
+    <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="e44e5039-eed3-4ca1-bbbe-0d2d3d78fdd6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd1" />
+    <MetadataFile FileName="item.disco" MetadataType="Disco" ID="6d812e72-53d9-46ba-bd43-d2958b9743ee" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?disco" />
+    <MetadataFile FileName="PokerService.wsdl" MetadataType="Wsdl" ID="fc77f1a0-b9ab-435a-a768-e2b2764310d1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?wsdl" />
+    <MetadataFile FileName="item1.xsd" MetadataType="Schema" ID="b41afc53-1f4d-41e3-9682-6280eace2659" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd4" />
+    <MetadataFile FileName="item2.xsd" MetadataType="Schema" ID="014f1a7b-9c57-4b42-b248-761342bf7740" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd3" />
+    <MetadataFile FileName="item3.xsd" MetadataType="Schema" ID="1f81e751-e9f5-468f-a09e-44c72b561430" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd0" />
+    <MetadataFile FileName="item4.xsd" MetadataType="Schema" ID="fecb49f3-d7e4-411f-8a82-8b8691ac76eb" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

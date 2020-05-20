@@ -35,7 +35,8 @@ namespace PokerClient
             var serverResponse = client.Login(username, password);
             if (serverResponse.ErrorMsg == null)
             {
-                this.NavigationService.Navigate(new Uri("TableMenuPage.xaml"));
+                TableMenuPage t = new TableMenuPage(username);
+                this.NavigationService.Navigate(t,UriKind.Relative);
             }
             else
             {

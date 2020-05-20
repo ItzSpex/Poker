@@ -18,18 +18,41 @@
                             include three hues from the primary palette (and the associated forecolours).
                             Do not rename, keep in sequence; light to dark.
                         -->
-                    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="#99F7AB"/>
+                    <SolidColorBrush x:Key="PrimaryHueLightBrush" Color="GhostWhite"/>
                     <SolidColorBrush x:Key="PrimaryHueLightForegroundBrush" Color="Black"/>
 
-                    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#ABDF75"/>
-                    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="Black"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidBrush" Color="#b30000"/>
+                    <SolidColorBrush x:Key="PrimaryHueMidForegroundBrush" Color="GhostWhite"/>
 
-                    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#60695c"/>
+                    <SolidColorBrush x:Key="PrimaryHueDarkBrush" Color="#0b6623"/>
                     <SolidColorBrush x:Key="PrimaryHueDarkForegroundBrush" Color="GhostWhite"/>
 
                     <!-- include a single secondary accent color (and the associated forecolour) -->
-                    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#D6F9DD"/>
-                    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="Black"/>
+                    <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#3A5A40"/>
+                    <SolidColorBrush x:Key="SecondaryAccentForegroundBrush" Color="GhostWhite"/>
+                    <SolidColorBrush x:Key="MainForeground" Color="GhostWhite"/>
+                    <Style TargetType="TextBox" BasedOn="{StaticResource MaterialDesignTextBox}">
+                        <Setter Property="Foreground" Value="{StaticResource MainForeground}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource MainForeground}"/>
+                        <Setter Property="Width" Value="60"/>
+                        <Setter Property="Margin" Value="10,0,0,0"/>
+                    </Style>
+                    <Style TargetType="PasswordBox" BasedOn="{StaticResource MaterialDesignPasswordBox}">
+                        <Setter Property="Foreground" Value="{StaticResource MainForeground}"/>
+                        <Setter Property="BorderBrush" Value="{StaticResource MainForeground}"/>
+                        <Setter Property="Width" Value="60"/>
+                        <Setter Property="Margin" Value="10,0,0,0"/>
+                    </Style>
+                    <Style TargetType="DataGrid" BasedOn="{StaticResource MaterialDesignDataGrid}">
+                        <Setter Property="Background" Value="#654321"/>
+                    </Style>
+                    <Style TargetType="Label">
+                        <Setter Property="Foreground" Value="{StaticResource MainForeground}"/>
+                    </Style>
+                    <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+                        <Setter Property="Background" Value="#54381d"/>
+                        <Setter Property="Foreground" Value="GhostWhite"/>
+                    </Style>
                 </ResourceDictionary>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

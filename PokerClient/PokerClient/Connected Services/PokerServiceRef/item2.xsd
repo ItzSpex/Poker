@@ -1,17 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PokerService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PokerService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="ServerResponseOfint">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="ServerResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/PokerService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="int" Namespace="http://www.w3.org/2001/XMLSchema" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PokerBL.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PokerBL.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PokerDL.Models" />
+  <xs:complexType name="ArrayOfPokerTableBL">
     <xs:sequence>
-      <xs:element minOccurs="0" name="ErrorMsg" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Result" type="xs:int" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PokerTableBL" nillable="true" type="tns:PokerTableBL" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ServerResponseOfint" nillable="true" type="tns:ServerResponseOfint" />
+  <xs:element name="ArrayOfPokerTableBL" nillable="true" type="tns:ArrayOfPokerTableBL" />
+  <xs:complexType name="PokerTableBL">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:PokerTable">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="CurrTurn" type="xs:int" />
+          <xs:element minOccurs="0" name="HasStarted" type="xs:boolean" />
+          <xs:element minOccurs="0" name="NumOfPlayers" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PokerTableBL" nillable="true" type="tns:PokerTableBL" />
+  <xs:complexType name="PokerTable">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/PokerDL.Models" base="q1:BaseIdentityEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="FifthCard" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FirstCard" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="FourthCard" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="MinBet" type="xs:int" />
+          <xs:element minOccurs="0" name="PokerTableName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="SecondCard" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="TablePot" type="xs:long" />
+          <xs:element minOccurs="0" name="ThirdCard" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PokerTable" nillable="true" type="tns:PokerTable" />
+  <xs:complexType name="TableStatus">
+    <xs:sequence>
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="Moves" nillable="true" type="q2:ArrayOfMove" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableStatus" nillable="true" type="tns:TableStatus" />
 </xs:schema>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokerClient.PokerServiceRef;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -20,12 +21,19 @@ namespace PokerClient
     /// </summary>
     public partial class TableMenuPage : Page
     {
-        public TableMenuPage()
+        public ObservableCollection<PokerTableBL> pokerTables { get; set; }
+
+        public TableMenuPage(string username)
         {
             InitializeComponent();
-            //ObservableCollection<PokerTableBL> pokerTables = new ObservableCollection<PokerTableBL>(List<PokerTableBL>);
-            //TableList.ItemsSource = pokerTables
+            pokerTables = new ObservableCollection<PokerTableBL>(MainWindow.client.GetExistingTables().Result);
+            TableList.ItemsSource = pokerTables;
+            UsernameTB.Text = username;
+        }
 
+        private void CreateTable_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow.client.CreateTable("A", 2, 200);
         }
     }
 }
