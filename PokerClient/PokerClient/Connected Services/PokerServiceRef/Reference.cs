@@ -688,16 +688,16 @@ namespace PokerClient.PokerServiceRef {
         System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> CreateTableAsync(string PokerTableName, int NumOfPlayers, int MinBetAmount);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/LeaveTable", ReplyAction="http://tempuri.org/IPokerService/LeaveTableResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfboolean LeaveTable(int TableId);
+        PokerClient.PokerServiceRef.ServerResponseOfboolean LeaveTable();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/LeaveTable", ReplyAction="http://tempuri.org/IPokerService/LeaveTableResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> LeaveTableAsync(int TableId);
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> LeaveTableAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/CloseTable", ReplyAction="http://tempuri.org/IPokerService/CloseTableResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfboolean CloseTable(int TableId, int userId);
+        PokerClient.PokerServiceRef.ServerResponseOfboolean CloseTable();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/CloseTable", ReplyAction="http://tempuri.org/IPokerService/CloseTableResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> CloseTableAsync(int TableId, int userId);
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> CloseTableAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/JoinTable", ReplyAction="http://tempuri.org/IPokerService/JoinTableResponse")]
         PokerClient.PokerServiceRef.ServerResponseOfboolean JoinTable(int TableId);
@@ -706,34 +706,34 @@ namespace PokerClient.PokerServiceRef {
         System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> JoinTableAsync(int TableId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetUp", ReplyAction="http://tempuri.org/IPokerService/GetUpResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfboolean GetUp(int TableId, int userId);
+        PokerClient.PokerServiceRef.ServerResponseOfboolean GetUp();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetUp", ReplyAction="http://tempuri.org/IPokerService/GetUpResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> GetUpAsync(int TableId, int userId);
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> GetUpAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/Sit", ReplyAction="http://tempuri.org/IPokerService/SitResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfboolean Sit(int TableId, int userId);
+        PokerClient.PokerServiceRef.ServerResponseOfboolean Sit();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/Sit", ReplyAction="http://tempuri.org/IPokerService/SitResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> SitAsync(int TableId, int userId);
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> SitAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/StartGame", ReplyAction="http://tempuri.org/IPokerService/StartGameResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfboolean StartGame(int TableId, int userId);
+        PokerClient.PokerServiceRef.ServerResponseOfboolean StartGame();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/StartGame", ReplyAction="http://tempuri.org/IPokerService/StartGameResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> StartGameAsync(int TableId, int userId);
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> StartGameAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/UpdateTableStatus", ReplyAction="http://tempuri.org/IPokerService/UpdateTableStatusResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje UpdateTableStatus(int TableId, int userId);
+        PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje UpdateTableStatus();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/UpdateTableStatus", ReplyAction="http://tempuri.org/IPokerService/UpdateTableStatusResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> UpdateTableStatusAsync(int TableId, int userId);
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> UpdateTableStatusAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/PlayerMove", ReplyAction="http://tempuri.org/IPokerService/PlayerMoveResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje PlayerMove(int TableId, int Operation);
+        PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje PlayerMove(int Operation);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/PlayerMove", ReplyAction="http://tempuri.org/IPokerService/PlayerMoveResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> PlayerMoveAsync(int TableId, int Operation);
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> PlayerMoveAsync(int Operation);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -795,20 +795,20 @@ namespace PokerClient.PokerServiceRef {
             return base.Channel.CreateTableAsync(PokerTableName, NumOfPlayers, MinBetAmount);
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfboolean LeaveTable(int TableId) {
-            return base.Channel.LeaveTable(TableId);
+        public PokerClient.PokerServiceRef.ServerResponseOfboolean LeaveTable() {
+            return base.Channel.LeaveTable();
         }
         
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> LeaveTableAsync(int TableId) {
-            return base.Channel.LeaveTableAsync(TableId);
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> LeaveTableAsync() {
+            return base.Channel.LeaveTableAsync();
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfboolean CloseTable(int TableId, int userId) {
-            return base.Channel.CloseTable(TableId, userId);
+        public PokerClient.PokerServiceRef.ServerResponseOfboolean CloseTable() {
+            return base.Channel.CloseTable();
         }
         
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> CloseTableAsync(int TableId, int userId) {
-            return base.Channel.CloseTableAsync(TableId, userId);
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> CloseTableAsync() {
+            return base.Channel.CloseTableAsync();
         }
         
         public PokerClient.PokerServiceRef.ServerResponseOfboolean JoinTable(int TableId) {
@@ -819,44 +819,44 @@ namespace PokerClient.PokerServiceRef {
             return base.Channel.JoinTableAsync(TableId);
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfboolean GetUp(int TableId, int userId) {
-            return base.Channel.GetUp(TableId, userId);
+        public PokerClient.PokerServiceRef.ServerResponseOfboolean GetUp() {
+            return base.Channel.GetUp();
         }
         
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> GetUpAsync(int TableId, int userId) {
-            return base.Channel.GetUpAsync(TableId, userId);
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> GetUpAsync() {
+            return base.Channel.GetUpAsync();
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfboolean Sit(int TableId, int userId) {
-            return base.Channel.Sit(TableId, userId);
+        public PokerClient.PokerServiceRef.ServerResponseOfboolean Sit() {
+            return base.Channel.Sit();
         }
         
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> SitAsync(int TableId, int userId) {
-            return base.Channel.SitAsync(TableId, userId);
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> SitAsync() {
+            return base.Channel.SitAsync();
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfboolean StartGame(int TableId, int userId) {
-            return base.Channel.StartGame(TableId, userId);
+        public PokerClient.PokerServiceRef.ServerResponseOfboolean StartGame() {
+            return base.Channel.StartGame();
         }
         
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> StartGameAsync(int TableId, int userId) {
-            return base.Channel.StartGameAsync(TableId, userId);
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> StartGameAsync() {
+            return base.Channel.StartGameAsync();
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje UpdateTableStatus(int TableId, int userId) {
-            return base.Channel.UpdateTableStatus(TableId, userId);
+        public PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje UpdateTableStatus() {
+            return base.Channel.UpdateTableStatus();
         }
         
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> UpdateTableStatusAsync(int TableId, int userId) {
-            return base.Channel.UpdateTableStatusAsync(TableId, userId);
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> UpdateTableStatusAsync() {
+            return base.Channel.UpdateTableStatusAsync();
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje PlayerMove(int TableId, int Operation) {
-            return base.Channel.PlayerMove(TableId, Operation);
+        public PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje PlayerMove(int Operation) {
+            return base.Channel.PlayerMove(Operation);
         }
         
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> PlayerMoveAsync(int TableId, int Operation) {
-            return base.Channel.PlayerMoveAsync(TableId, Operation);
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> PlayerMoveAsync(int Operation) {
+            return base.Channel.PlayerMoveAsync(Operation);
         }
     }
 }

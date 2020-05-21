@@ -61,9 +61,7 @@
   </xs:element>
   <xs:element name="LeaveTable">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TableId" type="xs:int" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="LeaveTableResponse">
@@ -75,10 +73,7 @@
   </xs:element>
   <xs:element name="CloseTable">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TableId" type="xs:int" />
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="CloseTableResponse">
@@ -104,10 +99,7 @@
   </xs:element>
   <xs:element name="GetUp">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TableId" type="xs:int" />
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="GetUpResponse">
@@ -119,10 +111,7 @@
   </xs:element>
   <xs:element name="Sit">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TableId" type="xs:int" />
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="SitResponse">
@@ -134,10 +123,7 @@
   </xs:element>
   <xs:element name="StartGame">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TableId" type="xs:int" />
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="StartGameResponse">
@@ -149,10 +135,7 @@
   </xs:element>
   <xs:element name="UpdateTableStatus">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element minOccurs="0" name="TableId" type="xs:int" />
-        <xs:element minOccurs="0" name="userId" type="xs:int" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="UpdateTableStatusResponse">
@@ -165,7 +148,6 @@
   <xs:element name="PlayerMove">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="TableId" type="xs:int" />
         <xs:element minOccurs="0" name="Operation" type="xs:int" />
       </xs:sequence>
     </xs:complexType>

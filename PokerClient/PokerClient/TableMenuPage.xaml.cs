@@ -41,7 +41,8 @@ namespace PokerClient
 
         private void RefreshList_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            pokerTables = new ObservableCollection<PokerTableBL>(MainWindow.client.GetExistingTables().Result);
+            TableList.ItemsSource = pokerTables;
         }
 
         private void JoinTable_Btn_Click(object sender, RoutedEventArgs e)
@@ -50,11 +51,6 @@ namespace PokerClient
         }
 
         private void Logout_Btn_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void PlayersInTable_Btn_Click(object sender, RoutedEventArgs e)
         {
 
         }

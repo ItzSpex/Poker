@@ -32,15 +32,8 @@ namespace PokerClient
             string Name = "";
             int Players = 0, MinBet = 0;
             Name = TableNameTB.Text;
-            try
-            {
-                Players = int.Parse(TablePlayersTB.Text);
-                MinBet = int.Parse(TableMinBetTB.Text);
-            }
-            catch (Exception exception)
-            {
-                MessageBox.Show("An unhandled exception just occurred: " + exception.Message, "Int Parsing Exception", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            Players = (int)playerSlider.Value;
+            MinBet = (int)BetSlider.Value;
             var serverResponse = MainWindow.client.CreateTable(Name, Players, MinBet);
             if (serverResponse.ErrorMsg == null)
             {
@@ -58,7 +51,7 @@ namespace PokerClient
             TableMenuPage t = new TableMenuPage(Username);
             this.NavigationService.Navigate(t, UriKind.Relative);
         }
-        
+
         private bool IsAllDigits(string s)
         {
             foreach (char c in s)
