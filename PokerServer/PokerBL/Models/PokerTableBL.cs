@@ -16,6 +16,8 @@ namespace PokerBL.Models
         public int NumOfPlayers { get; set; }
         [DataMember]
         public int CurrTurn { get; set; }
+        public bool IsClosed { get; set; } = false;
+        public int LoggedInPlayers { get; set; }
         public Deck TableDeck { get; set; }
         public List<int> PlayerIds { get; set; }
         public int AdminId { get; set; }

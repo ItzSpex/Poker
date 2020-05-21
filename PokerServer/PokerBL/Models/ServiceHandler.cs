@@ -12,7 +12,7 @@ namespace PokerBL.Models
     {
         public static List<PokerTableBL> Tables;
         int userId;
-        PokerTableBL currTable;
+        PokerTableBL myTable;
 
         public ServiceHandler()
         {
@@ -44,8 +44,9 @@ namespace PokerBL.Models
         public bool CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
             UserCheck();
-            currTable = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount, userId);
-            Tables.Add(currTable);
+            myTable = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount, userId);
+            myTable.LoggedInPlayers = 1;
+            Tables.Add(myTable);
             return true;
 
 
@@ -56,36 +57,38 @@ namespace PokerBL.Models
             foreach (PokerTableBL table in Tables)
             {
                 if (table.Id == TableId)
+                {
+                    myTable = table;
                     table.PlayerIds.Add(userId);
+                    table.LoggedInPlayers++;
                     return true;
+                }
             }
             throw new Exception("An error occured while joining this table");
         }
-        public bool LeaveTable(int TableId)
+        public bool LeaveTable()
         {
             UserCheck();
             foreach (PokerTableBL table in Tables)
             {
-                if (table.AdminId == userId && table.Id == TableId)
-                    CloseTable(TableId);
-                else if (table.Id == TableId)
-                    table.PlayerIds.Remove(userId);
+                if (table.AdminId == userId)
+                {
+                    CloseTable();
+                }
+                else
+                {
+                    myTable.PlayerIds.Remove(userId);
+                }
                 return true;
             }
             throw new Exception("An error occured while leaving this table");
         }
-        public bool CloseTable(int TableId)
+        public bool CloseTable()
         {
             UserCheck();
-            foreach (PokerTableBL table in Tables)
-            {
-                if(table.AdminId == userId && table.Id == TableId)
-                {
-                    //TODO: Return all of the users to main menu.
-                    Tables.Remove(table);
-                    return true;
-                }
-            }
+            myTable.IsClosed = true;
+            Tables.Remove(myTable);
+            return true;
             throw new Exception("An error occured while closing this table");
         }
         public List<PokerTableBL> GetExistingTables()
@@ -93,11 +96,25 @@ namespace PokerBL.Models
             UserCheck();
             return Tables;
         }
-
+        public TableStatus GetTableStatus()
+        {
+            /*if (myTable.IsClosed)
+            {
+                myTable.loggedUsers--;
+                if (myTable.loggedUsers == 0)
+                {
+                    Tables.Remove(myTable);
+                }
+            }*/
+            throw new NotImplementedException();
+        }
         private void UserCheck()
         {
             if (userId == -1)
+            {
                 throw new Exception("You are not logged in yet, Please restart the program");
+            }
         }
+
     }
 }

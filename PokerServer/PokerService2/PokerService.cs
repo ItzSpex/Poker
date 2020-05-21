@@ -13,9 +13,18 @@ namespace PokerService
     public class PokerService : IPokerService
     {
         private ServiceHandler serviceHandler = new ServiceHandler();
-        public ServerResponse<bool> CloseTable(int TableId, int userId)
+        public ServerResponse<bool> CloseTable()
         {
-            throw new NotImplementedException();
+            ServerResponse<bool> serverResponse = new ServerResponse<bool>();
+            try
+            {
+                serverResponse.Result = serviceHandler.CloseTable();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
         }
 
         public ServerResponse<bool> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
@@ -46,7 +55,7 @@ namespace PokerService
             return serverResponse;
         }
 
-        public ServerResponse<bool> GetUp(int TableId, int userId)
+        public ServerResponse<bool> GetUp()
         {
             throw new NotImplementedException();
         }
@@ -65,12 +74,12 @@ namespace PokerService
             return serverResponse;
         }
 
-        public ServerResponse<bool> LeaveTable(int TableId)
+        public ServerResponse<bool> LeaveTable()
         {
             ServerResponse<bool> serverResponse = new ServerResponse<bool>();
             try
             {
-                serverResponse.Result = serviceHandler.LeaveTable(TableId);
+                serverResponse.Result = serviceHandler.LeaveTable();
             }
             catch (Exception e)
             {
@@ -94,7 +103,7 @@ namespace PokerService
             return loginResponse;
         }
         
-        public ServerResponse<TableStatus> PlayerMove(int TableId, int Operation)
+        public ServerResponse<TableStatus> PlayerMove(int Operation)
         {
             throw new NotImplementedException();
         }
@@ -113,17 +122,17 @@ namespace PokerService
             return signupResponse;
         }
 
-        public ServerResponse<bool> Sit(int TableId, int userId)
+        public ServerResponse<bool> Sit()
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<bool> StartGame(int TableId, int userId)
+        public ServerResponse<bool> StartGame()
         {
             throw new NotImplementedException();
         }
 
-        public ServerResponse<TableStatus> UpdateTableStatus(int TableId, int userId)
+        public ServerResponse<TableStatus> UpdateTableStatus()
         {
             throw new NotImplementedException();
         }

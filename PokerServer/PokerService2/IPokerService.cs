@@ -22,22 +22,22 @@ namespace PokerService
         [OperationContract]
         ServerResponse<bool> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount); 
         [OperationContract]
-        ServerResponse<bool> LeaveTable(int TableId);
+        ServerResponse<bool> LeaveTable();
         [OperationContract]
-        ServerResponse<bool> CloseTable(int TableId, int userId);
+        ServerResponse<bool> CloseTable();
         [OperationContract]
         ServerResponse<bool> JoinTable(int TableId); // fails if Table closes by the time the user selects it
         [OperationContract]
-        ServerResponse<bool> GetUp(int TableId, int userId); //fails if Table closes or game started.
+        ServerResponse<bool> GetUp(); //fails if Table closes or game started.
         [OperationContract]
-        ServerResponse<bool> Sit(int TableId, int userId); // fails if Table closes or table is full or game started
+        ServerResponse<bool> Sit(); // fails if Table closes or table is full or game started
         [OperationContract]
-        ServerResponse<bool> StartGame(int TableId, int userId);
+        ServerResponse<bool> StartGame();
         [OperationContract]
-        ServerResponse<TableStatus> UpdateTableStatus(int TableId, int userId);
+        ServerResponse<TableStatus> UpdateTableStatus();
 
         [OperationContract]
-        ServerResponse<TableStatus> PlayerMove(int TableId, int Operation);
+        ServerResponse<TableStatus> PlayerMove(int Operation);
 
 
     }
