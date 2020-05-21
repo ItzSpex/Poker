@@ -35,24 +35,28 @@ namespace PokerClient
             var serverResponse = client.Login(username, password);
             if (serverResponse.ErrorMsg == null)
             {
+                MessageBox.Show("Login successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
                 TableMenuPage t = new TableMenuPage(username);
                 this.NavigationService.Navigate(t,UriKind.Relative);
             }
             else
-            {
-                ExceptionBox.Text = serverResponse.ErrorMsg.ToString();
-            }
+                MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+
         }
 
         private void SignupBtn_Click(object sender, RoutedEventArgs e)
         {
             string username = userNameTB.Text;
             string password = passwordBox.Password;
-            var serverRespone = client.SignUp(username, password);
-            if (serverRespone.ErrorMsg == null)
-                ExceptionBox.Text = "User Id: " + serverRespone.Result.ToString();
+            var serverResponse = client.SignUp(username, password);
+            if (serverResponse.ErrorMsg == null)
+            {
+                MessageBox.Show("Signup successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                TableMenuPage t = new TableMenuPage(username);
+                this.NavigationService.Navigate(t, UriKind.Relative);
+            }
             else
-                ExceptionBox.Text = serverRespone.ErrorMsg.ToString();
+                MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
         }
     }
 }

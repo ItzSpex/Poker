@@ -21,6 +21,7 @@ namespace PokerClient
     /// </summary>
     public partial class TableMenuPage : Page
     {
+        private string Username = "";
         public ObservableCollection<PokerTableBL> pokerTables { get; set; }
 
         public TableMenuPage(string username)
@@ -28,12 +29,34 @@ namespace PokerClient
             InitializeComponent();
             pokerTables = new ObservableCollection<PokerTableBL>(MainWindow.client.GetExistingTables().Result);
             TableList.ItemsSource = pokerTables;
+            Username = username;
             UsernameTB.Text = username;
         }
 
         private void CreateTable_Btn_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow.client.CreateTable("A", 2, 200);
+            CreateTablePage t = new CreateTablePage(Username);
+            this.NavigationService.Navigate(t, UriKind.Relative);
+        }
+
+        private void RefreshList_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void JoinTable_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Logout_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PlayersInTable_Btn_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

@@ -31,10 +31,10 @@
                 </Style>
             </StackPanel.Resources>
             <Button x:Name="CreateTable_Btn" Content="Create Table" Click="CreateTable_Btn_Click" Margin="0"/>
-            <Button x:Name="PlayersInTable_Btn" Content="Players In Table"/>
-            <Button x:Name="JoinTable_Btn" Content="Join Table"/>
-            <Button x:Name="RefreshList_Btn" Content="Refresh List"/>
-            <Button x:Name="Logout_Btn" Content="Logout"/>
+            <Button x:Name="PlayersInTable_Btn" Content="Players In Table" Click="PlayersInTable_Btn_Click"/>
+            <Button x:Name="JoinTable_Btn" Content="Join Table" Click="JoinTable_Btn_Click"/>
+            <Button x:Name="RefreshList_Btn" Content="Refresh List" Click="RefreshList_Btn_Click"/>
+            <Button x:Name="Logout_Btn" Content="Logout" Click="Logout_Btn_Click"/>
         </StackPanel>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Margin="0,0,0,5">
         <Label x:Name="Username_Label" Content="Username:"/>

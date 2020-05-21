@@ -23,6 +23,7 @@
     <xs:complexContent mixed="false">
       <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/PokerDL.Models" base="q1:BaseIdentityEntity">
         <xs:sequence>
+          <xs:element minOccurs="0" name="DealerId" type="xs:int" />
           <xs:element minOccurs="0" name="FifthCard" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FirstCard" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="FourthCard" nillable="true" type="xs:string" />
