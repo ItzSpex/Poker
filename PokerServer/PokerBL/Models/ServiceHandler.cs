@@ -13,7 +13,6 @@ namespace PokerBL.Models
         public static List<PokerTableBL> Tables;
         int userId;
         PokerTableBL currTable;
-        bool IsAdmin;
 
         public ServiceHandler()
         {
@@ -45,27 +44,49 @@ namespace PokerBL.Models
         public bool CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
             UserCheck();
-            currTable = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount);
+            currTable = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount, userId);
             Tables.Add(currTable);
-            IsAdmin = true;
             return true;
 
 
         }
-        public bool JoinTable()
+        public bool JoinTable(int TableId)
         {
             UserCheck();
-            return true;
+            foreach (PokerTableBL table in Tables)
+            {
+                if (table.Id == TableId)
+                    table.PlayerIds.Add(userId);
+                    return true;
+            }
+            throw new Exception("An error occured while joining this table");
         }
-        public bool LeaveTable()
+        public bool LeaveTable(int TableId)
         {
             UserCheck();
-            return true;
+            foreach (PokerTableBL table in Tables)
+            {
+                if (table.AdminId == userId && table.Id == TableId)
+                    CloseTable(TableId);
+                else if (table.Id == TableId)
+                    table.PlayerIds.Remove(userId);
+                return true;
+            }
+            throw new Exception("An error occured while leaving this table");
         }
-        public bool CloseTable()
+        public bool CloseTable(int TableId)
         {
             UserCheck();
-            return true;
+            foreach (PokerTableBL table in Tables)
+            {
+                if(table.AdminId == userId && table.Id == TableId)
+                {
+                    //TODO: Return all of the users to main menu.
+                    Tables.Remove(table);
+                    return true;
+                }
+            }
+            throw new Exception("An error occured while closing this table");
         }
         public List<PokerTableBL> GetExistingTables()
         {
@@ -76,7 +97,7 @@ namespace PokerBL.Models
         private void UserCheck()
         {
             if (userId == -1)
-                throw new Exception("User not logged in");
+                throw new Exception("You are not logged in yet, Please restart the program");
         }
     }
 }

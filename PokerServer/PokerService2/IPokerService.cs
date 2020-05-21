@@ -20,13 +20,13 @@ namespace PokerService
         [OperationContract]
         ServerResponse<List<PokerTableBL>> GetExistingTables();
         [OperationContract]
-        ServerResponse<bool> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount); // returns TableId
+        ServerResponse<bool> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount); 
         [OperationContract]
-        ServerResponse<bool> LeaveTable(int TableId, int userId);
+        ServerResponse<bool> LeaveTable(int TableId);
         [OperationContract]
         ServerResponse<bool> CloseTable(int TableId, int userId);
         [OperationContract]
-        ServerResponse<bool> JoinTable(int TableId, int userId); // fails if Table closes by the time the user selects it
+        ServerResponse<bool> JoinTable(int TableId); // fails if Table closes by the time the user selects it
         [OperationContract]
         ServerResponse<bool> GetUp(int TableId, int userId); //fails if Table closes or game started.
         [OperationContract]

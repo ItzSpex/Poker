@@ -51,14 +51,32 @@ namespace PokerService
             throw new NotImplementedException();
         }
 
-        public ServerResponse<bool> JoinTable(int TableId, int userId)
+        public ServerResponse<bool> JoinTable(int TableId)
         {
-            throw new NotImplementedException();
+            ServerResponse<bool> serverResponse = new ServerResponse<bool>();
+            try
+            {
+                serverResponse.Result = serviceHandler.JoinTable(TableId);
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
         }
 
-        public ServerResponse<bool> LeaveTable(int TableId, int userId)
+        public ServerResponse<bool> LeaveTable(int TableId)
         {
-            throw new NotImplementedException();
+            ServerResponse<bool> serverResponse = new ServerResponse<bool>();
+            try
+            {
+                serverResponse.Result = serviceHandler.LeaveTable(TableId);
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
         }
 
         public ServerResponse<int> Login(string username, string password)
