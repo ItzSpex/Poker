@@ -36,11 +36,13 @@ namespace PokerClient
             if (serverResponse.ErrorMsg == null)
             {
                 MessageBox.Show("Login successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                TableMenuPage t = new TableMenuPage(username);
-                this.NavigationService.Navigate(t,UriKind.Relative);
+                TableMenuPage p = new TableMenuPage(username);
+                this.NavigationService.Navigate(p,UriKind.Relative);
             }
             else
+            {
                 MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
 
         }
 
@@ -52,11 +54,13 @@ namespace PokerClient
             if (serverResponse.ErrorMsg == null)
             {
                 MessageBox.Show("Signup successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                TableMenuPage t = new TableMenuPage(username);
-                this.NavigationService.Navigate(t, UriKind.Relative);
+                TableMenuPage p = new TableMenuPage(username);
+                this.NavigationService.Navigate(p, UriKind.Relative);
             }
             else
+            {
                 MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

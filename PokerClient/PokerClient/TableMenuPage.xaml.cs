@@ -22,6 +22,7 @@ namespace PokerClient
     public partial class TableMenuPage : Page
     {
         private string Username = "";
+        private PokerTableBL currTable;
         public ObservableCollection<PokerTableBL> pokerTables { get; set; }
 
         public TableMenuPage(string username)
@@ -35,8 +36,8 @@ namespace PokerClient
 
         private void CreateTable_Btn_Click(object sender, RoutedEventArgs e)
         {
-            CreateTablePage t = new CreateTablePage(Username);
-            this.NavigationService.Navigate(t, UriKind.Relative);
+            CreateTablePage p = new CreateTablePage(Username);
+            this.NavigationService.Navigate(p, UriKind.Relative);
         }
 
         private void RefreshList_Btn_Click(object sender, RoutedEventArgs e)
@@ -47,12 +48,29 @@ namespace PokerClient
 
         private void JoinTable_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            var serverResponse = MainWindow.client.JoinTable(currTable.PokerTableId);
+            if (serverResponse.ErrorMsg == null)
+            {
+                MessageBox.Show("Join table request successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                GameLobbyPage p = new GameLobbyPage(currTable);
+                this.NavigationService.Navigate(p, UriKind.Relative);
+            }
+            else
+            {
+                MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            
         }
 
         private void Logout_Btn_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void TableList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            currTable = (PokerTableBL)TableList.SelectedItems[0];
+            
         }
     }
 }

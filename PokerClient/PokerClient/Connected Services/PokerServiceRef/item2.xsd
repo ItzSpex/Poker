@@ -14,6 +14,7 @@
           <xs:element minOccurs="0" name="CurrTurn" type="xs:int" />
           <xs:element minOccurs="0" name="HasStarted" type="xs:boolean" />
           <xs:element minOccurs="0" name="NumOfPlayers" type="xs:int" />
+          <xs:element minOccurs="0" name="PokerTableId" type="xs:int" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>

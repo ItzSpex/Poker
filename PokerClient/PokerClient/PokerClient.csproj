@@ -73,6 +73,9 @@
     <Compile Include="CreateTablePage.xaml.cs">
       <DependentUpon>CreateTablePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GameLobbyPage.xaml.cs">
+      <DependentUpon>GameLobbyPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
@@ -80,6 +83,10 @@
       <DependentUpon>TableMenuPage.xaml</DependentUpon>
     </Compile>
     <Page Include="CreateTablePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="GameLobbyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -137,7 +144,13 @@
     <None Include="Connected Services\PokerServiceRef\item4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\PokerServiceRef\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfArrayOfPokerTableBLPWeT4Jje.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfArrayOfstringuHEDJ7Dj.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfboolean.datasource">

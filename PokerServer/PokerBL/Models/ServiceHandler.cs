@@ -12,6 +12,7 @@ namespace PokerBL.Models
     {
         public static List<PokerTableBL> Tables;
         int userId;
+        string userName;
         PokerTableBL myTable;
 
         public ServiceHandler()
@@ -27,6 +28,7 @@ namespace PokerBL.Models
             user.Username = username;
             user.Password = password;
             userId = Database.GetUserByCredentials(user);
+            userName = username;
             return userId;
         }
 
@@ -38,6 +40,7 @@ namespace PokerBL.Models
             user.Wallet = 1000000;
             Database.InsertUser(user);
             userId = user.Id;
+            userName = username;
             return userId;
         }
 
@@ -46,11 +49,19 @@ namespace PokerBL.Models
             UserCheck();
             myTable = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount, userId);
             myTable.LoggedInPlayers = 1;
+            myTable.PlayerNames.Add(userName);
             Tables.Add(myTable);
             return true;
 
 
         }
+
+        public List<string> GetCurrPlayerNames()
+        {
+            UserCheck();
+            return myTable.PlayerNames;
+        }
+
         public bool JoinTable(int TableId)
         {
             UserCheck();
@@ -60,6 +71,7 @@ namespace PokerBL.Models
                 {
                     myTable = table;
                     table.PlayerIds.Add(userId);
+                    table.PlayerNames.Add(userName);
                     table.LoggedInPlayers++;
                     return true;
                 }
@@ -78,6 +90,7 @@ namespace PokerBL.Models
                 else
                 {
                     myTable.PlayerIds.Remove(userId);
+                    myTable.PlayerNames.Remove(userName);
                 }
                 return true;
             }

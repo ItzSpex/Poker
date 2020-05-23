@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokerClient.PokerServiceRef;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -38,7 +39,8 @@ namespace PokerClient
             if (serverResponse.ErrorMsg == null)
             {
                 MessageBox.Show("Table created successfully", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                //TODO: swap with navigation to the table page.
+                GameLobbyPage p = new GameLobbyPage(Name, Players, MinBet);
+                this.NavigationService.Navigate(p, UriKind.Relative);
             }
             else
             {

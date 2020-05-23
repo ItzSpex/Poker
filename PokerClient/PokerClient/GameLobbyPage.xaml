@@ -1,0 +1,33 @@
+﻿<Page x:Class="PokerClient.GameLobbyPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PokerClient"
+      mc:Ignorable="d"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      Background="{StaticResource PrimaryHueDarkBrush}"
+      d:DesignHeight="400" d:DesignWidth="600"
+      Title="GameLobbyPage">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Table Name:"/>
+                <Label x:Name="NameLabel" IsEnabled="False"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Content="Required players:"/>
+                <Label x:Name="MaxPlayersLabel" IsEnabled="False"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Content="Min bet:"/>
+                <Label x:Name="MinBetLabel" IsEnabled="False"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Label Content="Players:"/>
+                <Label x:Name="CurrPlayersLabel" IsEnabled="False"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

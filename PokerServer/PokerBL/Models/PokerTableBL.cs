@@ -16,14 +16,18 @@ namespace PokerBL.Models
         public int NumOfPlayers { get; set; }
         [DataMember]
         public int CurrTurn { get; set; }
+        [DataMember]
+        public int PokerTableId { get; set; }
         public bool IsClosed { get; set; } = false;
         public int LoggedInPlayers { get; set; }
         public Deck TableDeck { get; set; }
         public List<int> PlayerIds { get; set; }
+        public List<string> PlayerNames { get; set; }
         public int AdminId { get; set; }
 
         public PokerTableBL(string PokerTableName, int NumOfPlayers, int MinBetAmount, int UserId)
         {
+            this.PokerTableId = Id;
             this.PokerTableName = PokerTableName;
             this.NumOfPlayers = NumOfPlayers;
             this.MinBet = MinBetAmount;

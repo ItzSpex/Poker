@@ -28,11 +28,9 @@ namespace PokerService
         [OperationContract]
         ServerResponse<bool> JoinTable(int TableId); // fails if Table closes by the time the user selects it
         [OperationContract]
-        ServerResponse<bool> GetUp(); //fails if Table closes or game started.
-        [OperationContract]
-        ServerResponse<bool> Sit(); // fails if Table closes or table is full or game started
-        [OperationContract]
         ServerResponse<bool> StartGame();
+        [OperationContract]
+        ServerResponse<List<string>> GetCurrPlayerNames();
         [OperationContract]
         ServerResponse<TableStatus> UpdateTableStatus();
 

@@ -41,6 +41,20 @@ namespace PokerService
             return serverResponse;
         }
 
+        public ServerResponse<List<string>> GetCurrPlayerNames()
+        {
+            ServerResponse<List<string>> serverResponse = new ServerResponse<List<string>>();
+            try
+            {
+                serverResponse.Result = serviceHandler.GetCurrPlayerNames();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
         public ServerResponse<List<PokerTableBL>> GetExistingTables()
         {
             ServerResponse<List<PokerTableBL>> serverResponse = new ServerResponse<List<PokerTableBL>>();
@@ -53,11 +67,6 @@ namespace PokerService
                 serverResponse.ErrorMsg = e.Message;
             }
             return serverResponse;
-        }
-
-        public ServerResponse<bool> GetUp()
-        {
-            throw new NotImplementedException();
         }
 
         public ServerResponse<bool> JoinTable(int TableId)
@@ -121,12 +130,6 @@ namespace PokerService
             }
             return signupResponse;
         }
-
-        public ServerResponse<bool> Sit()
-        {
-            throw new NotImplementedException();
-        }
-
         public ServerResponse<bool> StartGame()
         {
             throw new NotImplementedException();

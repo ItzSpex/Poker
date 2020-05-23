@@ -150,6 +150,9 @@ namespace PokerClient.PokerServiceRef {
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumOfPlayersField;
         
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PokerTableIdField;
+        
         [System.Runtime.Serialization.DataMemberAttribute()]
         public int CurrTurn {
             get {
@@ -185,6 +188,19 @@ namespace PokerClient.PokerServiceRef {
                 if ((this.NumOfPlayersField.Equals(value) != true)) {
                     this.NumOfPlayersField = value;
                     this.RaisePropertyChanged("NumOfPlayers");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PokerTableId {
+            get {
+                return this.PokerTableIdField;
+            }
+            set {
+                if ((this.PokerTableIdField.Equals(value) != true)) {
+                    this.PokerTableIdField = value;
+                    this.RaisePropertyChanged("PokerTableId");
                 }
             }
         }
@@ -555,6 +571,67 @@ namespace PokerClient.PokerServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServerResponseOfArrayOfstringuHEDJ7Dj", Namespace="http://schemas.datacontract.org/2004/07/PokerService")]
+    [System.SerializableAttribute()]
+    public partial class ServerResponseOfArrayOfstringuHEDJ7Dj : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorMsgField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string[] ResultField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorMsg {
+            get {
+                return this.ErrorMsgField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorMsgField, value) != true)) {
+                    this.ErrorMsgField = value;
+                    this.RaisePropertyChanged("ErrorMsg");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string[] Result {
+            get {
+                return this.ResultField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultField, value) != true)) {
+                    this.ResultField = value;
+                    this.RaisePropertyChanged("Result");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ServerResponseOfTableStatusPWeT4Jje", Namespace="http://schemas.datacontract.org/2004/07/PokerService")]
     [System.SerializableAttribute()]
     public partial class ServerResponseOfTableStatusPWeT4Jje : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -705,23 +782,17 @@ namespace PokerClient.PokerServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/JoinTable", ReplyAction="http://tempuri.org/IPokerService/JoinTableResponse")]
         System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> JoinTableAsync(int TableId);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetUp", ReplyAction="http://tempuri.org/IPokerService/GetUpResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfboolean GetUp();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetUp", ReplyAction="http://tempuri.org/IPokerService/GetUpResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> GetUpAsync();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/Sit", ReplyAction="http://tempuri.org/IPokerService/SitResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfboolean Sit();
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/Sit", ReplyAction="http://tempuri.org/IPokerService/SitResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> SitAsync();
-        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/StartGame", ReplyAction="http://tempuri.org/IPokerService/StartGameResponse")]
         PokerClient.PokerServiceRef.ServerResponseOfboolean StartGame();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/StartGame", ReplyAction="http://tempuri.org/IPokerService/StartGameResponse")]
         System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> StartGameAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetCurrPlayerNames", ReplyAction="http://tempuri.org/IPokerService/GetCurrPlayerNamesResponse")]
+        PokerClient.PokerServiceRef.ServerResponseOfArrayOfstringuHEDJ7Dj GetCurrPlayerNames();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetCurrPlayerNames", ReplyAction="http://tempuri.org/IPokerService/GetCurrPlayerNamesResponse")]
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfArrayOfstringuHEDJ7Dj> GetCurrPlayerNamesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/UpdateTableStatus", ReplyAction="http://tempuri.org/IPokerService/UpdateTableStatusResponse")]
         PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje UpdateTableStatus();
@@ -819,28 +890,20 @@ namespace PokerClient.PokerServiceRef {
             return base.Channel.JoinTableAsync(TableId);
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfboolean GetUp() {
-            return base.Channel.GetUp();
-        }
-        
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> GetUpAsync() {
-            return base.Channel.GetUpAsync();
-        }
-        
-        public PokerClient.PokerServiceRef.ServerResponseOfboolean Sit() {
-            return base.Channel.Sit();
-        }
-        
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> SitAsync() {
-            return base.Channel.SitAsync();
-        }
-        
         public PokerClient.PokerServiceRef.ServerResponseOfboolean StartGame() {
             return base.Channel.StartGame();
         }
         
         public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> StartGameAsync() {
             return base.Channel.StartGameAsync();
+        }
+        
+        public PokerClient.PokerServiceRef.ServerResponseOfArrayOfstringuHEDJ7Dj GetCurrPlayerNames() {
+            return base.Channel.GetCurrPlayerNames();
+        }
+        
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfArrayOfstringuHEDJ7Dj> GetCurrPlayerNamesAsync() {
+            return base.Channel.GetCurrPlayerNamesAsync();
         }
         
         public PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje UpdateTableStatus() {

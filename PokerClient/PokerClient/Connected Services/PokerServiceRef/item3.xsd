@@ -97,30 +97,6 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetUp">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetUpResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="GetUpResult" nillable="true" type="q8:ServerResponseOfboolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="Sit">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="SitResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="SitResult" nillable="true" type="q9:ServerResponseOfboolean" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="StartGame">
     <xs:complexType>
       <xs:sequence />
@@ -129,7 +105,19 @@
   <xs:element name="StartGameResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="StartGameResult" nillable="true" type="q10:ServerResponseOfboolean" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="StartGameResult" nillable="true" type="q8:ServerResponseOfboolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrPlayerNames">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCurrPlayerNamesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="GetCurrPlayerNamesResult" nillable="true" type="q9:ServerResponseOfArrayOfstringuHEDJ7Dj" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -141,7 +129,7 @@
   <xs:element name="UpdateTableStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="UpdateTableStatusResult" nillable="true" type="q11:ServerResponseOfTableStatusPWeT4Jje" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="UpdateTableStatusResult" nillable="true" type="q10:ServerResponseOfTableStatusPWeT4Jje" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -155,7 +143,7 @@
   <xs:element name="PlayerMoveResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="PlayerMoveResult" nillable="true" type="q12:ServerResponseOfTableStatusPWeT4Jje" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="PlayerMoveResult" nillable="true" type="q11:ServerResponseOfTableStatusPWeT4Jje" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PokerClient"
         mc:Ignorable="d"
+        FontFamily="{DynamicResource MaterialDesignFont}"
         Background="{StaticResource PrimaryHueDarkBrush}"
         Title="TableMenuWindow" Height="400" Width="600">
     <Grid>
@@ -17,7 +18,7 @@
             <RowDefinition Height="3*"/>
             <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="TableList" Grid.Row="1" Grid.Column="0" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" DataContext="pokerTables">
+        <DataGrid x:Name="TableList" Grid.Row="1" Grid.Column="0" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" DataContext="pokerTables" SelectionChanged="TableList_SelectionChanged">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Name" Width="*" Binding="{Binding PokerTableName}"/>
                 <DataGridTextColumn Header="Players" Width="*" Binding="{Binding NumOfPlayers}"/>
@@ -39,10 +40,6 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Margin="0,0,0,5">
         <Label x:Name="Username_Label" Content="Username:"/>
         <TextBox x:Name="UsernameTB"/>
-        </StackPanel>
-        <StackPanel Grid.Row="2" Grid.Column="0" VerticalAlignment="Stretch">
-            <Label x:Name="Table_Info_Label" Content="Table Information:"/>
-            <TextBox x:Name="TableInfoTB" HorizontalAlignment="Stretch" VerticalAlignment="Bottom" Margin="0" />
         </StackPanel>
     </Grid>
 </Page>
