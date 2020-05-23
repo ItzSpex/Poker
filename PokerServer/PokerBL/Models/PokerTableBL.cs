@@ -39,5 +39,12 @@ namespace PokerBL.Models
             this.Moves = new List<Move>();
             this.AdminId = UserId;
         }
+        public void GenerateDealerId()
+        {
+            int DealerIndex = 0;
+            Random r = new Random();
+            DealerIndex = r.Next(0, NumOfPlayers);
+            DealerId = PlayerIds[DealerIndex];
+        }
     }
 }

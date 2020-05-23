@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\PlayerBL.cs" />
     <Compile Include="Models\PokerTableBL.cs" />
     <Compile Include="Models\PokerUtil.cs" />
     <Compile Include="Models\ServiceHandler.cs" />

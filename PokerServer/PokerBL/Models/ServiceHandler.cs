@@ -128,6 +128,7 @@ namespace PokerBL.Models
                 throw new Exception("You are not logged in yet, Please restart the program");
             }
         }
+        
 
     }
 }
