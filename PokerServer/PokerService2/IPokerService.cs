@@ -32,10 +32,10 @@ namespace PokerService
         [OperationContract]
         ServerResponse<List<string>> GetCurrPlayerNames();
         [OperationContract]
-        ServerResponse<TableStatus> UpdateTableStatus();
+        ServerResponse<List<Move>> GetTableStatus();
 
         [OperationContract]
-        ServerResponse<TableStatus> PlayerMove(int Operation);
+        ServerResponse<bool> ExecuteMove(Operation Operation, int BidAmount);
 
 
     }

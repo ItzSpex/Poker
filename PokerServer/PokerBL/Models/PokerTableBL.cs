@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PokerDL.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -18,6 +19,8 @@ namespace PokerBL.Models
         public int CurrTurn { get; set; }
         [DataMember]
         public int PokerTableId { get; set; }
+        [DataMember]
+        public List<Move> Moves { get; set; }
         public bool IsClosed { get; set; } = false;
         public int LoggedInPlayers { get; set; }
         public Deck TableDeck { get; set; }
@@ -33,6 +36,7 @@ namespace PokerBL.Models
             this.MinBet = MinBetAmount;
             this.TableDeck = new Deck();
             this.PlayerIds = new List<int>();
+            this.Moves = new List<Move>();
             this.AdminId = UserId;
         }
     }

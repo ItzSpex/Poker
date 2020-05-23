@@ -41,6 +41,20 @@ namespace PokerService
             return serverResponse;
         }
 
+        public ServerResponse<bool> ExecuteMove(Operation Operation, int BidAmount)
+        {
+            ServerResponse<bool> serverResponse = new ServerResponse<bool>();
+            try
+            {
+                serverResponse.Result = serviceHandler.ExecuteMove(Operation, BidAmount);
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
         public ServerResponse<List<string>> GetCurrPlayerNames()
         {
             ServerResponse<List<string>> serverResponse = new ServerResponse<List<string>>();
@@ -61,6 +75,20 @@ namespace PokerService
             try 
             {
                 serverResponse.Result = serviceHandler.GetExistingTables();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
+        public ServerResponse<List<Move>> GetTableStatus()
+        {
+            ServerResponse<List<Move>> serverResponse = new ServerResponse<List<Move>>();
+            try
+            {
+                serverResponse.Result = serviceHandler.GetExistingMoves();
             }
             catch (Exception e)
             {
@@ -111,12 +139,6 @@ namespace PokerService
             }
             return loginResponse;
         }
-        
-        public ServerResponse<TableStatus> PlayerMove(int Operation)
-        {
-            throw new NotImplementedException();
-        }
-
         public ServerResponse<int> SignUp(string username, string password)
         {
             ServerResponse<int> signupResponse = new ServerResponse<int>();
@@ -135,9 +157,6 @@ namespace PokerService
             throw new NotImplementedException();
         }
 
-        public ServerResponse<TableStatus> UpdateTableStatus()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

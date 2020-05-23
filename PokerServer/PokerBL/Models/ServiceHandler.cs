@@ -96,30 +96,30 @@ namespace PokerBL.Models
             }
             throw new Exception("An error occured while leaving this table");
         }
+
+        public List<Move> GetExistingMoves()
+        {
+            UserCheck();
+            return myTable.Moves;
+        }
+
         public bool CloseTable()
         {
             UserCheck();
             myTable.IsClosed = true;
             Tables.Remove(myTable);
             return true;
-            throw new Exception("An error occured while closing this table");
         }
         public List<PokerTableBL> GetExistingTables()
         {
             UserCheck();
             return Tables;
         }
-        public TableStatus GetTableStatus()
+        public bool ExecuteMove(Operation op, int bidAmount)
         {
-            /*if (myTable.IsClosed)
-            {
-                myTable.loggedUsers--;
-                if (myTable.loggedUsers == 0)
-                {
-                    Tables.Remove(myTable);
-                }
-            }*/
-            throw new NotImplementedException();
+            UserCheck();
+            myTable.Moves.Add(new Move(op, bidAmount, userId, myTable.Id));
+            return true;
         }
         private void UserCheck()
         {

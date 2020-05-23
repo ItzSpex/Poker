@@ -7,29 +7,6 @@ using System.Threading.Tasks;
 
 namespace PokerBL.Models
 {
-    public class Deal
-    {
-        public int DealerId { get; set; }
-        public List<Card> PersonalCards { get; set; }
-        public Deal(PokerTableBL pokerTable)
-        {
-            Random Rand = new Random();
-            DealerId = Rand.Next(0, pokerTable.NumOfPlayers);
-            if (DealerId == pokerTable.NumOfPlayers)
-            {
-                
-            }
-            else if (DealerId == pokerTable.NumOfPlayers - 1)
-            {
-
-            }
-            else
-            {
-
-            }
-            PersonalCards = pokerTable.TableDeck.GetCards(2); 
-        }
-    }
     public class Deck
     {
         public Queue<Card> cards = new Queue<Card>(52);

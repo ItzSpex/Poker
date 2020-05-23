@@ -16,10 +16,17 @@ namespace PokerDL.Models
         [DataMember]
         public int PokerTableId { get; set; }
         [DataMember]
-        public int MoveNumber { get; set; }
-        [DataMember]
         public int BidAmount { get; set; }
         [DataMember]
         public Operation Operation { get; set; }
+
+        public Move(Operation op, int bidAmount, int playerId, int TableId)
+        {
+            PlayerId = playerId;
+            PokerTableId = TableId;
+            BidAmount = bidAmount;
+            Operation = op;
+        }
+
     }
 }
