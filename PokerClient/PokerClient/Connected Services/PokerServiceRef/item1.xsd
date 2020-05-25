@@ -23,7 +23,6 @@
       <xs:extension base="tns:BaseIdentityEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="BidAmount" type="xs:int" />
-          <xs:element minOccurs="0" name="MoveNumber" type="xs:int" />
           <xs:element minOccurs="0" name="Operation" type="tns:Operation" />
           <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
           <xs:element minOccurs="0" name="PokerTableId" type="xs:int" />

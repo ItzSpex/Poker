@@ -33,7 +33,7 @@
                 </Style>
             </StackPanel.Resources>
             <Button x:Name="CreateTable_Btn" Content="Create Table" Click="CreateTable_Btn_Click" Margin="0"/>
-            <Button x:Name="JoinTable_Btn" Content="Join Table" Click="JoinTable_Btn_Click"/>
+            <Button x:Name="JoinTable_Btn" Content="Join Table" Click="JoinTable_Btn_Click" IsEnabled="False"/>
             <Button x:Name="RefreshList_Btn" Content="Refresh List" Click="RefreshList_Btn_Click"/>
             <Button x:Name="Logout_Btn" Content="Logout" Click="Logout_Btn_Click"/>
         </StackPanel>

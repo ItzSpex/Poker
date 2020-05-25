@@ -70,6 +70,7 @@ namespace PokerClient
         private void TableList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             currTable = (PokerTableBL)TableList.SelectedItems[0];
+            JoinTable_Btn.IsEnabled = true;
             
         }
     }

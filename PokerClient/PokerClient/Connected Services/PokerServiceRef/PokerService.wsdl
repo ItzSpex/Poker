@@ -438,7 +438,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IPokerService_UpdateTableStatus_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IPokerService_GetTableStatus_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -457,7 +457,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IPokerService_UpdateTableStatus_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IPokerService_GetTableStatus_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -476,7 +476,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IPokerService_PlayerMove_Input_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IPokerService_ExecuteMove_Input_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -495,7 +495,7 @@
       </wsp:All>
     </wsp:ExactlyOne>
   </wsp:Policy>
-  <wsp:Policy wsu:Id="WSHttpBinding_IPokerService_PlayerMove_output_policy">
+  <wsp:Policy wsu:Id="WSHttpBinding_IPokerService_ExecuteMove_output_policy">
     <wsp:ExactlyOne>
       <wsp:All>
         <sp:SignedParts xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
@@ -578,17 +578,17 @@
   <wsdl:message name="IPokerService_GetCurrPlayerNames_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetCurrPlayerNamesResponse" />
   </wsdl:message>
-  <wsdl:message name="IPokerService_UpdateTableStatus_InputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateTableStatus" />
+  <wsdl:message name="IPokerService_GetTableStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTableStatus" />
   </wsdl:message>
-  <wsdl:message name="IPokerService_UpdateTableStatus_OutputMessage">
-    <wsdl:part name="parameters" element="tns:UpdateTableStatusResponse" />
+  <wsdl:message name="IPokerService_GetTableStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTableStatusResponse" />
   </wsdl:message>
-  <wsdl:message name="IPokerService_PlayerMove_InputMessage">
-    <wsdl:part name="parameters" element="tns:PlayerMove" />
+  <wsdl:message name="IPokerService_ExecuteMove_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteMove" />
   </wsdl:message>
-  <wsdl:message name="IPokerService_PlayerMove_OutputMessage">
-    <wsdl:part name="parameters" element="tns:PlayerMoveResponse" />
+  <wsdl:message name="IPokerService_ExecuteMove_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteMoveResponse" />
   </wsdl:message>
   <wsdl:portType msc:usingSession="true" name="IPokerService">
     <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="SignUp">
@@ -627,13 +627,13 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IPokerService/GetCurrPlayerNames" message="tns:IPokerService_GetCurrPlayerNames_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IPokerService/GetCurrPlayerNamesResponse" message="tns:IPokerService_GetCurrPlayerNames_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="UpdateTableStatus">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPokerService/UpdateTableStatus" message="tns:IPokerService_UpdateTableStatus_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPokerService/UpdateTableStatusResponse" message="tns:IPokerService_UpdateTableStatus_OutputMessage" />
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="GetTableStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPokerService/GetTableStatus" message="tns:IPokerService_GetTableStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPokerService/GetTableStatusResponse" message="tns:IPokerService_GetTableStatus_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="PlayerMove">
-      <wsdl:input wsaw:Action="http://tempuri.org/IPokerService/PlayerMove" message="tns:IPokerService_PlayerMove_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IPokerService/PlayerMoveResponse" message="tns:IPokerService_PlayerMove_OutputMessage" />
+    <wsdl:operation msc:isInitiating="true" msc:isTerminating="false" name="ExecuteMove">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPokerService/ExecuteMove" message="tns:IPokerService_ExecuteMove_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPokerService/ExecuteMoveResponse" message="tns:IPokerService_ExecuteMove_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IPokerService" type="tns:IPokerService">
@@ -738,25 +738,25 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="UpdateTableStatus">
-      <soap12:operation soapAction="http://tempuri.org/IPokerService/UpdateTableStatus" style="document" />
+    <wsdl:operation name="GetTableStatus">
+      <soap12:operation soapAction="http://tempuri.org/IPokerService/GetTableStatus" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IPokerService_UpdateTableStatus_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IPokerService_GetTableStatus_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IPokerService_UpdateTableStatus_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IPokerService_GetTableStatus_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="PlayerMove">
-      <soap12:operation soapAction="http://tempuri.org/IPokerService/PlayerMove" style="document" />
+    <wsdl:operation name="ExecuteMove">
+      <soap12:operation soapAction="http://tempuri.org/IPokerService/ExecuteMove" style="document" />
       <wsdl:input>
-        <wsp:PolicyReference URI="#WSHttpBinding_IPokerService_PlayerMove_Input_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IPokerService_ExecuteMove_Input_policy" />
         <soap12:body use="literal" />
       </wsdl:input>
       <wsdl:output>
-        <wsp:PolicyReference URI="#WSHttpBinding_IPokerService_PlayerMove_output_policy" />
+        <wsp:PolicyReference URI="#WSHttpBinding_IPokerService_ExecuteMove_output_policy" />
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>

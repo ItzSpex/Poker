@@ -56,7 +56,7 @@ namespace PokerClient
                 {
                     currPlayers += playerName + ", ";
                 }
-                currPlayers = currPlayers.Substring(currPlayers.Length - 2);
+                currPlayers = currPlayers.Substring(0, currPlayers.Length - 2);
                 CurrPlayersLabel.Content = currPlayers;
             }
             

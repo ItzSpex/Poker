@@ -13,6 +13,7 @@
         <xs:sequence>
           <xs:element minOccurs="0" name="CurrTurn" type="xs:int" />
           <xs:element minOccurs="0" name="HasStarted" type="xs:boolean" />
+          <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="Moves" nillable="true" type="q1:ArrayOfMove" />
           <xs:element minOccurs="0" name="NumOfPlayers" type="xs:int" />
           <xs:element minOccurs="0" name="PokerTableId" type="xs:int" />
         </xs:sequence>
@@ -22,7 +23,7 @@
   <xs:element name="PokerTableBL" nillable="true" type="tns:PokerTableBL" />
   <xs:complexType name="PokerTable">
     <xs:complexContent mixed="false">
-      <xs:extension xmlns:q1="http://schemas.datacontract.org/2004/07/PokerDL.Models" base="q1:BaseIdentityEntity">
+      <xs:extension xmlns:q2="http://schemas.datacontract.org/2004/07/PokerDL.Models" base="q2:BaseIdentityEntity">
         <xs:sequence>
           <xs:element minOccurs="0" name="DealerId" type="xs:int" />
           <xs:element minOccurs="0" name="FifthCard" nillable="true" type="xs:string" />
@@ -38,10 +39,4 @@
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PokerTable" nillable="true" type="tns:PokerTable" />
-  <xs:complexType name="TableStatus">
-    <xs:sequence>
-      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="Moves" nillable="true" type="q2:ArrayOfMove" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="TableStatus" nillable="true" type="tns:TableStatus" />
 </xs:schema>

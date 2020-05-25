@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PokerService" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PokerDL.Models" />
   <xs:element name="SignUp">
     <xs:complexType>
       <xs:sequence>
@@ -121,29 +122,30 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateTableStatus">
+  <xs:element name="GetTableStatus">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="UpdateTableStatusResponse">
+  <xs:element name="GetTableStatusResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="UpdateTableStatusResult" nillable="true" type="q10:ServerResponseOfTableStatusPWeT4Jje" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="GetTableStatusResult" nillable="true" type="q10:ServerResponseOfArrayOfMovezbAl9a06" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="PlayerMove">
+  <xs:element name="ExecuteMove">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="Operation" type="xs:int" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="Operation" type="q11:Operation" />
+        <xs:element minOccurs="0" name="BidAmount" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="PlayerMoveResponse">
+  <xs:element name="ExecuteMoveResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="PlayerMoveResult" nillable="true" type="q11:ServerResponseOfTableStatusPWeT4Jje" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="ExecuteMoveResult" nillable="true" type="q12:ServerResponseOfboolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

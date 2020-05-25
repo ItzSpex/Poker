@@ -148,6 +148,9 @@ namespace PokerClient.PokerServiceRef {
         private bool HasStartedField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PokerClient.PokerServiceRef.Move[] MovesField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int NumOfPlayersField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -175,6 +178,19 @@ namespace PokerClient.PokerServiceRef {
                 if ((this.HasStartedField.Equals(value) != true)) {
                     this.HasStartedField = value;
                     this.RaisePropertyChanged("HasStarted");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PokerClient.PokerServiceRef.Move[] Moves {
+            get {
+                return this.MovesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MovesField, value) != true)) {
+                    this.MovesField = value;
+                    this.RaisePropertyChanged("Moves");
                 }
             }
         }
@@ -259,9 +275,6 @@ namespace PokerClient.PokerServiceRef {
         private int BidAmountField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int MoveNumberField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PokerClient.PokerServiceRef.Operation OperationField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -279,19 +292,6 @@ namespace PokerClient.PokerServiceRef {
                 if ((this.BidAmountField.Equals(value) != true)) {
                     this.BidAmountField = value;
                     this.RaisePropertyChanged("BidAmount");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int MoveNumber {
-            get {
-                return this.MoveNumberField;
-            }
-            set {
-                if ((this.MoveNumberField.Equals(value) != true)) {
-                    this.MoveNumberField = value;
-                    this.RaisePropertyChanged("MoveNumber");
                 }
             }
         }
@@ -632,9 +632,9 @@ namespace PokerClient.PokerServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServerResponseOfTableStatusPWeT4Jje", Namespace="http://schemas.datacontract.org/2004/07/PokerService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServerResponseOfArrayOfMovezbAl9a06", Namespace="http://schemas.datacontract.org/2004/07/PokerService")]
     [System.SerializableAttribute()]
-    public partial class ServerResponseOfTableStatusPWeT4Jje : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ServerResponseOfArrayOfMovezbAl9a06 : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
@@ -643,7 +643,7 @@ namespace PokerClient.PokerServiceRef {
         private string ErrorMsgField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PokerClient.PokerServiceRef.TableStatus ResultField;
+        private PokerClient.PokerServiceRef.Move[] ResultField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -669,7 +669,7 @@ namespace PokerClient.PokerServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public PokerClient.PokerServiceRef.TableStatus Result {
+        public PokerClient.PokerServiceRef.Move[] Result {
             get {
                 return this.ResultField;
             }
@@ -677,51 +677,6 @@ namespace PokerClient.PokerServiceRef {
                 if ((object.ReferenceEquals(this.ResultField, value) != true)) {
                     this.ResultField = value;
                     this.RaisePropertyChanged("Result");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="TableStatus", Namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models")]
-    [System.SerializableAttribute()]
-    public partial class TableStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private PokerClient.PokerServiceRef.Move[] MovesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public PokerClient.PokerServiceRef.Move[] Moves {
-            get {
-                return this.MovesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.MovesField, value) != true)) {
-                    this.MovesField = value;
-                    this.RaisePropertyChanged("Moves");
                 }
             }
         }
@@ -794,17 +749,17 @@ namespace PokerClient.PokerServiceRef {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetCurrPlayerNames", ReplyAction="http://tempuri.org/IPokerService/GetCurrPlayerNamesResponse")]
         System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfArrayOfstringuHEDJ7Dj> GetCurrPlayerNamesAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/UpdateTableStatus", ReplyAction="http://tempuri.org/IPokerService/UpdateTableStatusResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje UpdateTableStatus();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetTableStatus", ReplyAction="http://tempuri.org/IPokerService/GetTableStatusResponse")]
+        PokerClient.PokerServiceRef.ServerResponseOfArrayOfMovezbAl9a06 GetTableStatus();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/UpdateTableStatus", ReplyAction="http://tempuri.org/IPokerService/UpdateTableStatusResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> UpdateTableStatusAsync();
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetTableStatus", ReplyAction="http://tempuri.org/IPokerService/GetTableStatusResponse")]
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfArrayOfMovezbAl9a06> GetTableStatusAsync();
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/PlayerMove", ReplyAction="http://tempuri.org/IPokerService/PlayerMoveResponse")]
-        PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje PlayerMove(int Operation);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/ExecuteMove", ReplyAction="http://tempuri.org/IPokerService/ExecuteMoveResponse")]
+        PokerClient.PokerServiceRef.ServerResponseOfboolean ExecuteMove(PokerClient.PokerServiceRef.Operation Operation, int BidAmount);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/PlayerMove", ReplyAction="http://tempuri.org/IPokerService/PlayerMoveResponse")]
-        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> PlayerMoveAsync(int Operation);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/ExecuteMove", ReplyAction="http://tempuri.org/IPokerService/ExecuteMoveResponse")]
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> ExecuteMoveAsync(PokerClient.PokerServiceRef.Operation Operation, int BidAmount);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -906,20 +861,20 @@ namespace PokerClient.PokerServiceRef {
             return base.Channel.GetCurrPlayerNamesAsync();
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje UpdateTableStatus() {
-            return base.Channel.UpdateTableStatus();
+        public PokerClient.PokerServiceRef.ServerResponseOfArrayOfMovezbAl9a06 GetTableStatus() {
+            return base.Channel.GetTableStatus();
         }
         
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> UpdateTableStatusAsync() {
-            return base.Channel.UpdateTableStatusAsync();
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfArrayOfMovezbAl9a06> GetTableStatusAsync() {
+            return base.Channel.GetTableStatusAsync();
         }
         
-        public PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje PlayerMove(int Operation) {
-            return base.Channel.PlayerMove(Operation);
+        public PokerClient.PokerServiceRef.ServerResponseOfboolean ExecuteMove(PokerClient.PokerServiceRef.Operation Operation, int BidAmount) {
+            return base.Channel.ExecuteMove(Operation, BidAmount);
         }
         
-        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje> PlayerMoveAsync(int Operation) {
-            return base.Channel.PlayerMoveAsync(Operation);
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> ExecuteMoveAsync(PokerClient.PokerServiceRef.Operation Operation, int BidAmount) {
+            return base.Channel.ExecuteMoveAsync(Operation, BidAmount);
         }
     }
 }

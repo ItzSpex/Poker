@@ -147,6 +147,9 @@
     <None Include="Connected Services\PokerServiceRef\item5.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfArrayOfMovezbAl9a06.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfArrayOfPokerTableBLPWeT4Jje.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
@@ -157,9 +160,6 @@
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfint.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfTableStatusPWeT4Jje.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\PokerServiceRef\PokerService.wsdl" />

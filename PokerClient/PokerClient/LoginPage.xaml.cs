@@ -32,35 +32,49 @@ namespace PokerClient
         {
             string username = userNameTB.Text;
             string password = passwordBox.Password;
-            var serverResponse = client.Login(username, password);
-            if (serverResponse.ErrorMsg == null)
+            if (username == "" || password == "")
             {
-                MessageBox.Show("Login successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                TableMenuPage p = new TableMenuPage(username);
-                this.NavigationService.Navigate(p,UriKind.Relative);
+                MessageBox.Show("An unhandled exception just occurred: Please enter credentials correctly", "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                var serverResponse = client.Login(username, password);
+                if (serverResponse.ErrorMsg == null)
+                {
+                    MessageBox.Show("Login successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                    TableMenuPage p = new TableMenuPage(username);
+                    this.NavigationService.Navigate(p, UriKind.Relative);
+                }
+                else
+                {
+                    MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-
         }
 
         private void SignupBtn_Click(object sender, RoutedEventArgs e)
         {
             string username = userNameTB.Text;
             string password = passwordBox.Password;
-            var serverResponse = client.SignUp(username, password);
-            if (serverResponse.ErrorMsg == null)
+            if(username == "" || password == "")
             {
-                MessageBox.Show("Signup successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                TableMenuPage p = new TableMenuPage(username);
-                this.NavigationService.Navigate(p, UriKind.Relative);
+                MessageBox.Show("An unhandled exception just occurred: Please enter credentials correctly", "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                var serverResponse = client.SignUp(username, password);
+                if (serverResponse.ErrorMsg == null)
+                {
+                    MessageBox.Show("Signup successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                    TableMenuPage p = new TableMenuPage(username);
+                    this.NavigationService.Navigate(p, UriKind.Relative);
+                }
+                else
+                {
+                    MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
+            
         }
     }
 }

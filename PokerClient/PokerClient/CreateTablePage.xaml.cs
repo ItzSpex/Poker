@@ -35,18 +35,24 @@ namespace PokerClient
             Name = TableNameTB.Text;
             Players = (int)playerSlider.Value;
             MinBet = (int)BetSlider.Value;
-            var serverResponse = MainWindow.client.CreateTable(Name, Players, MinBet);
-            if (serverResponse.ErrorMsg == null)
+            if (Name == "")
             {
-                MessageBox.Show("Table created successfully", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                GameLobbyPage p = new GameLobbyPage(Name, Players, MinBet);
-                this.NavigationService.Navigate(p, UriKind.Relative);
+                MessageBox.Show("An unhandled exception just occurred: Please enter a table name", "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             else
             {
-                MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                var serverResponse = MainWindow.client.CreateTable(Name, Players, MinBet);
+                if (serverResponse.ErrorMsg == null)
+                {
+                    MessageBox.Show("Table created successfully", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                    GameLobbyPage p = new GameLobbyPage(Name, Players, MinBet);
+                    this.NavigationService.Navigate(p, UriKind.Relative);
+                }
+                else
+                {
+                    MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
             }
-
         }
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
