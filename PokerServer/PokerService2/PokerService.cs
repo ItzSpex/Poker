@@ -12,7 +12,7 @@ namespace PokerService
 {
     public class PokerService : IPokerService
     {
-        private ServiceHandler serviceHandler = new ServiceHandler();
+        private readonly ServiceHandler serviceHandler = new ServiceHandler();
         public ServerResponse<bool> CloseTable()
         {
             ServerResponse<bool> serverResponse = new ServerResponse<bool>();
@@ -83,12 +83,12 @@ namespace PokerService
             return serverResponse;
         }
 
-        public ServerResponse<List<Move>> GetTableStatus()
+        public ServerResponse<TableStatus> GetTableStatus()
         {
-            ServerResponse<List<Move>> serverResponse = new ServerResponse<List<Move>>();
+            ServerResponse<TableStatus> serverResponse = new ServerResponse<TableStatus>();
             try
             {
-                serverResponse.Result = serviceHandler.GetExistingMoves();
+                serverResponse.Result = serviceHandler.GetTableStatus();
             }
             catch (Exception e)
             {

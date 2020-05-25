@@ -26,7 +26,10 @@ namespace PokerBL.Models
         public Deck TableDeck { get; set; }
         public List<int> PlayerIds { get; set; }
         public List<string> PlayerNames { get; set; }
+        public long LastBid { get; set; }
         public int AdminId { get; set; }
+        public List<Card> TableCards { get; set; }
+        public int DealerIndex { get; set; }
 
         public PokerTableBL(string PokerTableName, int NumOfPlayers, int MinBetAmount, int UserId)
         {
@@ -36,15 +39,27 @@ namespace PokerBL.Models
             this.MinBet = MinBetAmount;
             this.TableDeck = new Deck();
             this.PlayerIds = new List<int>();
+            this.PlayerNames = new List<string>();
             this.Moves = new List<Move>();
+            this.TableCards = new List<Card>();
             this.AdminId = UserId;
         }
-        public void GenerateDealerId()
+        public void GenerateDealerIndex()
         {
-            int DealerIndex = 0;
-            Random r = new Random();
-            DealerIndex = r.Next(0, NumOfPlayers);
-            DealerId = PlayerIds[DealerIndex];
+            if (DealerId == -1)
+            {
+                Random r = new Random();
+                DealerIndex = r.Next(0, NumOfPlayers);
+            }
+           
         }
+        public void GenerateFlopCards()
+        {
+            TableCards = TableDeck.GetCards(3);
+            FirstCard = TableCards[0].ToString();
+            SecondCard = TableCards[1].ToString();
+            ThirdCard = TableCards[2].ToString();
+        }
+
     }
 }

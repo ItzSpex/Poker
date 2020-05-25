@@ -11,9 +11,9 @@ namespace PokerBL.Models
     public class ServiceHandler
     {
         public static List<PokerTableBL> Tables;
-        int userId;
-        string userName;
+        UserInfo myUser;
         PokerTableBL myTable;
+        PlayerBL myPlayer;
 
         public ServiceHandler()
         {
@@ -21,35 +21,36 @@ namespace PokerBL.Models
             {
                 Tables = new List<PokerTableBL>();
             }
+            if (myUser == null)
+            {
+                myUser = new UserInfo();
+            }
         }
         public int Login(string username, string password)
         {
-            UserInfo user = new UserInfo();
-            user.Username = username;
-            user.Password = password;
-            userId = Database.GetUserByCredentials(user);
-            userName = username;
-            return userId;
+            myUser.Username = username;
+            myUser.Password = password;
+            myUser.Id = Database.GetUserByCredentials(myUser);
+            return myUser.Id;
         }
 
         public int Signup(string username, string password)
         {
-            UserInfo user = new UserInfo();
-            user.Username = username;
-            user.Password = password;
-            user.Wallet = 1000000;
-            Database.InsertUser(user);
-            userId = user.Id;
-            userName = username;
-            return userId;
+            myUser.Username = username;
+            myUser.Password = password;
+            myUser.Wallet = 1000000;
+            Database.InsertUser(myUser);
+            return myUser.Id;
         }
 
         public bool CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
             UserCheck();
-            myTable = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount, userId);
-            myTable.LoggedInPlayers = 1;
-            myTable.PlayerNames.Add(userName);
+            myTable = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount, myUser.Id)
+            {
+                LoggedInPlayers = 1
+            };
+            myTable.PlayerNames.Add(myUser.Username);
             Tables.Add(myTable);
             return true;
 
@@ -70,8 +71,8 @@ namespace PokerBL.Models
                 if (table.Id == TableId)
                 {
                     myTable = table;
-                    table.PlayerIds.Add(userId);
-                    table.PlayerNames.Add(userName);
+                    table.PlayerIds.Add(myUser.Id);
+                    table.PlayerNames.Add(myUser.Username);
                     table.LoggedInPlayers++;
                     return true;
                 }
@@ -83,24 +84,27 @@ namespace PokerBL.Models
             UserCheck();
             foreach (PokerTableBL table in Tables)
             {
-                if (table.AdminId == userId)
+                if (table.AdminId == myUser.Id)
                 {
                     CloseTable();
                 }
                 else
                 {
-                    myTable.PlayerIds.Remove(userId);
-                    myTable.PlayerNames.Remove(userName);
+                    myTable.PlayerIds.Remove(myUser.Id);
+                    myTable.PlayerNames.Remove(myUser.Username);
                 }
                 return true;
             }
             throw new Exception("An error occured while leaving this table");
         }
 
-        public List<Move> GetExistingMoves()
+        public TableStatus GetTableStatus()
         {
             UserCheck();
-            return myTable.Moves;
+            bool IsMyTurn = myTable.PlayerIds[myTable.CurrTurn] == myPlayer.Id;
+            Move lastMove = myTable.Moves[myTable.Moves.Count - 1];
+            TableStatus tableStatus = new TableStatus(lastMove, IsMyTurn);
+            return tableStatus;
         }
 
         public bool CloseTable()
@@ -117,18 +121,107 @@ namespace PokerBL.Models
         }
         public bool ExecuteMove(Operation op, int bidAmount)
         {
+            bool HasFolded = false;
             UserCheck();
-            myTable.Moves.Add(new Move(op, bidAmount, userId, myTable.Id));
+            if (myTable.LastBid == myPlayer.ChipsOnTable)
+            {
+                switch(op)
+                {
+                    case Operation.Raise:
+                        myPlayer.ChipsOnTable += bidAmount;
+                        break;
+                }
+            }
+            else
+            {
+                switch (op)
+                {
+                    case Operation.Call:
+                        myPlayer.ChipsOnTable += bidAmount;
+                        break;
+                    case Operation.Raise:
+                        myPlayer.ChipsOnTable += bidAmount;
+                        break;
+                    case Operation.Fold:
+                        HasFolded = true;
+                        break;
+                }
+            }
+            if(!HasFolded)
+            {
+                myTable.Moves.Add(new Move(op, bidAmount, myUser.Id, myTable.Id));
+                myTable.LastBid = myPlayer.ChipsOnTable;
+                SwitchTurns();
+            }
+            else
+            {
+                myTable.PlayerIds.Remove(myPlayer.Id);
+                myTable.PlayerNames.Remove(myUser.Username);
+                myTable.NumOfPlayers--;
+            }
             return true;
         }
+
+        public bool StartGame()
+        {
+            Move smallBlind, bigBlind;
+            myPlayer = new PlayerBL(myUser.Wallet, myTable.Id);
+            myPlayer.GeneratePersonalCards(myTable);
+            myTable.GenerateDealerIndex();
+            if (myTable.DealerIndex == myTable.NumOfPlayers - 1)
+            {
+                smallBlind = new Move(Operation.Raise, myTable.MinBet, myTable.PlayerIds[0], myTable.Id);
+                myTable.CurrTurn = 0;
+                myTable.Moves.Add(smallBlind);
+                SwitchTurns();
+                bigBlind = new Move(Operation.Raise, myTable.MinBet, myTable.PlayerIds[1], myTable.Id);
+                myTable.Moves.Add(bigBlind);
+                SwitchTurns();
+            }
+            else if (myTable.DealerIndex == myTable.NumOfPlayers - 2)
+            {
+                smallBlind = new Move(Operation.Raise, myTable.MinBet, myTable.PlayerIds[myTable.NumOfPlayers - 1], myTable.Id);
+                myTable.CurrTurn = myTable.NumOfPlayers - 1;
+                myTable.Moves.Add(smallBlind);
+                SwitchTurns();
+                bigBlind = new Move(Operation.Raise, myTable.MinBet, myTable.PlayerIds[0], myTable.Id);
+                myTable.Moves.Add(bigBlind);
+                SwitchTurns();
+            }
+            else
+            {
+                smallBlind = new Move(Operation.Raise, myTable.MinBet, myTable.PlayerIds[myTable.DealerIndex + 1], myTable.Id);
+                myTable.CurrTurn = myTable.DealerIndex + 1;
+                myTable.Moves.Add(smallBlind);
+                SwitchTurns();
+                bigBlind = new Move(Operation.Raise, myTable.MinBet, myTable.PlayerIds[myTable.DealerIndex + 2], myTable.Id);
+                myTable.Moves.Add(bigBlind);
+                SwitchTurns();
+            }
+
+            return true;
+        }
+
+        public void SwitchTurns()
+        {
+            if (myTable.CurrTurn == myTable.NumOfPlayers - 1)
+            {
+                myTable.CurrTurn = 0;
+            }
+            else
+            {
+                myTable.CurrTurn++;
+            }
+        }
+
         private void UserCheck()
         {
-            if (userId == -1)
+            if (myUser.Id == -1)
             {
                 throw new Exception("You are not logged in yet, Please restart the program");
             }
         }
-        
+
 
     }
 }

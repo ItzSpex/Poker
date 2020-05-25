@@ -57,7 +57,6 @@ namespace PokerBL.Models
         }
         public Card GetCard()
         {
-            ShuffleCards(); //Todo: Decide if the shuffle should be here or in ctor.
             return cards.Dequeue();
         }
         public List<Card> GetCards(int amount)
