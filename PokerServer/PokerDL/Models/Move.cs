@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PokerDL.Models
 {
-    public enum Operation { Call = 0, Raise, Fold, Check };
+    public enum Operation { Call = 0, Raise, Fold, Check, AllIn };
     [DataContract]    
     public class Move : BaseIdentityEntity
     {
