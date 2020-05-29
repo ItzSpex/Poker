@@ -1,4 +1,5 @@
 ﻿using PokerBL.Models;
+using PokerDL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,12 @@ using System.Threading.Tasks;
 
 namespace PokerBL.Models
 {
+    public enum Rank { RoyalFlush, StraightFlush, FourOfAKind, FullHouse, Flush, Straight, ThreeOfAKind, TwoPair, OnePair, HighCard }
+    public enum Round { Deal, PreFlop, Flop, Turn, River, Showdown }
     public class Deck
     {
         public Queue<Card> cards = new Queue<Card>(52);
-        string[] numbers = new string[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13" };
+        readonly string[] numbers = new string[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14" };
         public Deck()
         {
             foreach (string s in numbers)
@@ -68,7 +71,14 @@ namespace PokerBL.Models
             }
             return cardsRequested;
         }
-
-
+        public static List<string[]> ToStrArrList(List<Card> cards)
+        {
+            List<string[]> RequestedCardList = new List<string[]>();
+            foreach (Card card in cards)
+            {
+                RequestedCardList.Add(card.ToStringArr());
+            }
+            return RequestedCardList;
+        }
     }
 }

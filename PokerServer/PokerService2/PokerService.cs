@@ -13,19 +13,6 @@ namespace PokerService
     public class PokerService : IPokerService
     {
         private readonly ServiceHandler serviceHandler = new ServiceHandler();
-        public ServerResponse<bool> CloseTable()
-        {
-            ServerResponse<bool> serverResponse = new ServerResponse<bool>();
-            try
-            {
-                serverResponse.Result = serviceHandler.CloseTable();
-            }
-            catch (Exception e)
-            {
-                serverResponse.ErrorMsg = e.Message;
-            }
-            return serverResponse;
-        }
 
         public ServerResponse<bool> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
@@ -55,9 +42,9 @@ namespace PokerService
             return serverResponse;
         }
 
-        public ServerResponse<List<string>> GetCurrPlayerNames()
+        public ServerResponse<string> GetCurrPlayerNames()
         {
-            ServerResponse<List<string>> serverResponse = new ServerResponse<List<string>>();
+            ServerResponse<string> serverResponse = new ServerResponse<string>();
             try
             {
                 serverResponse.Result = serviceHandler.GetCurrPlayerNames();
@@ -139,6 +126,21 @@ namespace PokerService
             }
             return loginResponse;
         }
+
+        public ServerResponse<bool> Logout()
+        {
+            ServerResponse<bool> logoutResponse = new ServerResponse<bool>();
+            try
+            {
+                logoutResponse.Result = serviceHandler.Logout();
+            }
+            catch (Exception e)
+            {
+                logoutResponse.ErrorMsg = e.Message;
+            }
+            return logoutResponse;
+        }
+
         public ServerResponse<int> SignUp(string username, string password)
         {
             ServerResponse<int> signupResponse = new ServerResponse<int>();

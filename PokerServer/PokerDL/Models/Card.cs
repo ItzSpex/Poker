@@ -4,22 +4,35 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PokerBL.Models
+namespace PokerDL.Models
 {
     public class Card
     {
-        public string Suite { get; set; } //Spades Hearts Clubs Diamonds
-        public int Face { get; set; }
+        public string Suit { get; set; } //Spades Hearts Clubs Diamonds
+        public string Face { get; set; }
 
         public Card(string s)
         {
             string[] words = s.Split(',');
-            this.Suite = words[0];
-            this.Face = Convert.ToInt32(words[1]);
+            this.Suit = words[0];
+            if (words.Length == 2)
+            {
+                this.Face = words[1];
+            }
+            
+            
         }
         public override string ToString()
         {
-            return Suite + "," + Face.ToString();
+            return Suit + "," + Face.ToString();
+        }
+
+        public string[] ToStringArr()
+        {
+            string[] arr = new string[2];
+            arr[0] = this.Face;
+            arr[1] = this.Suit;
+            return arr;
         }
     }
 }

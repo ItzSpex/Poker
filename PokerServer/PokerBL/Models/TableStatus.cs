@@ -1,4 +1,5 @@
 ﻿using PokerDL.Models;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace PokerBL.Models
@@ -10,11 +11,15 @@ namespace PokerBL.Models
         public Move LastMove { get; set; }
         [DataMember]
         public bool IsMyTurn { get; set; }
-
-        public TableStatus(Move lastMove, bool isMyTurn)
+        [DataMember]
+        public List<Card> TableCards { get; set; }
+        [DataMember]
+        public bool HasGameFinished { get; set; }
+        [DataMember]
+        public int WinnerId { get; set; }
+        public TableStatus()
         {
-            this.LastMove = lastMove;
-            this.IsMyTurn = isMyTurn;
+            this.TableCards = new List<Card>();
         }
     }
 }

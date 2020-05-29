@@ -16,7 +16,8 @@ namespace PokerService
         ServerResponse<int> SignUp(string username, string password);
         [OperationContract]
         ServerResponse<int> Login(string username, string password);
-        // If the ErrorMsg == "Player has rejoined table" - the user returns to the table he is in
+        [OperationContract]
+        ServerResponse<bool> Logout();
         [OperationContract]
         ServerResponse<List<PokerTableBL>> GetExistingTables();
         [OperationContract]
@@ -24,16 +25,13 @@ namespace PokerService
         [OperationContract]
         ServerResponse<bool> LeaveTable();
         [OperationContract]
-        ServerResponse<bool> CloseTable();
-        [OperationContract]
-        ServerResponse<bool> JoinTable(int TableId); // fails if Table closes by the time the user selects it
+        ServerResponse<bool> JoinTable(int TableId); 
         [OperationContract]
         ServerResponse<bool> StartGame();
         [OperationContract]
-        ServerResponse<List<string>> GetCurrPlayerNames();
+        ServerResponse<string> GetCurrPlayerNames();
         [OperationContract]
         ServerResponse<TableStatus> GetTableStatus();
-
         [OperationContract]
         ServerResponse<bool> ExecuteMove(Operation Operation, int BidAmount);
 

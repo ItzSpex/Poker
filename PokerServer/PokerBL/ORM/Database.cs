@@ -11,10 +11,11 @@ namespace PokerBL.ORM
 {
     public class Database
     {
-        private static List<UserInfo> users = null;
-        public static int GetUserByCredentials(UserInfo requstedUser)
+        private static List<UserInfo> users;
+        public static UserInfo GetUserByCredentials(UserInfo requstedUser)
         {
             UserInfo u = null;
+            users = ServiceHandler.LoggedInUsers;
             if (users == null)
             {
                 UserInfoDB userInfoDB = new UserInfoDB();
@@ -32,7 +33,7 @@ namespace PokerBL.ORM
             {
                 throw new Exception("Wrong password");
             }
-            return u.Id;
+            return u;
         }
         public static void InsertUser(UserInfo newUser)
         {
