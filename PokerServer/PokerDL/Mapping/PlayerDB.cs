@@ -12,10 +12,11 @@ namespace PokerDL.Mapping
         protected override void GetModelColumns(Player model)
         {
             model.Id = (int)reader["PlayerId"];
+            model.PlayerName = reader["PlayerName"].ToString();
             model.PokerTableId = (int)reader["PokerTableId"];
-            model.ChipsOnTable = (long)reader["ChipsOnTable"];
+            model.ChipsOnTable = (int)reader["ChipsOnTable"];
             model.FirstCard = null;
-            if(reader["Card1"] != DBNull.Value)
+            if (reader["Card1"] != DBNull.Value)
             {
                 model.FirstCard = reader["Card1"].ToString();
             }
@@ -34,14 +35,14 @@ namespace PokerDL.Mapping
         protected override string GetSQLInsertString()
         {
             return "INSERT INTO PLAYER " +
-                "(PlayerId, PokerTableId,ChipsOnTable, Card1, Card2)" +
-                "Values(@PlayerId, @PokerTableId,@ChipsOnTable, @Card1, @Card2)";
+                "(PlayerId, PlayerName, PokerTableId,ChipsOnTable, Card1, Card2)" +
+                "Values(@PlayerId, @PlayerName, @PokerTableId,@ChipsOnTable, @Card1, @Card2)";
         }
 
         protected override string GetSQLUpdateString(Player model)
         {
             return "UPDATE PLAYER Set " +
-                "PokerTableId=@PokerTableId, ChipsOnTable=@ChipsOnTable,Card1=@Card1, Card2=@Card"+
+                "PlayerName=@PlayerName, PokerTableId=@PokerTableId, ChipsOnTable=@ChipsOnTable,Card1=@Card1, Card2=@Card" +
                 "Where PlayerId = " + model.Id;
         }
 
@@ -49,16 +50,19 @@ namespace PokerDL.Mapping
         {
             this.command.Parameters.Add("@PlayerId",
                 System.Data.SqlDbType.Int);
+            this.command.Parameters.Add("@PlayerName",
+                System.Data.SqlDbType.NVarChar);
             this.command.Parameters.Add("@PokerTableId",
                 System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@ChipsOnTable",
                 System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@Card1",
-                System.Data.SqlDbType.Int);
+                System.Data.SqlDbType.NVarChar);
             this.command.Parameters.Add("@Card2",
-                System.Data.SqlDbType.Int);
+                System.Data.SqlDbType.NVarChar);
 
             this.command.Parameters["@PlayerId"].Value = model.Id;
+            this.command.Parameters["@PlayerName"].Value = model.PlayerName;
             this.command.Parameters["@PokerTableId"].Value = model.PokerTableId;
             this.command.Parameters["@ChipsOnTable"].Value = model.ChipsOnTable;
             if (model.FirstCard == null)

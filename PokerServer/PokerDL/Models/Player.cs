@@ -11,9 +11,11 @@ namespace PokerBL.Models
     public class Player : BaseIdentityEntity
     {
         [DataMember]
+        public string PlayerName { get; set; }
+        [DataMember]
         public int PokerTableId { get; set; }
         [DataMember]
-        public long ChipsOnTable { get; set; }
+        public int ChipsOnTable { get; set; }
         [DataMember]
         public string FirstCard { get; set; }
         [DataMember]
