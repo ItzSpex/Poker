@@ -21,20 +21,21 @@ namespace PokerService
         [OperationContract]
         ServerResponse<List<PokerTableBL>> GetExistingTables();
         [OperationContract]
-        ServerResponse<bool> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount); 
+        ServerResponse<PokerTableBL> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount); 
         [OperationContract]
         ServerResponse<bool> LeaveTable();
         [OperationContract]
-        ServerResponse<bool> JoinTable(int TableId); 
+        ServerResponse<PokerTableBL> JoinTable(int TableId); 
         [OperationContract]
-        ServerResponse<bool> StartGame();
+        ServerResponse<StartGameStatus> StartGame();
         [OperationContract]
-        ServerResponse<string> GetCurrPlayerNames();
+        ServerResponse<bool> HasGameStarted();
         [OperationContract]
         ServerResponse<TableStatus> GetTableStatus();
         [OperationContract]
         ServerResponse<bool> ExecuteMove(Operation Operation, int BidAmount);
-
+        [OperationContract]
+        ServerResponse<List<PlayerBL>> UpdatePlayers();
 
     }
     [DataContract]

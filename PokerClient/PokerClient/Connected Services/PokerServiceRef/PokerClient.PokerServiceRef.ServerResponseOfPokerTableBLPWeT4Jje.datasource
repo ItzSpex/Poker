@@ -5,6 +5,6 @@
     Renaming the file extension or editing the content of this file may   
     cause the file to be unrecognizable by the program.
 -->
-<GenericObjectDataSource DisplayName="ServerResponseOfArrayOfMovezbAl9a06" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>PokerClient.PokerServiceRef.ServerResponseOfArrayOfMovezbAl9a06, Connected Services.PokerServiceRef.Reference.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+<GenericObjectDataSource DisplayName="ServerResponseOfPokerTableBLPWeT4Jje" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <TypeInfo>PokerClient.PokerServiceRef.ServerResponseOfPokerTableBLPWeT4Jje, Connected Services.PokerServiceRef.Reference.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

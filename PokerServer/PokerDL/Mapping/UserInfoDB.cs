@@ -23,7 +23,7 @@ namespace PokerDL.Mapping
             model.Id = (int)reader["PlayerId"];
             model.Username = reader["Username"].ToString();
             model.Password = reader["Password"].ToString();
-            model.Wallet = (long)reader["Wallet"];
+            model.Wallet = (int)reader["Wallet"];
         }
 
         protected override string GetSQLDeleteString(UserInfo model)
@@ -54,7 +54,7 @@ namespace PokerDL.Mapping
             this.command.Parameters.Add("@Password",
                 System.Data.SqlDbType.NVarChar, 50);
             this.command.Parameters.Add("@Wallet",
-                System.Data.SqlDbType.BigInt);
+                System.Data.SqlDbType.Int);
 
             this.command.Parameters["@PlayerId"].Value = model.Id;
             this.command.Parameters["@Username"].Value = model.Username;

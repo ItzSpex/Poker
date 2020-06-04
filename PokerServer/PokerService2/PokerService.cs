@@ -14,9 +14,9 @@ namespace PokerService
     {
         private readonly ServiceHandler serviceHandler = new ServiceHandler();
 
-        public ServerResponse<bool> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
+        public ServerResponse<PokerTableBL> CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
-            ServerResponse<bool> serverResponse = new ServerResponse<bool>();
+            ServerResponse<PokerTableBL> serverResponse = new ServerResponse<PokerTableBL>();
             try
             {
                 serverResponse.Result = serviceHandler.CreateTable(PokerTableName, NumOfPlayers, MinBetAmount);
@@ -34,20 +34,6 @@ namespace PokerService
             try
             {
                 serverResponse.Result = serviceHandler.ExecuteMove(Operation, BidAmount);
-            }
-            catch (Exception e)
-            {
-                serverResponse.ErrorMsg = e.Message;
-            }
-            return serverResponse;
-        }
-
-        public ServerResponse<string> GetCurrPlayerNames()
-        {
-            ServerResponse<string> serverResponse = new ServerResponse<string>();
-            try
-            {
-                serverResponse.Result = serviceHandler.GetCurrPlayerNames();
             }
             catch (Exception e)
             {
@@ -84,9 +70,23 @@ namespace PokerService
             return serverResponse;
         }
 
-        public ServerResponse<bool> JoinTable(int TableId)
+        public ServerResponse<bool> HasGameStarted()
         {
             ServerResponse<bool> serverResponse = new ServerResponse<bool>();
+            try
+            {
+                serverResponse.Result = serviceHandler.HasGameStarted();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
+        public ServerResponse<PokerTableBL> JoinTable(int TableId)
+        {
+            ServerResponse<PokerTableBL> serverResponse = new ServerResponse<PokerTableBL>();
             try
             {
                 serverResponse.Result = serviceHandler.JoinTable(TableId);
@@ -154,11 +154,32 @@ namespace PokerService
             }
             return signupResponse;
         }
-        public ServerResponse<bool> StartGame()
+        public ServerResponse<StartGameStatus> StartGame()
         {
-            throw new NotImplementedException();
+            ServerResponse<StartGameStatus> serverResponse = new ServerResponse<StartGameStatus>();
+            try
+            {
+                serverResponse.Result = serviceHandler.StartGame();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
         }
 
-        
+        public ServerResponse<List<PlayerBL>> UpdatePlayers()
+        {
+            ServerResponse<List<PlayerBL>> serverResponse = new ServerResponse<List<PlayerBL>>();
+            try
+            {
+                serverResponse.Result = serviceHandler.GetPlayers();
+            }
+            catch(Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
     }
 }

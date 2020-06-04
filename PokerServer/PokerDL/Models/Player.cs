@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace PokerBL.Models
 {
+    [DataContract]
     public class Player : BaseIdentityEntity
     {
         [DataMember]

@@ -21,9 +21,10 @@ namespace PokerBL.Models
         public int PokerTableId { get; set; }
         [DataMember]
         public List<Move> Moves { get; set; }
-        public Deck TableDeck { get; set; }
+        [DataMember]
         public List<PlayerBL> Players { get; set; }
-        public long LastBid { get; set; }
+        public Deck TableDeck { get; set; }
+        public int LastBid { get; set; }
         public int DealerIndex { get; set; }
         public int FirstPlayerId { get; set; }
         public Round CurrRound { get; set; }
@@ -35,7 +36,8 @@ namespace PokerBL.Models
             this.NumOfPlayers = NumOfPlayers;
             this.MinBet = MinBetAmount;
             this.TableDeck = new Deck();
-            this.Players = new List<PlayerBL>(5);
+            this.TableDeck.ShuffleCards();
+            this.Players = new List<PlayerBL>();
             this.Moves = new List<Move>();
             this.CurrRound = Round.Deal;
         }
@@ -45,6 +47,7 @@ namespace PokerBL.Models
             {
                 Random r = new Random();
                 DealerIndex = r.Next(0, NumOfPlayers);
+                DealerId = Players[DealerIndex].Id;
                 FirstPlayerId = DealerIndex;
             }
            

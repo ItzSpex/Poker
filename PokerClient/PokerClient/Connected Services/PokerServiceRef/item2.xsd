@@ -15,6 +15,7 @@
           <xs:element minOccurs="0" name="HasStarted" type="xs:boolean" />
           <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="Moves" nillable="true" type="q1:ArrayOfMove" />
           <xs:element minOccurs="0" name="NumOfPlayers" type="xs:int" />
+          <xs:element minOccurs="0" name="Players" nillable="true" type="tns:ArrayOfPlayerBL" />
           <xs:element minOccurs="0" name="PokerTableId" type="xs:int" />
         </xs:sequence>
       </xs:extension>
@@ -32,11 +33,62 @@
           <xs:element minOccurs="0" name="MinBet" type="xs:int" />
           <xs:element minOccurs="0" name="PokerTableName" nillable="true" type="xs:string" />
           <xs:element minOccurs="0" name="SecondCard" nillable="true" type="xs:string" />
-          <xs:element minOccurs="0" name="TablePot" type="xs:long" />
+          <xs:element minOccurs="0" name="TablePot" type="xs:int" />
           <xs:element minOccurs="0" name="ThirdCard" nillable="true" type="xs:string" />
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
   <xs:element name="PokerTable" nillable="true" type="tns:PokerTable" />
+  <xs:complexType name="ArrayOfPlayerBL">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PlayerBL" nillable="true" type="tns:PlayerBL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPlayerBL" nillable="true" type="tns:ArrayOfPlayerBL" />
+  <xs:complexType name="PlayerBL">
+    <xs:complexContent mixed="false">
+      <xs:extension base="tns:Player">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="PlayerBL" nillable="true" type="tns:PlayerBL" />
+  <xs:complexType name="Player">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q3="http://schemas.datacontract.org/2004/07/PokerDL.Models" base="q3:BaseIdentityEntity">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ChipsOnTable" type="xs:int" />
+          <xs:element minOccurs="0" name="FirstCard" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PlayerName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="PokerTableId" type="xs:int" />
+          <xs:element minOccurs="0" name="SecondCard" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element name="Player" nillable="true" type="tns:Player" />
+  <xs:complexType name="StartGameStatus">
+    <xs:sequence>
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="BigBlind" nillable="true" type="q4:Move" />
+      <xs:element minOccurs="0" name="DealerId" type="xs:int" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="PlayerCard1" nillable="true" type="q5:Card" />
+      <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="PlayerCard2" nillable="true" type="q6:Card" />
+      <xs:element minOccurs="0" name="PlayerId" type="xs:int" />
+      <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="SmallBlind" nillable="true" type="q7:Move" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StartGameStatus" nillable="true" type="tns:StartGameStatus" />
+  <xs:complexType name="TableStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="HasGameFinished" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsMyTurn" type="xs:boolean" />
+      <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="LastMove" nillable="true" type="q8:Move" />
+      <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="TableCards" nillable="true" type="q9:ArrayOfCard" />
+      <xs:element minOccurs="0" name="WinnerId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TableStatus" nillable="true" type="tns:TableStatus" />
 </xs:schema>

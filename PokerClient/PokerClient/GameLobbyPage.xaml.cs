@@ -23,43 +23,63 @@ namespace PokerClient
     /// </summary>
     public partial class GameLobbyPage : Page
     {
+        string Username = "";
+        int NumOfPlayers = 0;
+        List<PlayerBL> Players;
         DispatcherTimer myTimer = new DispatcherTimer();
-        public GameLobbyPage(PokerTableBL pokerTable)
+        public GameLobbyPage(PokerTableBL pokerTable, string username)
         {
             InitializeComponent();
             NameLabel.Content = pokerTable.PokerTableName;
-            MaxPlayersLabel.Content = pokerTable.NumOfPlayers.ToString();
+            NumOfPlayers = pokerTable.NumOfPlayers;
+            MaxPlayersLabel.Content = NumOfPlayers.ToString();
             MinBetLabel.Content = pokerTable.MinBet.ToString();
-            myTimer.Tick += new EventHandler(GetPlayersNames);
+            myTimer.Tick += new EventHandler(GetPlayersNamesAndGameStatus);
             myTimer.Interval = new TimeSpan(0, 0, 1);
             myTimer.Start();
+            Username = username;
+            Players = pokerTable.Players.ToList();
         }
-        public GameLobbyPage(string Name, int MaxPlayers, int MinBet)
+        public void GetPlayersNamesAndGameStatus(Object sender, EventArgs e)
         {
-            InitializeComponent();
-            NameLabel.Content = Name;
-            MaxPlayersLabel.Content = MaxPlayers.ToString();
-            MinBetLabel.Content = MinBet.ToString();
-            myTimer.Tick += new EventHandler(GetPlayersNames);
-            myTimer.Interval = new TimeSpan(0, 0, 1);
-            myTimer.Start();
+            string PlayerNames = "";
+            var serverResponse2 = MainWindow.client.UpdatePlayers();
+            if (serverResponse2.ErrorMsg == null)
+            {
+                Players = serverResponse2.Result.ToList();
+                foreach (PlayerBL player in Players)
+                {
+                    PlayerNames += player.PlayerName + ", ";
+                }
+                if (PlayerNames.Length > 0)
+                {
+                    PlayerNames = PlayerNames.Substring(0, PlayerNames.Length - 2);
+                }
+                CurrPlayersLabel.Content = PlayerNames;
+            }
+            var serverResponse = MainWindow.client.HasGameStarted();
+            if (serverResponse.Result)
+            {
+                MessageBox.Show("The game is starting", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                GamePage p = new GamePage(NumOfPlayers, Players);
+                this.NavigationService.Navigate(p, UriKind.Relative);
+                myTimer.Stop();
+            }
         }
-        public void GetPlayersNames(Object sender, EventArgs e)
+
+        private void LeaveTable_Btn_Click(object sender, RoutedEventArgs e)
         {
-            List<string> playerNames;
-            var serverResponse = MainWindow.client.GetCurrPlayerNames();
-            string currPlayers = "";
+            var serverResponse = MainWindow.client.LeaveTable();
             if (serverResponse.ErrorMsg == null)
             {
-                playerNames = serverResponse.Result.ToList();
-                foreach (string playerName in playerNames)
-                {
-                    currPlayers += playerName + ", ";
-                }
-                currPlayers = currPlayers.Substring(0, currPlayers.Length - 2);
-                CurrPlayersLabel.Content = currPlayers;
+                MessageBox.Show("Leave table request successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                TableMenuPage p = new TableMenuPage(Username);
+                this.NavigationService.Navigate(p, UriKind.Relative);
             }
-            
+            else
+            {
+                MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -15,7 +15,20 @@ namespace PokerDL.Models
         [DataMember]
         public string Password { get; set; }
         [DataMember]
-        public long Wallet { get; set; }
+        public int Wallet { get; set; }
 
+        public override bool Equals(object obj)
+        {
+            //Check for null and compare run-time types.
+            if ((obj == null) || !this.GetType().Equals(obj.GetType()))
+            {
+                return false;
+            }
+            else
+            {
+                UserInfo u = (UserInfo)obj;
+                return (Username == u.Username) && (Password == u.Password);
+            }
+        }
     }
 }

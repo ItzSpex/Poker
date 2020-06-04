@@ -23,13 +23,13 @@ namespace PokerClient
     {
         private string Username = "";
         private PokerTableBL currTable;
-        public ObservableCollection<PokerTableBL> pokerTables { get; set; }
+        public ObservableCollection<PokerTableBL> PokerTables { get; set; }
 
         public TableMenuPage(string username)
         {
             InitializeComponent();
-            pokerTables = new ObservableCollection<PokerTableBL>(MainWindow.client.GetExistingTables().Result);
-            TableList.ItemsSource = pokerTables;
+            PokerTables = new ObservableCollection<PokerTableBL>(MainWindow.client.GetExistingTables().Result);
+            TableList.ItemsSource = PokerTables;
             Username = username;
             UsernameTB.Text = username;
         }
@@ -42,8 +42,8 @@ namespace PokerClient
 
         private void RefreshList_Btn_Click(object sender, RoutedEventArgs e)
         {
-            pokerTables = new ObservableCollection<PokerTableBL>(MainWindow.client.GetExistingTables().Result);
-            TableList.ItemsSource = pokerTables;
+            PokerTables = new ObservableCollection<PokerTableBL>(MainWindow.client.GetExistingTables().Result);
+            TableList.ItemsSource = PokerTables;
         }
 
         private void JoinTable_Btn_Click(object sender, RoutedEventArgs e)
@@ -51,8 +51,9 @@ namespace PokerClient
             var serverResponse = MainWindow.client.JoinTable(currTable.PokerTableId);
             if (serverResponse.ErrorMsg == null)
             {
+                currTable = serverResponse.Result;
                 MessageBox.Show("Join table request successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                GameLobbyPage p = new GameLobbyPage(currTable);
+                GameLobbyPage p = new GameLobbyPage(currTable, Username);
                 this.NavigationService.Navigate(p, UriKind.Relative);
             }
             else
@@ -64,13 +65,30 @@ namespace PokerClient
 
         private void Logout_Btn_Click(object sender, RoutedEventArgs e)
         {
-
+            var serverResponse = MainWindow.client.Logout();
+            if(serverResponse.ErrorMsg == null)
+            {
+                MessageBox.Show("Logout request successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                LoginPage p = new LoginPage();
+                this.NavigationService.Navigate(p, UriKind.Relative);
+            }
+            else
+            {
+                MessageBox.Show("An unhandled exception just occurred: " + serverResponse.ErrorMsg, "Exception", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
 
         private void TableList_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            currTable = (PokerTableBL)TableList.SelectedItems[0];
-            JoinTable_Btn.IsEnabled = true;
+            try
+            {
+                currTable = (PokerTableBL)TableList.SelectedItems[0];
+                JoinTable_Btn.IsEnabled = true;
+            }
+            catch
+            {
+                TableList.UnselectAll();
+            }
             
         }
     }

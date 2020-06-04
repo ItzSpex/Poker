@@ -5,34 +5,64 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PokerClient"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="1080" d:DesignWidth="1920"
       Title="GamePage"
       Background="White">
 
     <Grid>
-        <Image Source="Resources\Poker Table.png"/>
-        <Grid x:Name="TwoPlayerGrid"/>
-
-        <Grid x:Name="ThreePlayerGrid">
-            <Viewbox Margin="-27,10,248,245">
-                <local:PlayerControl/>
-            </Viewbox>
-            <Viewbox Margin="236,10,14,245">
-                <local:PlayerControl />
-            </Viewbox>
-            <Viewbox Margin="77,205,88,48">
-                <local:MyControl/>
-            </Viewbox>
-        </Grid>
-        <Grid x:Name="FourPlayerGrid"/>
-
-
-        <Grid x:Name="FivePlayerGrid">
-
-        </Grid>
+        <Grid.Resources>
+            <Style TargetType="local:OpponentControl">
+                <Setter Property="Height" Value="300"/>
+                <Setter Property="Width" Value="300"/>
+            </Style>
+        </Grid.Resources>
+        <Image Source="Resources\PokerTable.png"/>
         <Grid x:Name="SixPlayerGrid">
+            <local:MyControl x:Name="FirstPlayer" Margin="769,684,705,35"/>
+            <local:OpponentControl x:Name="SecondPlayer" Angle="180" Margin="352,1026,1268,-296" Visibility="Hidden">
+                <local:OpponentControl.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-135"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </local:OpponentControl.RenderTransform>
+            </local:OpponentControl>
+            <local:OpponentControl x:Name="ThirdPlayer" Margin="177,240,1443,490" Visibility="Hidden">
+                <local:OpponentControl.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </local:OpponentControl.RenderTransform>
+            </local:OpponentControl>
+            <local:OpponentControl x:Name="FourthPlayer" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="833,36,787,0" Visibility="Hidden"/>
+            <local:OpponentControl x:Name="FifthPlayer" Margin="1543,51,77,679" Visibility="Hidden" >
+                <local:OpponentControl.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="45"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </local:OpponentControl.RenderTransform>
+            </local:OpponentControl>
+            <local:OpponentControl x:Name="SixthPlayer" Angle="180" Margin="1841,762,-221,-32" Visibility="Hidden">
+                <local:OpponentControl.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="135"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </local:OpponentControl.RenderTransform>
+            </local:OpponentControl>
 
+            <local:TableControl Margin="523,391,528,401"/>
         </Grid>
     </Grid>
-    
+
 </Page>

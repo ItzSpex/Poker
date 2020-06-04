@@ -22,6 +22,7 @@ namespace PokerClient
     public partial class CreateTablePage : Page
     {
         private string Username = "";
+        private PokerTableBL currTable;
         public CreateTablePage(string username)
         {
             InitializeComponent();
@@ -44,8 +45,9 @@ namespace PokerClient
                 var serverResponse = MainWindow.client.CreateTable(Name, Players, MinBet);
                 if (serverResponse.ErrorMsg == null)
                 {
+                    currTable = serverResponse.Result;
                     MessageBox.Show("Table created successfully", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                    GameLobbyPage p = new GameLobbyPage(Name, Players, MinBet);
+                    GameLobbyPage p = new GameLobbyPage(currTable, Username);
                     this.NavigationService.Navigate(p, UriKind.Relative);
                 }
                 else

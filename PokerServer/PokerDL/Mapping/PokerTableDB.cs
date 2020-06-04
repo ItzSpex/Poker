@@ -88,7 +88,7 @@ namespace PokerDL.Mapping
             this.command.Parameters.Add("@TablePot",
                 System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@MinBet",
-                System.Data.SqlDbType.Bit);
+                System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@DealerId",
                 System.Data.SqlDbType.Int);
             this.command.Parameters.Add("@FirstCard",

@@ -11,20 +11,10 @@ namespace PokerBL.ORM
 {
     public class Database
     {
-        private static List<UserInfo> users;
         public static UserInfo GetUserByCredentials(UserInfo requstedUser)
         {
-            UserInfo u = null;
-            users = ServiceHandler.LoggedInUsers;
-            if (users == null)
-            {
-                UserInfoDB userInfoDB = new UserInfoDB();
-                u = userInfoDB.GetByUsername(requstedUser.Username);
-            }
-            else
-            {
-                u = users.FirstOrDefault(item => item == requstedUser);
-            }
+            UserInfoDB userInfoDB = new UserInfoDB();
+            UserInfo u = userInfoDB.GetByUsername(requstedUser.Username);
             if (u == null)
             {
                 throw new Exception("User doesn't exist");

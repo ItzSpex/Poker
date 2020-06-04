@@ -2,20 +2,24 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace PokerBL.Models
 {
+    [DataContract]
     public class PlayerBL : Player
     {
-        public long CurrWallet { get; set; }
+        public int CurrWallet { get; set; }
         public List<Card> PersonalCards { get; set; }
         public bool IsPlayingThisGame { get; set; }
-        
+        [DataMember]
+        public int PlayerId { get; set; }   
         public PlayerBL(int TableId, UserInfo user)
         {
             Id = user.Id;
+            PlayerId = user.Id;
             PlayerName = user.Username;
             CurrWallet = user.Wallet;
             PokerTableId = TableId;

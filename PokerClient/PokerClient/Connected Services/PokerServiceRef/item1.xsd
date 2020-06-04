@@ -33,12 +33,25 @@
   <xs:element name="Move" nillable="true" type="tns:Move" />
   <xs:simpleType name="Operation">
     <xs:restriction base="xs:string">
-      <xs:enumeration value="Spectate" />
       <xs:enumeration value="Call" />
       <xs:enumeration value="Raise" />
       <xs:enumeration value="Fold" />
       <xs:enumeration value="Check" />
+      <xs:enumeration value="AllIn" />
     </xs:restriction>
   </xs:simpleType>
   <xs:element name="Operation" nillable="true" type="tns:Operation" />
+  <xs:complexType name="Card">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Face" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Suit" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Card" nillable="true" type="tns:Card" />
+  <xs:complexType name="ArrayOfCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Card" nillable="true" type="tns:Card" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCard" nillable="true" type="tns:ArrayOfCard" />
 </xs:schema>

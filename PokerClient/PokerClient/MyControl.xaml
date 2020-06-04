@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="PokerClient.MyControl"
+﻿<local:PlayerControl x:Class="PokerClient.MyControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,14 +6,21 @@
              xmlns:local="clr-namespace:PokerClient"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+    <Viewbox>
         <StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="Resources\Card Back.png" Height="212" Width="100"/>
-                <Image Source="Resources\Card Back.png" Height="212" Width="100" Margin="10,0,0,0"/>
+                <Image x:Name="FirstCardImage" Height="106" Width="50"/>
+                <Image x:Name="SecondCardImage" Height="106" Width="50" Margin="10,0,0,0"/>
+                <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                    <Image x:Name="BigBlind_Button" Source="Resources\BB Button.png" Height="30" Visibility="Hidden"/>
+                    <Image x:Name="Dealer_Button" Source="Resources\Dealer Button.png" Height="30" Margin="0,10,0,0" Visibility="Hidden"/>
+                    <Image x:Name="SmallBlind_Button" Source="Resources\SB Button.png" Height="30"  Margin="0,10,0,0" Visibility="Hidden"/>
+                </StackPanel>
             </StackPanel>
-            <Label x:Name="PlayerNameLabel" Content="Player Name" FontSize="20" HorizontalAlignment="Center"/>
-            <Label x:Name="BetLabel" Content="Bet" HorizontalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                <Label x:Name="PlayerNameLabel" FontSize="20" HorizontalAlignment="Center"/>
+                <Label x:Name="BetLabel" Content="{Binding BetAmountStr}" FontSize="20" HorizontalAlignment="Center" Margin="5,0,0,0"/>
+            </StackPanel>
         </StackPanel>
-    </Grid>
-</UserControl>
+    </Viewbox>
+</local:PlayerControl>

@@ -14,11 +14,11 @@ namespace PokerBL.Models
         [DataMember]
         public string PokerTableName { get; set; }
         [DataMember]
-        public long TablePot { get; set; }
+        public int TablePot { get; set; }
         [DataMember]
         public int MinBet { get; set; }
         [DataMember]
-        public int DealerId { get; set; }
+        public int DealerId { get; set; } = -1;
         [DataMember]
         public string FirstCard { get; set; }
         [DataMember]

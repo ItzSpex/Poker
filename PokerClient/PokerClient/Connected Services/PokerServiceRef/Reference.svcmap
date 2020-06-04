@@ -22,7 +22,6 @@
     <MetadataSource Address="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="item5.xsd" MetadataType="Schema" ID="6c82e2b0-44f8-4218-bfc1-0f0071a86222" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd5" />
     <MetadataFile FileName="item.xsd" MetadataType="Schema" ID="e44e5039-eed3-4ca1-bbbe-0d2d3d78fdd6" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd1" />
     <MetadataFile FileName="item.disco" MetadataType="Disco" ID="6d812e72-53d9-46ba-bd43-d2958b9743ee" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?disco" />
     <MetadataFile FileName="PokerService.wsdl" MetadataType="Wsdl" ID="fc77f1a0-b9ab-435a-a768-e2b2764310d1" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?wsdl" />

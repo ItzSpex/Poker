@@ -18,11 +18,12 @@ namespace PokerClient
     /// <summary>
     /// Interaction logic for MyControl.xaml
     /// </summary>
-    public partial class MyControl : UserControl
+    public partial class MyControl : PlayerControl
     {
         public MyControl()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
     }
 }

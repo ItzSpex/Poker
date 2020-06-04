@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/PokerService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/PokerService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models" />
-  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd5" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
-  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PokerDL.Models" />
   <xs:complexType name="ServerResponseOfint">
     <xs:annotation>
       <xs:appinfo>
@@ -17,20 +15,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServerResponseOfint" nillable="true" type="tns:ServerResponseOfint" />
-  <xs:complexType name="ServerResponseOfArrayOfPokerTableBLPWeT4Jje">
-    <xs:annotation>
-      <xs:appinfo>
-        <GenericType Name="ServerResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/PokerService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ArrayOfPokerTableBL" Namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models" />
-        </GenericType>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element minOccurs="0" name="ErrorMsg" nillable="true" type="xs:string" />
-      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PokerBL.Models" minOccurs="0" name="Result" nillable="true" type="q1:ArrayOfPokerTableBL" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ServerResponseOfArrayOfPokerTableBLPWeT4Jje" nillable="true" type="tns:ServerResponseOfArrayOfPokerTableBLPWeT4Jje" />
   <xs:complexType name="ServerResponseOfboolean">
     <xs:annotation>
       <xs:appinfo>
@@ -45,32 +29,74 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ServerResponseOfboolean" nillable="true" type="tns:ServerResponseOfboolean" />
-  <xs:complexType name="ServerResponseOfArrayOfstringuHEDJ7Dj">
+  <xs:complexType name="ServerResponseOfArrayOfPokerTableBLPWeT4Jje">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="ServerResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/PokerService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ArrayOfstring" Namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+          <GenericParameter Name="ArrayOfPokerTableBL" Namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models" />
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
       <xs:element minOccurs="0" name="ErrorMsg" nillable="true" type="xs:string" />
-      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="Result" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/PokerBL.Models" minOccurs="0" name="Result" nillable="true" type="q1:ArrayOfPokerTableBL" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ServerResponseOfArrayOfstringuHEDJ7Dj" nillable="true" type="tns:ServerResponseOfArrayOfstringuHEDJ7Dj" />
-  <xs:complexType name="ServerResponseOfArrayOfMovezbAl9a06">
+  <xs:element name="ServerResponseOfArrayOfPokerTableBLPWeT4Jje" nillable="true" type="tns:ServerResponseOfArrayOfPokerTableBLPWeT4Jje" />
+  <xs:complexType name="ServerResponseOfPokerTableBLPWeT4Jje">
     <xs:annotation>
       <xs:appinfo>
         <GenericType Name="ServerResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/PokerService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
-          <GenericParameter Name="ArrayOfMove" Namespace="http://schemas.datacontract.org/2004/07/PokerDL.Models" />
+          <GenericParameter Name="PokerTableBL" Namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models" />
         </GenericType>
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
       <xs:element minOccurs="0" name="ErrorMsg" nillable="true" type="xs:string" />
-      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PokerDL.Models" minOccurs="0" name="Result" nillable="true" type="q3:ArrayOfMove" />
+      <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/PokerBL.Models" minOccurs="0" name="Result" nillable="true" type="q2:PokerTableBL" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ServerResponseOfArrayOfMovezbAl9a06" nillable="true" type="tns:ServerResponseOfArrayOfMovezbAl9a06" />
+  <xs:element name="ServerResponseOfPokerTableBLPWeT4Jje" nillable="true" type="tns:ServerResponseOfPokerTableBLPWeT4Jje" />
+  <xs:complexType name="ServerResponseOfStartGameStatusPWeT4Jje">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ServerResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/PokerService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="StartGameStatus" Namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMsg" nillable="true" type="xs:string" />
+      <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/PokerBL.Models" minOccurs="0" name="Result" nillable="true" type="q3:StartGameStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerResponseOfStartGameStatusPWeT4Jje" nillable="true" type="tns:ServerResponseOfStartGameStatusPWeT4Jje" />
+  <xs:complexType name="ServerResponseOfTableStatusPWeT4Jje">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ServerResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/PokerService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="TableStatus" Namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMsg" nillable="true" type="xs:string" />
+      <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/PokerBL.Models" minOccurs="0" name="Result" nillable="true" type="q4:TableStatus" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerResponseOfTableStatusPWeT4Jje" nillable="true" type="tns:ServerResponseOfTableStatusPWeT4Jje" />
+  <xs:complexType name="ServerResponseOfArrayOfPlayerBLPWeT4Jje">
+    <xs:annotation>
+      <xs:appinfo>
+        <GenericType Name="ServerResponseOf{0}{#}" Namespace="http://schemas.datacontract.org/2004/07/PokerService" xmlns="http://schemas.microsoft.com/2003/10/Serialization/">
+          <GenericParameter Name="ArrayOfPlayerBL" Namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models" />
+        </GenericType>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMsg" nillable="true" type="xs:string" />
+      <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/PokerBL.Models" minOccurs="0" name="Result" nillable="true" type="q5:ArrayOfPlayerBL" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServerResponseOfArrayOfPlayerBLPWeT4Jje" nillable="true" type="tns:ServerResponseOfArrayOfPlayerBLPWeT4Jje" />
 </xs:schema>

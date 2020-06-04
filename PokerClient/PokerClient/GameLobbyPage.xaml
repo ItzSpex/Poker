@@ -28,6 +28,7 @@
                 <Label Content="Players:"/>
                 <Label x:Name="CurrPlayersLabel" IsEnabled="False"/>
             </StackPanel>
+            <Button x:Name="LeaveTable_Btn" Content="Leave Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="0,10,0,0" Click="LeaveTable_Btn_Click"/>
         </StackPanel>
     </Grid>
 </Page>

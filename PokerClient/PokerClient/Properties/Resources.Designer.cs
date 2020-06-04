@@ -63,6 +63,16 @@ namespace PokerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BB_Button {
+            get {
+                object obj = ResourceManager.GetObject("BB_Button", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Card_Back {
             get {
                 object obj = ResourceManager.GetObject("Card_Back", resourceCulture);
@@ -196,6 +206,16 @@ namespace PokerClient.Properties {
         internal static System.Drawing.Bitmap Clubs_9 {
             get {
                 object obj = ResourceManager.GetObject("Clubs_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Dealer_Button {
+            get {
+                object obj = ResourceManager.GetObject("Dealer_Button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -463,9 +483,19 @@ namespace PokerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Poker_Table {
+        internal static System.Drawing.Bitmap PokerTable {
             get {
-                object obj = ResourceManager.GetObject("Poker_Table", resourceCulture);
+                object obj = ResourceManager.GetObject("PokerTable", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap SB_Button {
+            get {
+                object obj = ResourceManager.GetObject("SB_Button", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -12,12 +12,14 @@ namespace PokerBL.Models
 {
     public class ServiceHandler
     {
+        public enum PlayerStates { InMenu , InTable, InGame };
         public static List<UserInfo> LoggedInUsers;
         public static List<PokerTableBL> Tables;
         UserInfo myUser;
         PokerTableBL myTable;
         PlayerBL myPlayer;
         TableStatus tableStatus;
+        PlayerStates myState;
         public ServiceHandler()
         {
             if (Tables == null)
@@ -37,9 +39,13 @@ namespace PokerBL.Models
                 Username = username,
                 Password = password
             };
-            myUser = Database.GetUserByCredentials(myUser);
-            LoggedInUsers.Add(myUser);
-            return myUser.Id;
+            if (!LoggedInUsers.Contains(myUser))
+            {
+                myUser = Database.GetUserByCredentials(myUser);
+                LoggedInUsers.Add(myUser);
+                return myUser.Id;
+            }
+            throw new Exception("User already Logged in");
         }
 
         public int Signup(string username, string password)
@@ -58,42 +64,44 @@ namespace PokerBL.Models
         public bool Logout()
         {
             UserCheck();
+            if(myState == PlayerStates.InTable)
+            {
+                LeaveTable();
+            }
             LoggedInUsers.Remove(myUser);
             return true;
         }
 
-        public bool CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
+        public PokerTableBL CreateTable(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
             UserCheck();
             myTable = new PokerTableBL(PokerTableName, NumOfPlayers, MinBetAmount);
             myPlayer = new PlayerBL(myTable.Id, myUser);
             myTable.Players.Add(myPlayer);
             Tables.Add(myTable);
-            return true;
+            myState = PlayerStates.InTable;
+            return myTable;
         }
-
-        public string GetCurrPlayerNames()
+        public List<PlayerBL> GetPlayers()
         {
-            string PlayerNames = "";
-            UserCheck();
-            foreach (PlayerBL player in myTable.Players)
-            {
-                PlayerNames += player.PlayerName;
-            }
-            return PlayerNames;
+            return myTable.Players;
         }
-
-        public bool JoinTable(int TableId)
+        public PokerTableBL JoinTable(int TableId)
         {
             UserCheck();
             foreach (PokerTableBL table in Tables)
             {
-                if (table.Id == TableId)
+                if (table.Id == TableId )
                 {
-                    myTable = table;
-                    myPlayer = new PlayerBL(myTable.Id, myUser);
-                    table.Players.Add(myPlayer);
-                    return true;
+                    if(table.NumOfPlayers != table.Players.Count)
+                    {
+                        myTable = table;
+                        myPlayer = new PlayerBL(myTable.Id, myUser);
+                        table.Players.Add(myPlayer);
+                        myState = PlayerStates.InTable;
+                        return table;
+                    }
+                    throw new Exception("The table is full");
                 }
             }
             throw new Exception("An error occured while joining this table");
@@ -179,14 +187,36 @@ namespace PokerBL.Models
             return true;
         }
 
-        public bool StartGame()
+        public StartGameStatus StartGame()
         {
+            StartGameStatus startGameStatus = new StartGameStatus();
             UserCheck();
             Move smallBlind, bigBlind;
-            myPlayer = new PlayerBL(myTable.Id,myUser);
+            myPlayer = new PlayerBL(myTable.Id, myUser);
             myPlayer.GeneratePersonalCards(myTable);
             myTable.GenerateDealerIndex();
-            if (myTable.DealerIndex == myTable.NumOfPlayers - 1)
+            if(myTable.NumOfPlayers == 2)
+            {
+                if(myTable.DealerId == 0)
+                {
+                    smallBlind = new Move(Operation.Raise, myTable.MinBet, myTable.Players[1].Id, myTable.Id);
+                    myTable.CurrTurn = 1;
+                    myTable.Moves.Add(smallBlind);
+                    SwitchTurns();
+                }
+                else
+                {
+                    smallBlind = new Move(Operation.Raise, myTable.MinBet, myTable.Players[0].Id, myTable.Id);
+                    myTable.CurrTurn = 0;
+                    myTable.Moves.Add(smallBlind);
+                    SwitchTurns();
+                }
+                bigBlind = new Move(Operation.Raise, myTable.MinBet, myTable.DealerId, myTable.Id);
+                myTable.Moves.Add(bigBlind);
+                SwitchTurns();
+
+            }
+            else if (myTable.DealerIndex == myTable.NumOfPlayers - 1)
             {
                 smallBlind = new Move(Operation.Raise, myTable.MinBet, myTable.Players[0].Id, myTable.Id);
                 myTable.CurrTurn = 0;
@@ -217,7 +247,13 @@ namespace PokerBL.Models
                 SwitchTurns();
             }
             myTable.CurrRound++;
-            return true;
+            startGameStatus.SmallBlind = smallBlind;
+            startGameStatus.BigBlind = bigBlind;
+            startGameStatus.PlayerCard1 = myPlayer.PersonalCards[0];
+            startGameStatus.PlayerCard2 = myPlayer.PersonalCards[1];
+            startGameStatus.DealerId = myTable.DealerId;
+            startGameStatus.PlayerId = myPlayer.Id;
+            return startGameStatus;
         }
 
         public void SwitchTurns()
@@ -277,9 +313,13 @@ namespace PokerBL.Models
             List<SidePot> sidePots = handEvaluator.SpreadMoneyToWinners();
             return sidePots[0].Winners[0].Id;
         }
+        public bool HasGameStarted()
+        {
+            return myTable.Players.Count == myTable.NumOfPlayers;
+        }
         private void UserCheck()
         {
-            if(!LoggedInUsers.Contains(myUser))
+            if (!LoggedInUsers.Contains(myUser))
             {
                 throw new Exception("You are not logged in yet, Please restart the program");
             }

@@ -3,6 +3,7 @@ using PokerDL.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -12,7 +13,8 @@ namespace PokerBL.Models
     public enum Round { Deal, PreFlop, Flop, Turn, River, Showdown }
     public class Deck
     {
-        public Queue<Card> cards = new Queue<Card>(52);
+        const int DeckSize = 52;
+        public Queue<Card> cards = new Queue<Card>(DeckSize);
         readonly string[] numbers = new string[] { "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12", "13", "14" };
         public Deck()
         {
@@ -39,23 +41,29 @@ namespace PokerBL.Models
         }
         public void ShuffleCards()
         {
-            Random r = new Random();
             List<Card> CardList = new List<Card>();
-            for (int i = 0; i < cards.Count; i++)
+            for (int i = 0; i < DeckSize; i++)
             {
                 CardList.Add(cards.Dequeue());
             }
             //Shuffling Cards:
-            for (int i = CardList.Count - 1; i > 0; --i)
-            {
-                int j = r.Next(i + 1);
-                Card temp = CardList[i];
-                CardList[i] = CardList[j];
-                CardList[j] = temp;
-            }
+            Shuffle(CardList);
             foreach (Card card in CardList)
             {
                 cards.Enqueue(card);
+            }
+        }
+        private void Shuffle<T>(IList<T> list)
+        {
+            Random rng = new Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                T value = list[k];
+                list[k] = list[n];
+                list[n] = value;
             }
         }
         public Card GetCard()
@@ -80,5 +88,21 @@ namespace PokerBL.Models
             }
             return RequestedCardList;
         }
+    }
+    [DataContract]
+    public class StartGameStatus
+    {
+        [DataMember]
+        public Card PlayerCard1 { get; set; }
+        [DataMember]
+        public Card PlayerCard2 { get; set; }
+        [DataMember]
+        public Move SmallBlind { get; set; }
+        [DataMember]
+        public Move BigBlind { get; set; }
+        [DataMember]
+        public int PlayerId { get; set; }
+        [DataMember]
+        public int DealerId { get; set; }
     }
 }
