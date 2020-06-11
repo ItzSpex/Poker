@@ -243,6 +243,7 @@ namespace PokerBL.Models
         public List<PokerTable> GetHistoryTables()
         {
             UserCheck();
+            Database.ClearEmptyTables();
             return Database.GetAllTables(myUser.Id);
         }
         public bool ExecuteMove(Operation op, int bidAmount)
@@ -344,8 +345,6 @@ namespace PokerBL.Models
                         myTable.FirstPlayerId = myTable.TableStatus.LastMove.PlayerId;
                     }
                     myPlayer.IsPlayingThisGame = false;
-                    UpdateFoldingUserWalletInDB();
-                    myTable.Players.Remove(myPlayer);
                     myTable.NumOfPlayers--;
                     SwitchTurns();
                     if (myTable.NumOfPlayers == 1)
@@ -488,7 +487,7 @@ namespace PokerBL.Models
         public void SwitchTurns()
         {
             UserCheck();
-            UpdateNumOfPlayers();
+            //UpdateNumOfPlayers();
             if (myTable.NumOfPlayers == 1)
             {
                 myTable.CurrRound = Round.Showdown;
@@ -677,76 +676,6 @@ namespace PokerBL.Models
                 Database.UpdateUser(myUser);
             }
         }
-        public void UpdateFoldingUserWalletInDB()
-        {
-            PokerTableBL tableBL = myTable;
-            //Updating table from static List
-            foreach (PokerTableBL pokerTable in Tables)
-            {
-                if (pokerTable.Id == myTable.Id)
-                {
-                    tableBL = pokerTable;
-                }
-            }
-            PokerTable table = new PokerTable()
-            {
-                PokerTableName = tableBL.PokerTableName,
-                TablePot = tableBL.TablePot,
-                MinBet = tableBL.MinBet,
-                DealerId = tableBL.DealerId
-            };
-            switch (tableBL.TableStatus.TableCards.Count)
-            {
-                case 1:
-                    table.FirstCard = tableBL.TableStatus.TableCards[0].ToString();
-                    table.SecondCard = "";
-                    table.ThirdCard = "";
-                    table.FourthCard = "";
-                    table.FifthCard = "";
-                    break;
-                case 2:
-                    table.FirstCard = tableBL.TableStatus.TableCards[0].ToString();
-                    table.SecondCard = tableBL.TableStatus.TableCards[1].ToString();
-                    table.ThirdCard = "";
-                    table.FourthCard = "";
-                    table.FifthCard = "";
-                    break;
-                case 3:
-                    table.FirstCard = tableBL.TableStatus.TableCards[0].ToString();
-                    table.SecondCard = tableBL.TableStatus.TableCards[1].ToString();
-                    table.ThirdCard = tableBL.TableStatus.TableCards[2].ToString();
-                    table.FourthCard = "";
-                    table.FifthCard = "";
-                    break;
-                case 4:
-                    table.FirstCard = tableBL.TableStatus.TableCards[0].ToString();
-                    table.SecondCard = tableBL.TableStatus.TableCards[1].ToString();
-                    table.ThirdCard = tableBL.TableStatus.TableCards[2].ToString();
-                    table.FourthCard = tableBL.TableStatus.TableCards[3].ToString();
-                    table.FifthCard = "";
-                    break;
-                case 5:
-                    table.FirstCard = tableBL.TableStatus.TableCards[0].ToString();
-                    table.SecondCard = tableBL.TableStatus.TableCards[1].ToString();
-                    table.ThirdCard = tableBL.TableStatus.TableCards[2].ToString();
-                    table.FourthCard = tableBL.TableStatus.TableCards[3].ToString();
-                    table.FifthCard = tableBL.TableStatus.TableCards[4].ToString();
-                    break;
-            }
-            myTable.Id = Database.InsertTable(table);
-            myUser.Wallet -= myPlayer.ChipsOnTable;
-            Database.UpdateUser(myUser);
-            Player player = new Player()
-            {
-                PokerTableId = myTable.Id,
-                PlayerId = myPlayer.PlayerId,
-                PlayerName = myPlayer.PlayerName,
-                ChipsOnTable = myPlayer.ChipsOnTable,
-                FirstCard = myPlayer.PersonalCards[0].ToString(),
-                SecondCard = myPlayer.PersonalCards[1].ToString()
-            };
-            PlayerIds.Add(Database.InsertPlayer(player));
-        }
         public void UpdateHistoryInDB()
         {
             PokerTableBL tableBL = myTable;
@@ -857,6 +786,7 @@ namespace PokerBL.Models
                 move.PokerTableId = myTable.Id;
                 Database.InsertMove(move);
             }
+            Database.ClearEmptyTables();
         }
         public void UpdatePersonalCardsInStaticList()
         {

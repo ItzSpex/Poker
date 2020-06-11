@@ -89,6 +89,24 @@ namespace PokerBL.ORM
             }
             return newPokerTable.Id;
         }
+        public static void ClearEmptyTables()
+        {
+            PokerTableDB pokerTableDB = new PokerTableDB();
+            PlayerDB playerDB = new PlayerDB();
+            List<PokerTable> pokerTables = pokerTableDB.GetEmptyTables();
+            if (pokerTables != null)
+            {
+                foreach (PokerTable pokerTable in pokerTables)
+                {
+                    playerDB.DeletePlayersByTableId(pokerTable.Id);
+                }
+
+                for (int i = 0; i < pokerTables.Count; i++)
+                {
+                    DeleteTable(pokerTables[i]);
+                }
+            }
+        }
         public static int InsertPlayer(Player newPlayer)
         {
             PlayerDB playerDB = new PlayerDB();

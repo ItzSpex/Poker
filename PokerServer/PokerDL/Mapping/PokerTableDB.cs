@@ -9,6 +9,17 @@ namespace PokerDL.Mapping
 {
     public class PokerTableDB : BaseDB<PokerTable>
     {
+        public List<PokerTable> GetEmptyTables()
+        {
+            command.CommandText = "SELECT * FROM POKERTABLE WHERE Player1Id = " + -1 + " AND Player2Id = " + -1 + " AND Player3Id = " + -1
+            + " AND Player4Id = " + -1 + " AND Player5Id = " + -1;
+            var l = Select();
+            if (l.Count > 0)
+            {
+                return l;
+            }
+            return null;
+        }
         public PokerTable GetTableById(int PokerTableId)
         {
             command.CommandText = "SELECT * FROM POKERTABLE WHERE PokerTableId = " + PokerTableId;
@@ -113,5 +124,7 @@ namespace PokerDL.Mapping
             this.command.Parameters["@Player4Id"].Value = model.Player4Id;
             this.command.Parameters["@Player5Id"].Value = model.Player5Id;
         }
+
+        
     }
 }
