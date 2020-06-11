@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 namespace PokerDL.Models
 {
     [DataContract]
+#pragma warning disable CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     public class UserInfo : BaseIdentityEntity
+#pragma warning restore CS0659 // Type overrides Object.Equals(object o) but does not override Object.GetHashCode()
     {
         [DataMember]
         public string Username { get; set; }

@@ -2,6 +2,7 @@
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/PokerService" />
   <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/PokerDL.Models" />
+  <xs:import schemaLocation="http://localhost:8733/Design_Time_Addresses/PokerService2/PokerService/?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models" />
   <xs:element name="SignUp">
     <xs:complexType>
       <xs:sequence>
@@ -158,6 +159,70 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="UpdatePlayersResult" nillable="true" type="q13:ServerResponseOfArrayOfPlayerBLPWeT4Jje" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWallet">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWalletResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="GetWalletResult" nillable="true" type="q14:ServerResponseOfint" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistoryTables">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHistoryTablesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="GetHistoryTablesResult" nillable="true" type="q15:ServerResponseOfArrayOfPokerTablePWeT4Jje" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InitHistoryMoves">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TableId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InitHistoryMovesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="InitHistoryMovesResult" nillable="true" type="q16:ServerResponseOfboolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteHistoryMove">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteHistoryMoveResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="ExecuteHistoryMoveResult" nillable="true" type="q17:ServerResponseOfboolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTableByHistory">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/PokerBL.Models" minOccurs="0" name="replayTable" nillable="true" type="q18:PokerTable" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTableByHistoryResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/PokerService" minOccurs="0" name="GetTableByHistoryResult" nillable="true" type="q19:ServerResponseOfPokerTableBLPWeT4Jje" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

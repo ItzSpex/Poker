@@ -303,10 +303,10 @@ namespace PokerClient.PokerServiceRef {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="BaseEntity", Namespace="http://schemas.datacontract.org/2004/07/PokerDL.Models")]
     [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.BaseIdentityEntity))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.Move))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.Player))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.PlayerBL))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.BaseIdentityEntity))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.PokerTable))]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.PokerTableBL))]
     public partial class BaseEntity : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -336,24 +336,15 @@ namespace PokerClient.PokerServiceRef {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="BaseIdentityEntity", Namespace="http://schemas.datacontract.org/2004/07/PokerDL.Models")]
-    [System.SerializableAttribute()]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.Move))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.Player))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.PlayerBL))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.PokerTable))]
-    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.PokerTableBL))]
-    public partial class BaseIdentityEntity : PokerClient.PokerServiceRef.BaseEntity {
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="Move", Namespace="http://schemas.datacontract.org/2004/07/PokerDL.Models")]
     [System.SerializableAttribute()]
-    public partial class Move : PokerClient.PokerServiceRef.BaseIdentityEntity {
+    public partial class Move : PokerClient.PokerServiceRef.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int BidAmountField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int MoveNumberField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private PokerClient.PokerServiceRef.Operation OperationField;
@@ -373,6 +364,19 @@ namespace PokerClient.PokerServiceRef {
                 if ((this.BidAmountField.Equals(value) != true)) {
                     this.BidAmountField = value;
                     this.RaisePropertyChanged("BidAmount");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int MoveNumber {
+            get {
+                return this.MoveNumberField;
+            }
+            set {
+                if ((this.MoveNumberField.Equals(value) != true)) {
+                    this.MoveNumberField = value;
+                    this.RaisePropertyChanged("MoveNumber");
                 }
             }
         }
@@ -422,13 +426,16 @@ namespace PokerClient.PokerServiceRef {
     [System.Runtime.Serialization.DataContractAttribute(Name="Player", Namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models")]
     [System.SerializableAttribute()]
     [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.PlayerBL))]
-    public partial class Player : PokerClient.PokerServiceRef.BaseIdentityEntity {
+    public partial class Player : PokerClient.PokerServiceRef.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int ChipsOnTableField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string FirstCardField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int PlayerIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PlayerNameField;
@@ -461,6 +468,19 @@ namespace PokerClient.PokerServiceRef {
                 if ((object.ReferenceEquals(this.FirstCardField, value) != true)) {
                     this.FirstCardField = value;
                     this.RaisePropertyChanged("FirstCard");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int PlayerId {
+            get {
+                return this.PlayerIdField;
+            }
+            set {
+                if ((this.PlayerIdField.Equals(value) != true)) {
+                    this.PlayerIdField = value;
+                    this.RaisePropertyChanged("PlayerId");
                 }
             }
         }
@@ -510,19 +530,28 @@ namespace PokerClient.PokerServiceRef {
     [System.Runtime.Serialization.DataContractAttribute(Name="PlayerBL", Namespace="http://schemas.datacontract.org/2004/07/PokerBL.Models")]
     [System.SerializableAttribute()]
     public partial class PlayerBL : PokerClient.PokerServiceRef.Player {
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="BaseIdentityEntity", Namespace="http://schemas.datacontract.org/2004/07/PokerDL.Models")]
+    [System.SerializableAttribute()]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.PokerTable))]
+    [System.Runtime.Serialization.KnownTypeAttribute(typeof(PokerClient.PokerServiceRef.PokerTableBL))]
+    public partial class BaseIdentityEntity : PokerClient.PokerServiceRef.BaseEntity {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int PlayerIdField;
+        private int IdField;
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int PlayerId {
+        public int Id {
             get {
-                return this.PlayerIdField;
+                return this.IdField;
             }
             set {
-                if ((this.PlayerIdField.Equals(value) != true)) {
-                    this.PlayerIdField = value;
-                    this.RaisePropertyChanged("PlayerId");
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
                 }
             }
         }
@@ -549,6 +578,21 @@ namespace PokerClient.PokerServiceRef {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int MinBetField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Player1IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Player2IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Player3IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Player4IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int Player5IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string PokerTableNameField;
@@ -623,6 +667,71 @@ namespace PokerClient.PokerServiceRef {
                 if ((this.MinBetField.Equals(value) != true)) {
                     this.MinBetField = value;
                     this.RaisePropertyChanged("MinBet");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Player1Id {
+            get {
+                return this.Player1IdField;
+            }
+            set {
+                if ((this.Player1IdField.Equals(value) != true)) {
+                    this.Player1IdField = value;
+                    this.RaisePropertyChanged("Player1Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Player2Id {
+            get {
+                return this.Player2IdField;
+            }
+            set {
+                if ((this.Player2IdField.Equals(value) != true)) {
+                    this.Player2IdField = value;
+                    this.RaisePropertyChanged("Player2Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Player3Id {
+            get {
+                return this.Player3IdField;
+            }
+            set {
+                if ((this.Player3IdField.Equals(value) != true)) {
+                    this.Player3IdField = value;
+                    this.RaisePropertyChanged("Player3Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Player4Id {
+            get {
+                return this.Player4IdField;
+            }
+            set {
+                if ((this.Player4IdField.Equals(value) != true)) {
+                    this.Player4IdField = value;
+                    this.RaisePropertyChanged("Player4Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Player5Id {
+            get {
+                return this.Player5IdField;
+            }
+            set {
+                if ((this.Player5IdField.Equals(value) != true)) {
+                    this.Player5IdField = value;
+                    this.RaisePropertyChanged("Player5Id");
                 }
             }
         }
@@ -1091,7 +1200,7 @@ namespace PokerClient.PokerServiceRef {
         private PokerClient.PokerServiceRef.Card[] TableCardsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int WinnerIdField;
+        private int[] WinnerIdsField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1156,14 +1265,14 @@ namespace PokerClient.PokerServiceRef {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int WinnerId {
+        public int[] WinnerIds {
             get {
-                return this.WinnerIdField;
+                return this.WinnerIdsField;
             }
             set {
-                if ((this.WinnerIdField.Equals(value) != true)) {
-                    this.WinnerIdField = value;
-                    this.RaisePropertyChanged("WinnerId");
+                if ((object.ReferenceEquals(this.WinnerIdsField, value) != true)) {
+                    this.WinnerIdsField = value;
+                    this.RaisePropertyChanged("WinnerIds");
                 }
             }
         }
@@ -1218,6 +1327,67 @@ namespace PokerClient.PokerServiceRef {
         
         [System.Runtime.Serialization.DataMemberAttribute()]
         public PokerClient.PokerServiceRef.PlayerBL[] Result {
+            get {
+                return this.ResultField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ResultField, value) != true)) {
+                    this.ResultField = value;
+                    this.RaisePropertyChanged("Result");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServerResponseOfArrayOfPokerTablePWeT4Jje", Namespace="http://schemas.datacontract.org/2004/07/PokerService")]
+    [System.SerializableAttribute()]
+    public partial class ServerResponseOfArrayOfPokerTablePWeT4Jje : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ErrorMsgField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private PokerClient.PokerServiceRef.PokerTable[] ResultField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string ErrorMsg {
+            get {
+                return this.ErrorMsgField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ErrorMsgField, value) != true)) {
+                    this.ErrorMsgField = value;
+                    this.RaisePropertyChanged("ErrorMsg");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public PokerClient.PokerServiceRef.PokerTable[] Result {
             get {
                 return this.ResultField;
             }
@@ -1314,6 +1484,36 @@ namespace PokerClient.PokerServiceRef {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/UpdatePlayers", ReplyAction="http://tempuri.org/IPokerService/UpdatePlayersResponse")]
         System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfArrayOfPlayerBLPWeT4Jje> UpdatePlayersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetWallet", ReplyAction="http://tempuri.org/IPokerService/GetWalletResponse")]
+        PokerClient.PokerServiceRef.ServerResponseOfint GetWallet();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetWallet", ReplyAction="http://tempuri.org/IPokerService/GetWalletResponse")]
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfint> GetWalletAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetHistoryTables", ReplyAction="http://tempuri.org/IPokerService/GetHistoryTablesResponse")]
+        PokerClient.PokerServiceRef.ServerResponseOfArrayOfPokerTablePWeT4Jje GetHistoryTables();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetHistoryTables", ReplyAction="http://tempuri.org/IPokerService/GetHistoryTablesResponse")]
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfArrayOfPokerTablePWeT4Jje> GetHistoryTablesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/InitHistoryMoves", ReplyAction="http://tempuri.org/IPokerService/InitHistoryMovesResponse")]
+        PokerClient.PokerServiceRef.ServerResponseOfboolean InitHistoryMoves(int TableId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/InitHistoryMoves", ReplyAction="http://tempuri.org/IPokerService/InitHistoryMovesResponse")]
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> InitHistoryMovesAsync(int TableId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/ExecuteHistoryMove", ReplyAction="http://tempuri.org/IPokerService/ExecuteHistoryMoveResponse")]
+        PokerClient.PokerServiceRef.ServerResponseOfboolean ExecuteHistoryMove();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/ExecuteHistoryMove", ReplyAction="http://tempuri.org/IPokerService/ExecuteHistoryMoveResponse")]
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> ExecuteHistoryMoveAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetTableByHistory", ReplyAction="http://tempuri.org/IPokerService/GetTableByHistoryResponse")]
+        PokerClient.PokerServiceRef.ServerResponseOfPokerTableBLPWeT4Jje GetTableByHistory(PokerClient.PokerServiceRef.PokerTable replayTable);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IPokerService/GetTableByHistory", ReplyAction="http://tempuri.org/IPokerService/GetTableByHistoryResponse")]
+        System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfPokerTableBLPWeT4Jje> GetTableByHistoryAsync(PokerClient.PokerServiceRef.PokerTable replayTable);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1437,6 +1637,46 @@ namespace PokerClient.PokerServiceRef {
         
         public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfArrayOfPlayerBLPWeT4Jje> UpdatePlayersAsync() {
             return base.Channel.UpdatePlayersAsync();
+        }
+        
+        public PokerClient.PokerServiceRef.ServerResponseOfint GetWallet() {
+            return base.Channel.GetWallet();
+        }
+        
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfint> GetWalletAsync() {
+            return base.Channel.GetWalletAsync();
+        }
+        
+        public PokerClient.PokerServiceRef.ServerResponseOfArrayOfPokerTablePWeT4Jje GetHistoryTables() {
+            return base.Channel.GetHistoryTables();
+        }
+        
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfArrayOfPokerTablePWeT4Jje> GetHistoryTablesAsync() {
+            return base.Channel.GetHistoryTablesAsync();
+        }
+        
+        public PokerClient.PokerServiceRef.ServerResponseOfboolean InitHistoryMoves(int TableId) {
+            return base.Channel.InitHistoryMoves(TableId);
+        }
+        
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> InitHistoryMovesAsync(int TableId) {
+            return base.Channel.InitHistoryMovesAsync(TableId);
+        }
+        
+        public PokerClient.PokerServiceRef.ServerResponseOfboolean ExecuteHistoryMove() {
+            return base.Channel.ExecuteHistoryMove();
+        }
+        
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfboolean> ExecuteHistoryMoveAsync() {
+            return base.Channel.ExecuteHistoryMoveAsync();
+        }
+        
+        public PokerClient.PokerServiceRef.ServerResponseOfPokerTableBLPWeT4Jje GetTableByHistory(PokerClient.PokerServiceRef.PokerTable replayTable) {
+            return base.Channel.GetTableByHistory(replayTable);
+        }
+        
+        public System.Threading.Tasks.Task<PokerClient.PokerServiceRef.ServerResponseOfPokerTableBLPWeT4Jje> GetTableByHistoryAsync(PokerClient.PokerServiceRef.PokerTable replayTable) {
+            return base.Channel.GetTableByHistoryAsync(replayTable);
         }
     }
 }

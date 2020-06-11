@@ -17,6 +17,14 @@ namespace PokerDL.Mapping
                 return l[0];
             return null;
         }
+        public UserInfo GetById(int UserId)
+        {
+            command.CommandText = "SELECT * FROM USERINFO WHERE PlayerId = " + UserId;
+            var l = Select();
+            if (l.Count == 1)
+                return l[0];
+            return null;
+        }
 
         protected override void GetModelColumns(UserInfo model)
         {
@@ -34,15 +42,15 @@ namespace PokerDL.Mapping
         protected override string GetSQLInsertString()
         {
             return "INSERT INTO USERINFO " +
-                "(Username, Password, Wallet)" +
+                "(Username, Password, Wallet) " +
                 "Values(@Username, @Password, @Wallet)";
         }
 
         protected override string GetSQLUpdateString(UserInfo model)
         {
-            return "UPDATE USERINFO Set " +
-                   "Username=@Username,Password=@Password, Wallet=@Wallet" +
-                   "Where PlayerId = " + model.Id;
+            return "UPDATE USERINFO " +
+                   "SET Username = @Username, Password = @Password, Wallet = @Wallet " +
+                   "WHERE PlayerId = " + model.Id;
 
         }
         protected override void SetSQLParameters(UserInfo model)

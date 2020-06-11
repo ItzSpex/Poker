@@ -21,12 +21,14 @@ namespace PokerClient
     /// </summary>
     public partial class CreateTablePage : Page
     {
+        private int Wallet = 0;
         private string Username = "";
         private PokerTableBL currTable;
-        public CreateTablePage(string username)
+        public CreateTablePage(string username, int wallet)
         {
             InitializeComponent();
             Username = username;
+            Wallet = wallet;
         }
 
         private void CreateTableBtn_Click(object sender, RoutedEventArgs e)
@@ -47,7 +49,7 @@ namespace PokerClient
                 {
                     currTable = serverResponse.Result;
                     MessageBox.Show("Table created successfully", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                    GameLobbyPage p = new GameLobbyPage(currTable, Username);
+                    GameLobbyPage p = new GameLobbyPage(currTable, Username, Wallet);
                     this.NavigationService.Navigate(p, UriKind.Relative);
                 }
                 else
@@ -58,7 +60,7 @@ namespace PokerClient
         }
         private void CancelBtn_Click(object sender, RoutedEventArgs e)
         {
-            TableMenuPage t = new TableMenuPage(Username);
+            TableMenuPage t = new TableMenuPage(Username, Wallet);
             this.NavigationService.Navigate(t, UriKind.Relative);
         }
 

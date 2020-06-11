@@ -28,6 +28,20 @@ namespace PokerService
             return serverResponse;
         }
 
+        public ServerResponse<bool> ExecuteHistoryMove()
+        {
+            ServerResponse<bool> serverResponse = new ServerResponse<bool>();
+            try
+            {
+                serverResponse.Result = serviceHandler.ExecuteNextMoveByHistory();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
         public ServerResponse<bool> ExecuteMove(Operation Operation, int BidAmount)
         {
             ServerResponse<bool> serverResponse = new ServerResponse<bool>();
@@ -41,13 +55,26 @@ namespace PokerService
             }
             return serverResponse;
         }
-
         public ServerResponse<List<PokerTableBL>> GetExistingTables()
         {
             ServerResponse<List<PokerTableBL>> serverResponse = new ServerResponse<List<PokerTableBL>>();
-            try 
+            try
             {
                 serverResponse.Result = serviceHandler.GetExistingTables();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
+        public ServerResponse<List<PokerTable>> GetHistoryTables()
+        {
+            ServerResponse<List<PokerTable>> serverResponse = new ServerResponse<List<PokerTable>>();
+            try
+            {
+                serverResponse.Result = serviceHandler.GetHistoryTables();
             }
             catch (Exception e)
             {
@@ -70,12 +97,40 @@ namespace PokerService
             return serverResponse;
         }
 
+        public ServerResponse<int> GetWallet()
+        {
+            ServerResponse<int> serverResponse = new ServerResponse<int>();
+            try
+            {
+                serverResponse.Result = serviceHandler.GetWallet();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
         public ServerResponse<bool> HasGameStarted()
         {
             ServerResponse<bool> serverResponse = new ServerResponse<bool>();
             try
             {
                 serverResponse.Result = serviceHandler.HasGameStarted();
+            }
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
+        public ServerResponse<PokerTableBL> GetTableByHistory(PokerTable replayTable)
+        {
+            ServerResponse<PokerTableBL> serverResponse = new ServerResponse<PokerTableBL>();
+            try
+            {
+                serverResponse.Result = serviceHandler.GetTableByHistory(replayTable);
             }
             catch (Exception e)
             {
@@ -114,11 +169,11 @@ namespace PokerService
 
         public ServerResponse<int> Login(string username, string password)
         {
-            
+
             ServerResponse<int> loginResponse = new ServerResponse<int>();
             try
             {
-                loginResponse.Result = serviceHandler.Login(username,password);  
+                loginResponse.Result = serviceHandler.Login(username, password);
             }
             catch (Exception e)
             {
@@ -146,7 +201,7 @@ namespace PokerService
             ServerResponse<int> signupResponse = new ServerResponse<int>();
             try
             {
-                signupResponse.Result = serviceHandler.Signup(username, password); 
+                signupResponse.Result = serviceHandler.Signup(username, password);
             }
             catch (Exception e)
             {
@@ -175,7 +230,21 @@ namespace PokerService
             {
                 serverResponse.Result = serviceHandler.GetPlayers();
             }
-            catch(Exception e)
+            catch (Exception e)
+            {
+                serverResponse.ErrorMsg = e.Message;
+            }
+            return serverResponse;
+        }
+
+        public ServerResponse<bool> InitHistoryMoves(int TableId)
+        {
+            ServerResponse<bool> serverResponse = new ServerResponse<bool>();
+            try
+            {
+                serverResponse.Result = serviceHandler.InitHistoryMoves(TableId);
+            }
+            catch (Exception e)
             {
                 serverResponse.ErrorMsg = e.Message;
             }

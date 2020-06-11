@@ -596,7 +596,7 @@ namespace PokerHandEvaluator
             return finalPots;
         }
 
-        public List<SidePot> SpreadMoneyToWinners()
+        public Tuple<List<SidePot>, List<List<HandRank>>> SpreadMoneyToWinners()
         {
             List<HandRank> handList = new List<HandRank>();
             List<SidePot> sidePotList = null;
@@ -665,8 +665,7 @@ namespace PokerHandEvaluator
                 }
             }
 
-            //Console.WriteLine(totalWinners);
-            return sidePotList;
+            return new Tuple<List<SidePot>, List<List<HandRank>>>(sidePotList, totalWinners);
         }
     }
 }

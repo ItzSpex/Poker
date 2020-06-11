@@ -29,5 +29,15 @@ namespace PokerBL.Models
         public string FourthCard { get; set; }
         [DataMember]
         public string FifthCard { get; set; }
+        [DataMember]
+        public int Player1Id { get; set; } = -1;
+        [DataMember]
+        public int Player2Id { get; set; } = -1;
+        [DataMember]
+        public int Player3Id { get; set; } = -1;
+        [DataMember]
+        public int Player4Id { get; set; } = -1;
+        [DataMember]
+        public int Player5Id { get; set; } = -1;
     }
 }

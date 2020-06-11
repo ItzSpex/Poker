@@ -1,4 +1,5 @@
-﻿using PokerClient.PokerServiceRef;
+﻿using PokerClient.HistoryPages;
+using PokerClient.PokerServiceRef;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -22,21 +23,25 @@ namespace PokerClient
     public partial class TableMenuPage : Page
     {
         private string Username = "";
+        private int Wallet;
         private PokerTableBL currTable;
         public ObservableCollection<PokerTableBL> PokerTables { get; set; }
 
-        public TableMenuPage(string username)
+        public TableMenuPage(string username, int wallet)
         {
             InitializeComponent();
+            Application.Current.MainWindow.WindowState = WindowState.Normal;
             PokerTables = new ObservableCollection<PokerTableBL>(MainWindow.client.GetExistingTables().Result);
             TableList.ItemsSource = PokerTables;
             Username = username;
             UsernameTB.Text = username;
+            Wallet = wallet;
+            WalletTB.Text = wallet.ToString();
         }
 
         private void CreateTable_Btn_Click(object sender, RoutedEventArgs e)
         {
-            CreateTablePage p = new CreateTablePage(Username);
+            CreateTablePage p = new CreateTablePage(Username, Wallet);
             this.NavigationService.Navigate(p, UriKind.Relative);
         }
 
@@ -53,7 +58,7 @@ namespace PokerClient
             {
                 currTable = serverResponse.Result;
                 MessageBox.Show("Join table request successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                GameLobbyPage p = new GameLobbyPage(currTable, Username);
+                GameLobbyPage p = new GameLobbyPage(currTable, Username, Wallet);
                 this.NavigationService.Navigate(p, UriKind.Relative);
             }
             else
@@ -91,5 +96,12 @@ namespace PokerClient
             }
             
         }
+
+        private void History_Btn_Click(object sender, RoutedEventArgs e)
+        {
+            HistoryPage p = new HistoryPage(Username, Wallet);
+            this.NavigationService.Navigate(p, UriKind.Relative);
+        }
+
     }
 }

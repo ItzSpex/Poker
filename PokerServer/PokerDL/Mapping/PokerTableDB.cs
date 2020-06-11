@@ -9,21 +9,20 @@ namespace PokerDL.Mapping
 {
     public class PokerTableDB : BaseDB<PokerTable>
     {
-        public PokerTable GetTableByName(string TableName)
+        public PokerTable GetTableById(int PokerTableId)
         {
-            command.CommandText = "SELECT * FROM POKERTABLE WHERE PokerTableName ='" + TableName + "'";
+            command.CommandText = "SELECT * FROM POKERTABLE WHERE PokerTableId = " + PokerTableId;
             var l = Select();
-            if(l.Count == 1)
+            if (l.Count == 1)
                 return l[0];
             return null;
         }
-        public List<PokerTable> GetTables()
+        public List<PokerTable> GetTables(int PlayerId)
         {
-            command.CommandText = "SELECT * FROM POKERTABLE";
+            command.CommandText = "SELECT * FROM POKERTABLE WHERE Player1Id = " + PlayerId + " OR Player2Id = " + PlayerId + " OR Player3Id = " + PlayerId
+            + " OR Player4Id = " + PlayerId + " OR Player5Id = " + PlayerId;
             var l = Select();
-            if (l.Count > 0)
-                return l;
-            return null;
+            return l;
         }
         protected override void GetModelColumns(PokerTable model)
         {
@@ -32,31 +31,16 @@ namespace PokerDL.Mapping
             model.TablePot = (int)reader["TablePot"];
             model.MinBet = (int)reader["MinBet"];
             model.DealerId = (int)reader["DealerId"];
-            model.FirstCard = null;
-            if (reader["Card1"] != DBNull.Value)
-            {
-                model.FirstCard = reader["Card1"].ToString();
-            }
-            model.SecondCard = null;
-            if (reader["Card2"] != DBNull.Value)
-            {
-                model.SecondCard = reader["Card2"].ToString();
-            }
-            model.ThirdCard = null;
-            if (reader["Card3"] != DBNull.Value)
-            {
-                model.ThirdCard = reader["Card3"].ToString();
-            }
-            model.FourthCard = null;
-            if (reader["Card4"] != DBNull.Value)
-            {
-                model.FourthCard = reader["Card4"].ToString();
-            }
-            model.FifthCard = null;
-            if (reader["Card5"] != DBNull.Value)
-            {
-                model.FifthCard = reader["Card5"].ToString();
-            }
+            model.FirstCard = reader["FirstCard"].ToString();
+            model.SecondCard = reader["SecondCard"].ToString();
+            model.ThirdCard = reader["ThirdCard"].ToString();
+            model.FourthCard = reader["FourthCard"].ToString();
+            model.FifthCard = reader["FifthCard"].ToString();
+            model.Player1Id = (int)reader["Player1Id"];
+            model.Player2Id = (int)reader["Player2Id"];
+            model.Player3Id = (int)reader["Player3Id"];
+            model.Player4Id = (int)reader["Player4Id"];
+            model.Player5Id = (int)reader["Player5Id"];
         }
 
         protected override string GetSQLDeleteString(PokerTable model)
@@ -67,15 +51,16 @@ namespace PokerDL.Mapping
         protected override string GetSQLInsertString()
         {
             return "INSERT INTO POKERTABLE " +
-                "(PokerTableName, TablePot, MinBet, DealerId,FirstCard, SecondCard, ThirdCard, FourthCard, FifthCard)" +
-                "Values(@PokerTableName, @TablePot, @MinBet, @DealerId, @FirstCard, @SecondCard, @ThirdCard, @FourthCard, @FifthCard)";
+                "(PokerTableName, TablePot, MinBet, DealerId, FirstCard, SecondCard, ThirdCard, FourthCard, FifthCard, Player1Id, Player2Id, Player3Id, Player4Id, Player5Id)" +
+                "Values(@PokerTableName, @TablePot, @MinBet, @DealerId, @FirstCard, @SecondCard, @ThirdCard, @FourthCard, @FifthCard, @Player1Id, @Player2Id, @Player3Id, @Player4Id, @Player5Id)";
         }
 
         protected override string GetSQLUpdateString(PokerTable model)
         {
             return "UPDATE POKERTABLE Set " +
                    "PokerTableName=@PokerTableName, TablePot=@TablePot, MinBet=@MinBet, DealerId=@DealerId ,FirstCard=@FirstCard, SecondCard=@SecondCard," +
-                   "ThirdCard=@ThirdCard,FourthCard=@FourthCard, FifthCard=@FifthCard" +
+                   "ThirdCard=@ThirdCard,FourthCard=@FourthCard, FifthCard=@FifthCard, Player1Id=@Player1Id, Player2Id=@Player2Id, Player3Id=@Player3Id," +
+                   "Player4Id=@Player4Id, Player5Id=@Player5Id " +
                    "Where PokerTableId = " + model.Id;
         }
 
@@ -101,32 +86,32 @@ namespace PokerDL.Mapping
                 System.Data.SqlDbType.NVarChar);
             this.command.Parameters.Add("@FifthCard",
                 System.Data.SqlDbType.NVarChar);
+            this.command.Parameters.Add("@Player1Id",
+                System.Data.SqlDbType.Int);
+            this.command.Parameters.Add("@Player2Id",
+                System.Data.SqlDbType.Int);
+            this.command.Parameters.Add("@Player3Id",
+                System.Data.SqlDbType.Int);
+            this.command.Parameters.Add("@Player4Id",
+                System.Data.SqlDbType.Int);
+            this.command.Parameters.Add("@Player5Id",
+                System.Data.SqlDbType.Int);
 
             this.command.Parameters["@PokerTableId"].Value = model.Id;
             this.command.Parameters["@PokerTableName"].Value = model.PokerTableName;
             this.command.Parameters["@TablePot"].Value = model.TablePot;
             this.command.Parameters["@MinBet"].Value = model.MinBet;
             this.command.Parameters["@DealerId"].Value = model.DealerId;
-            if (model.FirstCard == null)
-                this.command.Parameters["@Card1"].Value = DBNull.Value;
-            else
-                this.command.Parameters["@Card1"].Value = model.FirstCard;
-            if (model.SecondCard == null)
-                this.command.Parameters["@Card2"].Value = DBNull.Value;
-            else
-                this.command.Parameters["@Card2"].Value = model.SecondCard;
-            if (model.ThirdCard == null)
-                this.command.Parameters["@Card3"].Value = DBNull.Value;
-            else
-                this.command.Parameters["@Card3"].Value = model.ThirdCard;
-            if (model.FourthCard == null)
-                this.command.Parameters["@Card4"].Value = DBNull.Value;
-            else
-                this.command.Parameters["@Card4"].Value = model.FourthCard;
-            if (model.FifthCard == null)
-                this.command.Parameters["@Card5"].Value = DBNull.Value;
-            else
-                this.command.Parameters["@Card5"].Value = model.FifthCard;
+            this.command.Parameters["@FirstCard"].Value = model.FirstCard;
+            this.command.Parameters["@SecondCard"].Value = model.SecondCard;
+            this.command.Parameters["@ThirdCard"].Value = model.ThirdCard;
+            this.command.Parameters["@FourthCard"].Value = model.FourthCard;
+            this.command.Parameters["@FifthCard"].Value = model.FifthCard;
+            this.command.Parameters["@Player1Id"].Value = model.Player1Id;
+            this.command.Parameters["@Player2Id"].Value = model.Player2Id;
+            this.command.Parameters["@Player3Id"].Value = model.Player3Id;
+            this.command.Parameters["@Player4Id"].Value = model.Player4Id;
+            this.command.Parameters["@Player5Id"].Value = model.Player5Id;
         }
     }
 }

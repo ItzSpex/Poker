@@ -28,6 +28,7 @@ namespace PokerBL.Models
         public int DealerIndex { get; set; }
         public int FirstPlayerId { get; set; }
         public Round CurrRound { get; set; }
+        public TableStatus TableStatus { get; set; }
 
         public PokerTableBL(string PokerTableName, int NumOfPlayers, int MinBetAmount)
         {
@@ -40,6 +41,7 @@ namespace PokerBL.Models
             this.Players = new List<PlayerBL>();
             this.Moves = new List<Move>();
             this.CurrRound = Round.Deal;
+            this.TableStatus = new TableStatus();
         }
         public void GenerateDealerIndex()
         {
@@ -47,8 +49,8 @@ namespace PokerBL.Models
             {
                 Random r = new Random();
                 DealerIndex = r.Next(0, NumOfPlayers);
-                DealerId = Players[DealerIndex].Id;
-                FirstPlayerId = DealerIndex;
+                DealerId = Players[DealerIndex].PlayerId;
+                FirstPlayerId = DealerId;
             }
            
         }

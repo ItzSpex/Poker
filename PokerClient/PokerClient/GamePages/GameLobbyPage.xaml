@@ -11,24 +11,26 @@
       Title="GameLobbyPage">
 
     <Grid>
+        <Image Source="..\Resources\Green_Background.jpg" Stretch="UniformToFill"/>
+        <Image Source="..\Resources\Red_Background.png" Width="350" Height="350" Opacity="0.3"/>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal">
-                <Label Content="Table Name:"/>
-                <Label x:Name="NameLabel" IsEnabled="False"/>
+                <Label Content="Table Name:" FontFamily="Felix Titling"/>
+                <Label x:Name="NameLabel" FontFamily="Felix Titling"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <Label Content="Required players:"/>
-                <Label x:Name="MaxPlayersLabel" IsEnabled="False"/>
+                <Label Content="Required players:" FontFamily="Felix Titling"/>
+                <Label x:Name="MaxPlayersLabel" FontFamily="Felix Titling"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <Label Content="Min bet:"/>
-                <Label x:Name="MinBetLabel" IsEnabled="False"/>
+                <Label Content="Min bet:" FontFamily="Felix Titling"/>
+                <Label x:Name="MinBetLabel" FontFamily="Felix Titling"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <Label Content="Players:"/>
-                <Label x:Name="CurrPlayersLabel" IsEnabled="False"/>
+                <Label Content="Players:" FontFamily="Felix Titling"/>
+                <Label x:Name="CurrPlayersLabel" FontFamily="Felix Titling"/>
             </StackPanel>
-            <Button x:Name="LeaveTable_Btn" Content="Leave Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="0,10,0,0" Click="LeaveTable_Btn_Click"/>
+            <Button x:Name="LeaveTable_Btn" Content="Leave Table" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="0,10,0,0" Click="LeaveTable_Btn_Click" FontFamily="Felix Titling"/>
         </StackPanel>
     </Grid>
 </Page>

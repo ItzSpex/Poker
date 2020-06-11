@@ -23,11 +23,13 @@ namespace PokerClient
     /// </summary>
     public partial class GameLobbyPage : Page
     {
+        int MinBet = 0;
         string Username = "";
         int NumOfPlayers = 0;
+        int Wallet = 0;
         List<PlayerBL> Players;
         DispatcherTimer myTimer = new DispatcherTimer();
-        public GameLobbyPage(PokerTableBL pokerTable, string username)
+        public GameLobbyPage(PokerTableBL pokerTable, string username, int wallet)
         {
             InitializeComponent();
             NameLabel.Content = pokerTable.PokerTableName;
@@ -38,7 +40,9 @@ namespace PokerClient
             myTimer.Interval = new TimeSpan(0, 0, 1);
             myTimer.Start();
             Username = username;
+            Wallet = wallet;
             Players = pokerTable.Players.ToList();
+            MinBet = pokerTable.MinBet;
         }
         public void GetPlayersNamesAndGameStatus(Object sender, EventArgs e)
         {
@@ -61,7 +65,7 @@ namespace PokerClient
             if (serverResponse.Result)
             {
                 MessageBox.Show("The game is starting", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                GamePage p = new GamePage(NumOfPlayers, Players);
+                GamePage p = new GamePage(NumOfPlayers, Players, MinBet, Wallet, false, 0);
                 this.NavigationService.Navigate(p, UriKind.Relative);
                 myTimer.Stop();
             }
@@ -73,8 +77,9 @@ namespace PokerClient
             if (serverResponse.ErrorMsg == null)
             {
                 MessageBox.Show("Leave table request successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
-                TableMenuPage p = new TableMenuPage(Username);
+                TableMenuPage p = new TableMenuPage(Username, Wallet);
                 this.NavigationService.Navigate(p, UriKind.Relative);
+                myTimer.Stop();
             }
             else
             {

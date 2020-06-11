@@ -71,43 +71,50 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="CreateTablePage.xaml.cs">
+    <Compile Include="HistoryPages\HistoryPage.xaml.cs">
+      <DependentUpon>HistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="TablePages\CreateTablePage.xaml.cs">
       <DependentUpon>CreateTablePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GameLobbyPage.xaml.cs">
+    <Compile Include="GamePages\GameLobbyPage.xaml.cs">
       <DependentUpon>GameLobbyPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="GamePage.xaml.cs">
+    <Compile Include="GamePages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginPage.xaml.cs">
+    <Compile Include="TablePages\LoginPage.xaml.cs">
       <DependentUpon>LoginPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyControl.xaml.cs">
+    <Compile Include="UserControls\MyControl.xaml.cs">
       <DependentUpon>MyControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="OpponentControl.xaml.cs">
+    <Compile Include="UserControls\OpponentControl.xaml.cs">
       <DependentUpon>OpponentControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TableControl.xaml.cs">
+    <Compile Include="UserControls\TableControl.xaml.cs">
       <DependentUpon>TableControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="TableMenuPage.xaml.cs">
+    <Compile Include="TablePages\TableMenuPage.xaml.cs">
       <DependentUpon>TableMenuPage.xaml</DependentUpon>
     </Compile>
-    <Page Include="CreateTablePage.xaml">
+    <Page Include="HistoryPages\HistoryPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameLobbyPage.xaml">
+    <Page Include="TablePages\CreateTablePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GamePage.xaml">
+    <Page Include="GamePages\GameLobbyPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginPage.xaml">
+    <Page Include="GamePages\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="TablePages\LoginPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -123,19 +130,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MyControl.xaml">
+    <Page Include="UserControls\MyControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="OpponentControl.xaml">
+    <Page Include="UserControls\OpponentControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TableControl.xaml">
+    <Page Include="UserControls\TableControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="TableMenuPage.xaml">
+    <Page Include="TablePages\TableMenuPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -174,10 +181,16 @@
     <None Include="Connected Services\PokerServiceRef\item4.xsd">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Connected Services\PokerServiceRef\item5.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfArrayOfPlayerBLPWeT4Jje.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfArrayOfPokerTableBLPWeT4Jje.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfArrayOfPokerTablePWeT4Jje.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\PokerServiceRef\PokerClient.PokerServiceRef.ServerResponseOfboolean.datasource">
@@ -396,6 +409,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\SB Button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Green_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Red_Background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Wood_Background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Red_GameBackground.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.1.2\build\MaterialDesignThemes.targets')" />

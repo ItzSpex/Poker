@@ -353,6 +353,16 @@ namespace PokerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Green_Background {
+            get {
+                object obj = ResourceManager.GetObject("Green_Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Hearts_10 {
             get {
                 object obj = ResourceManager.GetObject("Hearts_10", resourceCulture);
@@ -493,6 +503,26 @@ namespace PokerClient.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Red_Background {
+            get {
+                object obj = ResourceManager.GetObject("Red_Background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Red_GameBackground {
+            get {
+                object obj = ResourceManager.GetObject("Red_GameBackground", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SB_Button {
             get {
                 object obj = ResourceManager.GetObject("SB_Button", resourceCulture);
@@ -626,6 +656,16 @@ namespace PokerClient.Properties {
         internal static System.Drawing.Bitmap Spades_9 {
             get {
                 object obj = ResourceManager.GetObject("Spades_9", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Wood_Background {
+            get {
+                object obj = ResourceManager.GetObject("Wood_Background", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

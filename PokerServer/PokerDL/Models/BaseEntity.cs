@@ -14,6 +14,7 @@ namespace PokerDL.Models
     [DataContract]
     public class BaseIdentityEntity : BaseEntity
     {
+        [DataMember]
         public int Id { get; set; }
 
     }

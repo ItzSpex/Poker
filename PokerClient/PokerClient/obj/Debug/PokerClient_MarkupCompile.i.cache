@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\Users\user\source\repos\Poker\PokerClient\PokerClient\App.xaml
-9-1110327654
+10747093939
 
-151509396433
+16-967250013
 181600307495
-CreateTablePage.xaml;GameLobbyPage.xaml;GamePage.xaml;LoginPage.xaml;MainWindow.xaml;MyControl.xaml;OpponentControl.xaml;TableControl.xaml;TableMenuPage.xaml;
+HistoryPages\HistoryPage.xaml;TablePages\CreateTablePage.xaml;GamePages\GameLobbyPage.xaml;GamePages\GamePage.xaml;TablePages\LoginPage.xaml;MainWindow.xaml;UserControls\MyControl.xaml;UserControls\OpponentControl.xaml;UserControls\TableControl.xaml;TablePages\TableMenuPage.xaml;
 
-True
+False
 

@@ -9,12 +9,14 @@ namespace PokerDL.Models
 {
     public enum Operation { Call = 0, Raise, Fold, Check, AllIn };
     [DataContract]    
-    public class Move : BaseIdentityEntity
+    public class Move : BaseEntity
     {
         [DataMember]
         public int PlayerId { get; set; }
         [DataMember]
         public int PokerTableId { get; set; }
+        [DataMember]
+        public int MoveNumber { get; set; }
         [DataMember]
         public int BidAmount { get; set; }
         [DataMember]

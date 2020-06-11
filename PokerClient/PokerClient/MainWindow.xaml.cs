@@ -26,6 +26,20 @@ namespace PokerClient
             InitializeComponent();
         }
 
-       
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            try
+            {
+                var serverResponse = MainWindow.client.Logout();
+                if (serverResponse.ErrorMsg == null)
+                {
+                    MessageBox.Show("Close client request successful", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch
+            {
+                //Server crashed
+            }
+        }
     }
 }

@@ -1,0 +1,50 @@
+﻿<Page x:Class="PokerClient.HistoryPages.HistoryPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PokerClient.HistoryPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="400" d:DesignWidth="600"
+      FontFamily="{DynamicResource MaterialDesignFont}"
+      Background="{StaticResource PrimaryHueDarkBrush}"
+      Title="HistoryPage">
+    <Page.Resources>
+        <Style TargetType="DataGridColumnHeader" BasedOn="{StaticResource MaterialDesignDataGridColumnHeader}">
+            <Setter Property="FontFamily" Value="Felix Titling"/>
+            <Setter Property="Foreground" Value="GhostWhite"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="DataGridCell" BasedOn="{StaticResource MaterialDesignDataGridCell}">
+            <Setter Property="FontFamily" Value="Felix Titling"/>
+            <Setter Property="Foreground" Value="GhostWhite"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.5*"/>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="0.25*"/>
+        </Grid.ColumnDefinitions>
+        <Image Source="..\Resources\Green_Background.jpg" Stretch="UniformToFill" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+        <Image Source="..\Resources\Wood_Background.jpg" Stretch="UniformToFill" Grid.Column="1" Grid.Row="1"/>
+        <DataGrid x:Name="TableHistoryList" Grid.Row="1" Grid.Column="1" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" DataContext="HistoryTables" SelectionChanged="TableHistoryList_SelectionChanged" Opacity="0.4">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding PokerTableName}" FontFamily="Felix Titling"/>
+                <DataGridTextColumn Header="Minimun Bet" Width="*" Binding="{Binding MinBet}" FontFamily="Felix Titling"/>
+                <DataGridTextColumn Header="Table Pot" Width="*" Binding="{Binding TablePot}" FontFamily="Felix Titling"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button x:Name="Back_Btn" Content="Back" Click="Back_Btn_Click" Width="100" FontFamily="Felix Titling"/>
+            <Button x:Name="Refresh_Btn" Content="Refresh" Click="Refresh_Btn_Click" Width="100" Margin="15,0,0,0" FontFamily="Felix Titling"/>
+            <Button x:Name="Replay_Btn" Content="Replay" Click="Replay_Btn_Click" Width="100" Margin="15,0,0,0" IsEnabled="False" FontFamily="Felix Titling"/>
+        </StackPanel>
+    </Grid>
+</Page>

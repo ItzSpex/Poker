@@ -16,9 +16,43 @@
                 <Setter Property="Width" Value="300"/>
             </Style>
         </Grid.Resources>
-        <Image Source="Resources\PokerTable.png"/>
+        <Image Source="..\Resources\Green_Background.jpg" Stretch="UniformToFill"/>
+        <Image Source="..\Resources\Red_GameBackground.png" Stretch="UniformToFill" Opacity="0.5"/>
+        <Image Source="..\Resources\PokerTable.png"/>
         <Grid x:Name="SixPlayerGrid">
-            <local:MyControl x:Name="FirstPlayer" Margin="769,684,705,35"/>
+            <StackPanel Orientation="Horizontal" Margin="769,684,478,35">
+                <StackPanel.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                        <Setter Property="Width" Value="100"/>
+                        <Setter Property="Height" Value="40"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="Call_Btn" Content="Call" Grid.Row="0" VerticalAlignment="Bottom" IsEnabled="False" Click="Call_Btn_Click" FontFamily="Felix Titling"/>
+                    <Button x:Name="Check_Btn" Content="Check" Grid.Row="1" VerticalAlignment="Center" IsEnabled="False" Click="Check_Btn_Click" FontFamily="Felix Titling"/>
+                    <Button x:Name="Fold_Btn" Content="Fold" Grid.Row="2" VerticalAlignment="Top" IsEnabled="False" Click="Fold_Btn_Click" FontFamily="Felix Titling"/>
+                </Grid>
+                <local:MyControl x:Name="FirstPlayer" Width="265" Margin="20,0,0,0"/>
+                <Grid Margin="10,0,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <Button x:Name="All_In_Btn" Content="All In" Grid.Row="0" VerticalAlignment="Bottom" IsEnabled="False" Click="All_In_Btn_Click" FontFamily="Felix Titling"/>
+                    <Button x:Name="Raise_Btn" Content="Raise" Grid.Row="1" VerticalAlignment="Center" IsEnabled="False" Click="Raise_Btn_Click" FontFamily="Felix Titling"/>
+                    <StackPanel Orientation="Horizontal" Margin="-10,0,0,0" Grid.Row="2">
+                        <Label x:Name="Raise_Label" Content="Raise Amount:" FontFamily="Felix Titling"/>
+                        <Slider x:Name="Raise_Slider" Width="100" IsSnapToTickEnabled="True" TickPlacement="BottomRight"/>
+                        <TextBox x:Name="Raise" Text="{Binding ElementName=Raise_Slider, Path=Value, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Transparent" FontFamily="Felix Titling" Width="50"/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
             <local:OpponentControl x:Name="SecondPlayer" Angle="180" Margin="352,1026,1268,-296" Visibility="Hidden">
                 <local:OpponentControl.RenderTransform>
                     <TransformGroup>
@@ -61,7 +95,8 @@
                 </local:OpponentControl.RenderTransform>
             </local:OpponentControl>
 
-            <local:TableControl Margin="523,391,528,401"/>
+            <local:TableControl x:Name="myTableControl" Margin="523,391,528,401"/>
+            <Button x:Name="Next_Move_Btn" Content="Next Move"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="150,0,0,20" Width="150" Click="Next_Move_Btn_Click"/>
         </Grid>
     </Grid>
 

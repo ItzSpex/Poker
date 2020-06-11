@@ -9,17 +9,19 @@ using System.Threading.Tasks;
 namespace PokerBL.Models
 {
     [DataContract]
-    public class Player : BaseIdentityEntity
+    public class Player : BaseEntity
     {
         [DataMember]
-        public string PlayerName { get; set; }
+        public int PlayerId { get; set; }
         [DataMember]
-        public int PokerTableId { get; set; }
+        public string PlayerName { get; set; }
         [DataMember]
         public int ChipsOnTable { get; set; }
         [DataMember]
         public string FirstCard { get; set; }
         [DataMember]
         public string SecondCard { get; set; }
+        [DataMember]
+        public int PokerTableId { get; set; }
     }
 }

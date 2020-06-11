@@ -36,7 +36,16 @@ namespace PokerService
         ServerResponse<bool> ExecuteMove(Operation Operation, int BidAmount);
         [OperationContract]
         ServerResponse<List<PlayerBL>> UpdatePlayers();
-
+        [OperationContract]
+        ServerResponse<int> GetWallet();
+        [OperationContract]
+        ServerResponse<List<PokerTable>> GetHistoryTables();
+        [OperationContract]
+        ServerResponse<bool> InitHistoryMoves(int TableId);
+        [OperationContract]
+        ServerResponse<bool> ExecuteHistoryMove();
+        [OperationContract]
+        ServerResponse<PokerTableBL> GetTableByHistory(PokerTable replayTable);
     }
     [DataContract]
     public class ServerResponse<T>

@@ -25,6 +25,26 @@ namespace PokerBL.ORM
             }
             return u;
         }
+        public static UserInfo GetUserById(int userId)
+        {
+            UserInfoDB userInfoDB = new UserInfoDB();
+            UserInfo u = userInfoDB.GetById(userId);
+            if (u == null)
+            {
+                throw new Exception("User doesn't exist");
+            }
+            return u;
+        }
+        public static Player GetPlayerById(int PlayerId, int TableId)
+        {
+            PlayerDB playerDB = new PlayerDB();
+            Player p = playerDB.GetPlayerByTableId(TableId, PlayerId);
+            if (p == null)
+            {
+                throw new Exception("Player doesn't exist in table");
+            }
+            return p;
+        }
         public static void InsertUser(UserInfo newUser)
         {
             UserInfoDB userInfoDB = new UserInfoDB();
@@ -35,20 +55,55 @@ namespace PokerBL.ORM
             }
             userInfoDB.IdentityInsert(newUser);
         }
-        public static void InsertTable(PokerTable newPokerTable)
+        public static void UpdateUser(UserInfo updatedUser)
         {
-            PokerTableDB pokerTableDB = new PokerTableDB();
-            PokerTable pT = pokerTableDB.GetTableByName(newPokerTable.PokerTableName);
-            if (pT != null)
+            UserInfoDB userInfoDB = new UserInfoDB();
+            UserInfo u = userInfoDB.GetByUsername(updatedUser.Username);
+            if (u == null)
             {
-                throw new Exception("Table already exists");
+                throw new Exception("User doesn't exist");
             }
-            pokerTableDB.IdentityInsert(newPokerTable);
+            userInfoDB.Update(updatedUser);
         }
-        public static List<PokerTable> GetAllTables()
+        public static void UpdateTable(PokerTable updatedPokerTable)
         {
             PokerTableDB pokerTableDB = new PokerTableDB();
-            List<PokerTable> pokerTables = pokerTableDB.GetTables();
+            PokerTable pokerTable = pokerTableDB.GetTableById(updatedPokerTable.Id);
+            if (pokerTable == null)
+            {
+                throw new Exception("Table doesn't exist");
+            }
+            pokerTableDB.Update(updatedPokerTable);
+        }
+        public static int InsertTable(PokerTable newPokerTable)
+        {
+            PokerTableDB pokerTableDB = new PokerTableDB();
+            PokerTable pokerTable = pokerTableDB.GetTableById(newPokerTable.Id);
+            if (pokerTable == null)
+            {
+                pokerTableDB.IdentityInsert(newPokerTable);
+            }
+            else
+            {
+                UpdateTable(newPokerTable);
+            }
+            return newPokerTable.Id;
+        }
+        public static int InsertPlayer(Player newPlayer)
+        {
+            PlayerDB playerDB = new PlayerDB();
+            playerDB.Insert(newPlayer);
+            return newPlayer.PlayerId;
+        }
+        public static void InsertMove(Move newMove)
+        {
+            MoveDB moveDB = new MoveDB();
+            moveDB.Insert(newMove);
+        }
+        public static List<PokerTable> GetAllTables(int PlayerId)
+        {
+            PokerTableDB pokerTableDB = new PokerTableDB();
+            List<PokerTable> pokerTables = pokerTableDB.GetTables(PlayerId);
             if (pokerTables == null)
             {
                 throw new Exception("No tables exist");
@@ -59,6 +114,16 @@ namespace PokerBL.ORM
         {
             PokerTableDB pokerTableDB = new PokerTableDB();
             pokerTableDB.Delete(requestedTable);
+        }
+        public static List<Move> GetAllMoves(int TableId)
+        {
+            MoveDB moveDB = new MoveDB();
+            List<Move> moves = moveDB.GetMoves(TableId);
+            if (moves == null)
+            {
+                throw new Exception("No moves exist");
+            }
+            return moves;
         }
     }
 }

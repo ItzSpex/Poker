@@ -16,10 +16,11 @@ namespace PokerBL.Models
         [DataMember]
         public bool HasGameFinished { get; set; }
         [DataMember]
-        public int WinnerId { get; set; }
+        public List<int> WinnerIds { get; set; }
         public TableStatus()
         {
             this.TableCards = new List<Card>();
+            this.WinnerIds = new List<int>();
         }
     }
 }
