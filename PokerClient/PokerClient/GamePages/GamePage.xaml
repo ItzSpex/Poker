@@ -7,97 +7,96 @@
       mc:Ignorable="d" 
       d:DesignHeight="1080" d:DesignWidth="1920"
       Title="GamePage"
-      Background="White">
-
-    <Grid>
-        <Grid.Resources>
-            <Style TargetType="local:OpponentControl">
-                <Setter Property="Height" Value="300"/>
-                <Setter Property="Width" Value="300"/>
-            </Style>
-        </Grid.Resources>
-        <Image Source="..\Resources\Green_Background.jpg" Stretch="UniformToFill"/>
-        <Image Source="..\Resources\Red_GameBackground.png" Stretch="UniformToFill" Opacity="0.5"/>
-        <Image Source="..\Resources\PokerTable.png"/>
-        <Grid x:Name="SixPlayerGrid">
-            <StackPanel Orientation="Horizontal" Margin="769,684,478,35">
-                <StackPanel.Resources>
-                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                        <Setter Property="Width" Value="100"/>
-                        <Setter Property="Height" Value="40"/>
-                    </Style>
-                </StackPanel.Resources>
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Button x:Name="Call_Btn" Content="Call" Grid.Row="0" VerticalAlignment="Bottom" IsEnabled="False" Click="Call_Btn_Click" FontFamily="Felix Titling"/>
-                    <Button x:Name="Check_Btn" Content="Check" Grid.Row="1" VerticalAlignment="Center" IsEnabled="False" Click="Check_Btn_Click" FontFamily="Felix Titling"/>
-                    <Button x:Name="Fold_Btn" Content="Fold" Grid.Row="2" VerticalAlignment="Top" IsEnabled="False" Click="Fold_Btn_Click" FontFamily="Felix Titling"/>
-                </Grid>
-                <local:MyControl x:Name="FirstPlayer" Width="265" Margin="20,0,0,0"/>
-                <Grid Margin="10,0,0,0">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="*"/>
-                    </Grid.RowDefinitions>
-                    <Button x:Name="All_In_Btn" Content="All In" Grid.Row="0" VerticalAlignment="Bottom" IsEnabled="False" Click="All_In_Btn_Click" FontFamily="Felix Titling"/>
-                    <Button x:Name="Raise_Btn" Content="Raise" Grid.Row="1" VerticalAlignment="Center" IsEnabled="False" Click="Raise_Btn_Click" FontFamily="Felix Titling"/>
-                    <StackPanel Orientation="Horizontal" Margin="-10,0,0,0" Grid.Row="2">
-                        <Label x:Name="Raise_Label" Content="Raise Amount:" FontFamily="Felix Titling"/>
-                        <Slider x:Name="Raise_Slider" Width="100" IsSnapToTickEnabled="True" TickPlacement="BottomRight"/>
-                        <TextBox x:Name="Raise" Text="{Binding ElementName=Raise_Slider, Path=Value, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Transparent" FontFamily="Felix Titling" Width="50"/>
-                    </StackPanel>
-                </Grid>
-            </StackPanel>
-            <local:OpponentControl x:Name="SecondPlayer" Angle="180" Margin="352,1026,1268,-296" Visibility="Hidden">
-                <local:OpponentControl.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-135"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </local:OpponentControl.RenderTransform>
-            </local:OpponentControl>
-            <local:OpponentControl x:Name="ThirdPlayer" Margin="177,240,1443,490" Visibility="Hidden">
-                <local:OpponentControl.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="-45"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </local:OpponentControl.RenderTransform>
-            </local:OpponentControl>
-            <local:OpponentControl x:Name="FourthPlayer" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="833,36,787,0" Visibility="Hidden"/>
-            <local:OpponentControl x:Name="FifthPlayer" Margin="1543,51,77,679" Visibility="Hidden" >
-                <local:OpponentControl.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="45"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </local:OpponentControl.RenderTransform>
-            </local:OpponentControl>
-            <local:OpponentControl x:Name="SixthPlayer" Angle="180" Margin="1841,762,-221,-32" Visibility="Hidden">
-                <local:OpponentControl.RenderTransform>
-                    <TransformGroup>
-                        <ScaleTransform/>
-                        <SkewTransform/>
-                        <RotateTransform Angle="135"/>
-                        <TranslateTransform/>
-                    </TransformGroup>
-                </local:OpponentControl.RenderTransform>
-            </local:OpponentControl>
-
-            <local:TableControl x:Name="myTableControl" Margin="523,391,528,401"/>
-            <Button x:Name="Next_Move_Btn" Content="Next Move"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="150,0,0,20" Width="150" Click="Next_Move_Btn_Click"/>
+      Background="Transparent">
+    <Viewbox>
+        <Grid>
+            <Grid.Resources>
+                <Style TargetType="local:OpponentControl">
+                    <Setter Property="Height" Value="400"/>
+                    <Setter Property="Width" Value="400"/>
+                </Style>
+            </Grid.Resources>
+            <Image Source="..\Resources\Green_Background.jpg" Stretch="UniformToFill"/>
+            <Image Source="..\Resources\Red_GameBackground.png" Stretch="UniformToFill" Opacity="0.5"/>
+            <Image Source="..\Resources\PokerTable.png"/>
+            <Grid x:Name="SixPlayerGrid">
+                <StackPanel Orientation="Horizontal" Margin="933,944,782,10">
+                    <StackPanel.Resources>
+                        <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                            <Setter Property="Width" Value="150"/>
+                            <Setter Property="Height" Value="60"/>
+                        </Style>
+                    </StackPanel.Resources>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="Call_Btn" Content="Call" Grid.Row="0" VerticalAlignment="Bottom" IsEnabled="False" Click="Call_Btn_Click" FontFamily="Felix Titling"/>
+                        <Button x:Name="Check_Btn" Content="Check" Grid.Row="1" VerticalAlignment="Center" IsEnabled="False" Click="Check_Btn_Click" FontFamily="Felix Titling"/>
+                        <Button x:Name="Fold_Btn" Content="Fold" Grid.Row="2" VerticalAlignment="Top" IsEnabled="False" Click="Fold_Btn_Click" FontFamily="Felix Titling"/>
+                    </Grid>
+                    <local:MyControl x:Name="FirstPlayer" Margin="50,0,0,0"/>
+                    <Grid Margin="10,0,0,0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="All_In_Btn" Content="All In" Grid.Row="0" VerticalAlignment="Bottom" IsEnabled="False" Click="All_In_Btn_Click" FontFamily="Felix Titling"/>
+                        <Button x:Name="Raise_Btn" Content="Raise" Grid.Row="1" VerticalAlignment="Center" IsEnabled="False" Click="Raise_Btn_Click" FontFamily="Felix Titling"/>
+                        <StackPanel Orientation="Horizontal" Margin="-10,0,0,0" Grid.Row="2">
+                            <Label x:Name="Raise_Label" Content="Raise Amount:" FontFamily="Felix Titling"/>
+                            <Slider x:Name="Raise_Slider" Width="100" IsSnapToTickEnabled="True" TickPlacement="BottomRight"/>
+                            <TextBox x:Name="Raise" Text="{Binding ElementName=Raise_Slider, Path=Value, UpdateSourceTrigger=PropertyChanged}" BorderBrush="Transparent" FontFamily="Felix Titling" Width="50"/>
+                        </StackPanel>
+                    </Grid>
+                </StackPanel>
+                <local:OpponentControl x:Name="SecondPlayer" Angle="180" Margin="543,1371,1752,-231" Visibility="Hidden">
+                    <local:OpponentControl.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-135"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </local:OpponentControl.RenderTransform>
+                </local:OpponentControl>
+                <local:OpponentControl x:Name="ThirdPlayer" Margin="341,405,2004,735" Visibility="Hidden">
+                    <local:OpponentControl.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="-45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </local:OpponentControl.RenderTransform>
+                </local:OpponentControl>
+                <local:OpponentControl x:Name="FourthPlayer" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="1150,127,1195,0" Visibility="Hidden"/>
+                <local:OpponentControl x:Name="FifthPlayer" Margin="2174,139,171,1001" Visibility="Hidden">
+                    <local:OpponentControl.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="45"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </local:OpponentControl.RenderTransform>
+                </local:OpponentControl>
+                <local:OpponentControl x:Name="SixthPlayer" Angle="180" Margin="2424,1140,-79,0" Visibility="Hidden">
+                    <local:OpponentControl.RenderTransform>
+                        <TransformGroup>
+                            <ScaleTransform/>
+                            <SkewTransform/>
+                            <RotateTransform Angle="135"/>
+                            <TranslateTransform/>
+                        </TransformGroup>
+                    </local:OpponentControl.RenderTransform>
+                </local:OpponentControl>
+                <Button x:Name="Next_Move_Btn" Content="Next Move" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="150" Click="Next_Move_Btn_Click" Height="60" Margin="1334,0,1261,66"/>
+                <local:TableControl x:Name="myTableControl" Margin="735,568,714,558"/>
+            </Grid>
         </Grid>
-    </Grid>
-
+    </Viewbox>
 </Page>

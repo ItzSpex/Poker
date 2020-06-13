@@ -32,12 +32,12 @@
                 </Label>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-                <Image Source="..\Resources\Card,Back.png" Height="106" Width="50"/>
-                <Image Source="..\Resources\Card,Back.png" Height="106" Width="50" Margin="10,0,0,0"/>
+                <Image Source="..\Resources\Card,Back.png" Height="200" Width="100"/>
+                <Image Source="..\Resources\Card,Back.png" Height="200" Width="100" Margin="10,0,0,0"/>
                 <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                    <Image x:Name="BigBlind_Button" Source="..\Resources\BB Button.png" Height="30" Visibility="Hidden"/>
-                    <Image x:Name="Dealer_Button" Source="..\Resources\Dealer Button.png" Height="30" Margin="0,10,0,0" Visibility="Hidden"/>
-                    <Image x:Name="SmallBlind_Button" Source="..\Resources\SB Button.png" Height="30"  Margin="0,10,0,0" Visibility="Hidden"/>
+                    <Image x:Name="BigBlind_Button" Source="..\Resources\BB Button.png" Height="50" Visibility="Hidden"/>
+                    <Image x:Name="Dealer_Button" Source="..\Resources\Dealer Button.png" Height="50" Margin="0,10,0,0" Visibility="Hidden"/>
+                    <Image x:Name="SmallBlind_Button" Source="..\Resources\SB Button.png" Height="50"  Margin="0,10,0,0" Visibility="Hidden"/>
                 </StackPanel>
             </StackPanel>
         </StackPanel>

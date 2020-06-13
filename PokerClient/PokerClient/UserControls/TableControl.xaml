@@ -8,11 +8,11 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
-            <Image x:Name="TableFirstCardImage" Height="212" Width="100"/>
-            <Image x:Name="TableSecondCardImage" Height="212" Width="100" Margin="5,0,0,0"/>
-            <Image x:Name="TableThirdCardImage" Height="212" Width="100" Margin="5,0,0,0"/>
-            <Image x:Name="TableFourthCardImage" Height="212" Width="100" Margin="5,0,0,0"/>
-            <Image x:Name="TableFifthCardImage" Height="212" Width="100" Margin="5,0,0,0"/>
+            <Image x:Name="TableFirstCardImage" Height="400" Width="200"/>
+            <Image x:Name="TableSecondCardImage" Height="400" Width="200" Margin="5,0,0,0"/>
+            <Image x:Name="TableThirdCardImage" Height="400" Width="200" Margin="5,0,0,0"/>
+            <Image x:Name="TableFourthCardImage" Height="400" Width="200" Margin="5,0,0,0"/>
+            <Image x:Name="TableFifthCardImage" Height="400" Width="200" Margin="5,0,0,0"/>
         </StackPanel>
     </Grid>
 </UserControl>

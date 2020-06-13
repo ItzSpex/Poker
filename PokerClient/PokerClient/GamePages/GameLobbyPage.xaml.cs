@@ -64,7 +64,6 @@ namespace PokerClient
             var serverResponse = MainWindow.client.HasGameStarted();
             if (serverResponse.Result)
             {
-                MessageBox.Show("The game is starting", "Update", MessageBoxButton.OK, MessageBoxImage.Information);
                 GamePage p = new GamePage(NumOfPlayers, Players, MinBet, Wallet, false, 0);
                 this.NavigationService.Navigate(p, UriKind.Relative);
                 myTimer.Stop();

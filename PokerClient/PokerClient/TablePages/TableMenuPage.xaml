@@ -21,44 +21,46 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition Width="*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>
-        <Image Source="..\Resources\Green_Background.jpg" Stretch="UniformToFill" Grid.ColumnSpan="2" Grid.RowSpan="3"/>
-        <Image Source="..\Resources\Wood_Background.jpg" Grid.Column="0" Grid.Row="1"/>
-        <DataGrid x:Name="TableList" Grid.Row="1" Grid.Column="0" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" DataContext="pokerTables" SelectionChanged="TableList_SelectionChanged" Opacity="0.4">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding PokerTableName}" FontFamily="Felix Titling"/>
-                <DataGridTextColumn Header="Players" Width="*" Binding="{Binding NumOfPlayers}" FontFamily="Felix Titling"/>
-                <DataGridTextColumn Header="Minimun Bet" Width="*" Binding="{Binding MinBet}" FontFamily="Felix Titling"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,5,0">
-            <StackPanel.Resources>
-                <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
-                    <Setter Property="Margin" Value="0,20,0,0"/>
-                    <Setter Property="Height" Value="35"/>
-                </Style>
-            </StackPanel.Resources>
-            <Button x:Name="CreateTable_Btn" Content="Create Table" Click="CreateTable_Btn_Click" Margin="0" FontFamily="Felix Titling"/>
-            <Button x:Name="JoinTable_Btn" Content="Join Table" Click="JoinTable_Btn_Click" IsEnabled="False" FontFamily="Felix Titling"/>
-            <Button x:Name="RefreshList_Btn" Content="Refresh List" Click="RefreshList_Btn_Click" FontFamily="Felix Titling"/>
-            <Button x:Name="Logout_Btn" Content="Logout" Click="Logout_Btn_Click" FontFamily="Felix Titling"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Margin="0,0,0,5">
-            <Label x:Name="Username_Label" Content="Username:" FontFamily="Felix Titling"/>
-            <TextBox x:Name="UsernameTB" FontFamily="Felix Titling" Width="115"/>
-        </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Margin="250,0,0,5">
-            <Label x:Name="Wallet_Label" Content="Wallet:" FontFamily="Felix Titling"/>
-            <TextBox x:Name="WalletTB" FontFamily="Felix Titling" Width="115"/>
-        </StackPanel>
-        <Button x:Name="History_Btn" Content="History" Click="History_Btn_Click" FontFamily="Felix Titling" Grid.Column="0" Grid.Row="2" Width="150"/>
+        <Image Source="..\Resources\Green_Background.jpg" Stretch="UniformToFill"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="3*"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Image Source="..\Resources\Wood_Background.jpg" Grid.Column="0" Grid.Row="1"/>
+            <DataGrid x:Name="TableList" Grid.Row="1" Grid.Column="0" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" DataContext="pokerTables" SelectionChanged="TableList_SelectionChanged" Opacity="0.4">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding PokerTableName}" FontFamily="Felix Titling"/>
+                    <DataGridTextColumn Header="Players" Width="*" Binding="{Binding NumOfPlayers}" FontFamily="Felix Titling"/>
+                    <DataGridTextColumn Header="Minimun Bet" Width="*" Binding="{Binding MinBet}" FontFamily="Felix Titling"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,5,0">
+                <StackPanel.Resources>
+                    <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignRaisedButton}">
+                        <Setter Property="Margin" Value="0,20,0,0"/>
+                        <Setter Property="Height" Value="35"/>
+                    </Style>
+                </StackPanel.Resources>
+                <Button x:Name="CreateTable_Btn" Content="Create Table" Click="CreateTable_Btn_Click" Margin="0" FontFamily="Felix Titling"/>
+                <Button x:Name="JoinTable_Btn" Content="Join Table" Click="JoinTable_Btn_Click" IsEnabled="False" FontFamily="Felix Titling"/>
+                <Button x:Name="RefreshList_Btn" Content="Refresh List" Click="RefreshList_Btn_Click" FontFamily="Felix Titling"/>
+                <Button x:Name="Logout_Btn" Content="Logout" Click="Logout_Btn_Click" FontFamily="Felix Titling"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Margin="0,0,0,5">
+                <Label x:Name="Username_Label" Content="Username:" FontFamily="Felix Titling"/>
+                <TextBox x:Name="UsernameTB" FontFamily="Felix Titling" Width="115"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.Column="0" VerticalAlignment="Bottom" Margin="250,0,0,5">
+                <Label x:Name="Wallet_Label" Content="Wallet:" FontFamily="Felix Titling"/>
+                <TextBox x:Name="WalletTB" FontFamily="Felix Titling" Width="115"/>
+            </StackPanel>
+            <Button x:Name="History_Btn" Content="History" Click="History_Btn_Click" FontFamily="Felix Titling" Grid.Column="0" Grid.Row="2" Width="150"/>
+        </Grid>
     </Grid>
 </Page>

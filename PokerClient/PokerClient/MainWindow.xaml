@@ -5,9 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PokerClient"
         mc:Ignorable="d"
+        ResizeMode="CanResizeWithGrip"
         Closed="Window_Closed"
+        Background="Transparent"
         Title="JokerPoker" Height="400" Width="600">
         <Grid>
+            <Viewbox Stretch="UniformToFill">
             <Frame Source="TablePages/LoginPage.xaml" NavigationUIVisibility="Hidden"/>
+            </Viewbox>
         </Grid>
 </Window>
