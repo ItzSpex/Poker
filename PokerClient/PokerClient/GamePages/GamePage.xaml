@@ -94,7 +94,7 @@
                         </TransformGroup>
                     </local:OpponentControl.RenderTransform>
                 </local:OpponentControl>
-                <Button x:Name="Next_Move_Btn" Content="Next Move" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="150" Click="Next_Move_Btn_Click" Height="60" Margin="1334,0,1261,66"/>
+                <Button x:Name="Next_Move_Btn" Content="Next Move" VerticalAlignment="Bottom" HorizontalAlignment="Center" Width="150" Click="Next_Move_Btn_Click" Height="60" Margin="1310,0,1285,508"/>
                 <local:TableControl x:Name="myTableControl" Margin="735,568,714,558"/>
             </Grid>
         </Grid>

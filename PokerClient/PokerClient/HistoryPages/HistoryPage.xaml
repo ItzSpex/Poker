@@ -22,29 +22,31 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="0.5*"/>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.25*"/>
-            <ColumnDefinition Width="2*"/>
-            <ColumnDefinition Width="0.25*"/>
-        </Grid.ColumnDefinitions>
-        <Image Source="..\Resources\Green_Background.jpg" Stretch="UniformToFill" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
-        <Image Source="..\Resources\Wood_Background.jpg" Stretch="UniformToFill" Grid.Column="1" Grid.Row="1"/>
-        <DataGrid x:Name="TableHistoryList" Grid.Row="1" Grid.Column="1" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" DataContext="HistoryTables" SelectionChanged="TableHistoryList_SelectionChanged" Opacity="0.4">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Name" Width="*" Binding="{Binding PokerTableName}" FontFamily="Felix Titling"/>
-                <DataGridTextColumn Header="Minimun Bet" Width="*" Binding="{Binding MinBet}" FontFamily="Felix Titling"/>
-                <DataGridTextColumn Header="Table Pot" Width="*" Binding="{Binding TablePot}" FontFamily="Felix Titling"/>
-            </DataGrid.Columns>
-        </DataGrid>
-        <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="Back_Btn" Content="Back" Click="Back_Btn_Click" Width="100" FontFamily="Felix Titling"/>
-            <Button x:Name="Refresh_Btn" Content="Refresh" Click="Refresh_Btn_Click" Width="100" Margin="15,0,0,0" FontFamily="Felix Titling"/>
-            <Button x:Name="Replay_Btn" Content="Replay" Click="Replay_Btn_Click" Width="100" Margin="15,0,0,0" IsEnabled="False" FontFamily="Felix Titling"/>
-        </StackPanel>
+        <Image Source="..\Resources\Green_Background.jpg" Stretch="UniformToFill"/>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="66"/>
+                <RowDefinition Height="230"/>
+                <RowDefinition Height="132"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"/>
+                <ColumnDefinition Width="450"/>
+                <ColumnDefinition Width="75"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="..\Resources\Wood_Background.jpg" Stretch="UniformToFill" Grid.Column="1" Grid.Row="1"/>
+            <DataGrid x:Name="TableHistoryList" Grid.Row="1" Grid.Column="1" SelectionMode="Single" SelectionUnit="FullRow" AutoGenerateColumns="False" DataContext="HistoryTables" SelectionChanged="TableHistoryList_SelectionChanged" Opacity="0.4">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Name" Width="*" Binding="{Binding PokerTableName}" FontFamily="Felix Titling"/>
+                    <DataGridTextColumn Header="Minimun Bet" Width="*" Binding="{Binding MinBet}" FontFamily="Felix Titling"/>
+                    <DataGridTextColumn Header="Table Pot" Width="*" Binding="{Binding TablePot}" FontFamily="Felix Titling"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <StackPanel Grid.Column="1" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
+                <Button x:Name="Back_Btn" Content="Back" Click="Back_Btn_Click" Width="100" FontFamily="Felix Titling"/>
+                <Button x:Name="Refresh_Btn" Content="Refresh" Click="Refresh_Btn_Click" Width="100" Margin="15,0,0,0" FontFamily="Felix Titling"/>
+                <Button x:Name="Replay_Btn" Content="Replay" Click="Replay_Btn_Click" Width="100" Margin="15,0,0,0" IsEnabled="False" FontFamily="Felix Titling"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Page>
