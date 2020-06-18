@@ -92,13 +92,13 @@ namespace PokerBL.ORM
         public static void ClearEmptyTables()
         {
             PokerTableDB pokerTableDB = new PokerTableDB();
-            PlayerDB playerDB = new PlayerDB();
+            MoveDB moveDB = new MoveDB();
             List<PokerTable> pokerTables = pokerTableDB.GetEmptyTables();
             if (pokerTables != null)
             {
                 foreach (PokerTable pokerTable in pokerTables)
                 {
-                    playerDB.DeletePlayersByTableId(pokerTable.Id);
+                    moveDB.DeleteMovesByTableId(pokerTable.Id);
                 }
 
                 for (int i = 0; i < pokerTables.Count; i++)

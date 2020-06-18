@@ -786,7 +786,6 @@ namespace PokerBL.Models
                 move.PokerTableId = myTable.Id;
                 Database.InsertMove(move);
             }
-            Database.ClearEmptyTables();
         }
         public void UpdatePersonalCardsInStaticList()
         {

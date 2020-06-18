@@ -9,6 +9,18 @@ namespace PokerDL.Mapping
 {
     public class MoveDB : BaseDB<Move>
     {
+        public void DeleteMovesByTableId(int PokerTableId)
+        {
+            command.CommandText = "SELECT * FROM Move Where PokerTableId = " + PokerTableId;
+            var l = Select();
+            if (l.Count > 0)
+            {
+                for (int i = 0; i < l.Count; i++)
+                {
+                    Delete(l[i]);
+                }
+            }
+        }
         public List<Move> GetMoves(int PokerTableId)
         {
             command.CommandText = "SELECT * FROM MOVE WHERE PokerTableId = " + PokerTableId;
@@ -26,7 +38,7 @@ namespace PokerDL.Mapping
 
         protected override string GetSQLDeleteString(Move model)
         {
-            return null;
+            return "DELETE FROM MOVE WHERE PokerTableId = " + model.PokerTableId;
         }
 
         protected override string GetSQLInsertString()

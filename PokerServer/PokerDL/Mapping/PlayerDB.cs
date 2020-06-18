@@ -18,18 +18,6 @@ namespace PokerDL.Mapping
                 return l[0];
             return null;
         }
-        public void DeletePlayersByTableId(int PokerTableId)
-        {
-            command.CommandText = "SELECT * FROM Player Where PokerTableId = " + PokerTableId;
-            var l = Select();
-            if(l.Count > 0)
-            {
-                for (int i = 0; i < l.Count; i++)
-                {
-                    Delete(l[i]);
-                }
-            }
-        }
         protected override void GetModelColumns(Player model)
         {
             model.PlayerId = (int)reader["PlayerId"];
